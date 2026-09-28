@@ -535,13 +535,150 @@
       background: rgba(8, 10, 14, 0.9);
     }
 
+
+    /* Кнопка гамбургера для мобильных */
+    .gzw-burger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      background: rgba(18, 23, 33, 0.85);
+      border: 1px solid var(--gold);
+      border-radius: 6px;
+      cursor: pointer;
+      padding: 0;
+      box-shadow: 0 0 10px var(--gold-glow);
+      transition: all 0.2s ease;
+      z-index: 101;
+    }
+    .gzw-burger:hover {
+      background: rgba(226, 177, 91, 0.15);
+      box-shadow: 0 0 14px var(--gold);
+    }
+    .gzw-burger-line {
+      width: 20px;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+      transition: all 0.25s ease-in-out;
+    }
+    .gzw-burger.open .gzw-burger-line:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .gzw-burger.open .gzw-burger-line:nth-child(2) {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+    .gzw-burger.open .gzw-burger-line:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Мобильное выпадающее меню */
+    .gzw-mobile-drawer {
+      display: none;
+      position: fixed;
+      top: 60px;
+      left: 0;
+      right: 0;
+      background: rgba(10, 13, 18, 0.98);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 2px solid var(--gold);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9);
+      padding: 16px 20px 24px;
+      z-index: 99;
+      flex-direction: column;
+      gap: 12px;
+      max-height: calc(100vh - 70px);
+      overflow-y: auto;
+      transform: translateY(-100%);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+    }
+    .gzw-mobile-drawer.open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .gzw-mobile-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .gzw-mob-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(18, 23, 33, 0.7);
+      border: 1px solid #283344;
+      color: #cbd5e1;
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 12px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s;
+    }
+    .gzw-mob-item:hover, .gzw-mob-item.active {
+      color: #ffd875;
+      border-color: var(--gold);
+      background: rgba(226, 177, 91, 0.15);
+      box-shadow: 0 0 12px var(--gold-glow);
+    }
+    .gzw-mob-badges {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .gzw-mob-cta {
+      margin-top: 6px;
+      background: linear-gradient(135deg, var(--gold) 0%, #d49a37 100%);
+      color: #0b0e14;
+      border: none;
+      padding: 13px 18px;
+      font-family: 'Cinzel', serif;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px var(--gold-glow);
+      transition: filter 0.2s;
+    }
+    .gzw-mob-cta:hover {
+      filter: brightness(1.15);
+    }
+
     @media (max-width: 860px) {
       .gzw-header {
-        flex-direction: column;
-        align-items: stretch;
+        padding: 10px 16px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
       }
       .gzw-header-left {
-        justify-content: space-between;
+        gap: 0;
+      }
+      .gzw-nav-menu {
+        display: none !important;
+      }
+      .gzw-badges {
+        display: none !important;
+      }
+      .gzw-burger {
+        display: flex;
+      }
+      .gzw-mobile-drawer {
+        display: flex;
       }
       .gzw-card {
         grid-template-columns: 1fr;
@@ -584,7 +721,51 @@
         <span>⚔️</span> 15+ ЛЕТ В ДЕЛЕ
       </div>
     </div>
+
+    <!-- КНОПКА ГАМБУРГЕРА (МОБИЛЬНАЯ) -->
+    <button id="gzw-burger-btn" class="gzw-burger" onclick="toggleMobileMenu()" aria-label="Открыть меню">
+      <span class="gzw-burger-line"></span>
+      <span class="gzw-burger-line"></span>
+      <span class="gzw-burger-line"></span>
+    </button>
   </header>
+
+  <!-- МОБИЛЬНОЕ ВЫПАДАЮЩЕЕ МЕНЮ (ГАМБУРГЕР) -->
+  <div id="gzw-mobile-drawer" class="gzw-mobile-drawer">
+    <div class="gzw-mobile-nav">
+      <button class="gzw-mob-item active" onclick="mobNavTo('hero-all', this)">
+        <span>🏛️</span> ВСЕ УСЛУГИ
+      </button>
+      <button class="gzw-mob-item" onclick="mobNavTo('b1', this)">
+        <span>🇷🇺</span> РЕКЛАМА РФ
+      </button>
+      <button class="gzw-mob-item" onclick="mobNavTo('b2', this)">
+        <span>🌍</span> РЕКЛАМА МИР
+      </button>
+      <button class="gzw-mob-item" onclick="mobNavTo('b3', this)">
+        <span>⚡</span> ИНВАЙТИНГ 2000
+      </button>
+      <button class="gzw-mob-item" onclick="mobNavTo('b4', this)">
+        <span>🤖</span> AI-СИСТЕМЫ
+      </button>
+      <button class="gzw-mob-item" onclick="mobNavTo('b5', this)">
+        <span>🎓</span> ОБУЧЕНИЕ
+      </button>
+    </div>
+
+    <div class="gzw-mob-badges">
+      <div class="gzw-badge" style="justify-content:center;">
+        <span>🪙</span> $3.5M+ / 300М ₽
+      </div>
+      <div class="gzw-badge gzw-badge-exp" style="justify-content:center;">
+        <span>⚔️</span> 15+ ЛЕТ В ДЕЛЕ
+      </div>
+    </div>
+
+    <button class="gzw-mob-cta" onclick="toggleMobileMenu(); openLeadModal('Комплексный маркетинг');">
+      🐺 ОСТАВИТЬ ЗАЯВКУ
+    </button>
+  </div>
 
   <main class="gzw-main">
 
@@ -796,6 +977,41 @@
         console.warn('Audio click notice', err);
       }
     }
+
+    
+    // УПРАВЛЕНИЕ МОБИЛЬНЫМ МЕНЮ (ГАМБУРГЕР)
+    function toggleMobileMenu() {
+      playUiSound('click');
+      const burger = document.getElementById('gzw-burger-btn');
+      const drawer = document.getElementById('gzw-mobile-drawer');
+      if (burger && drawer) {
+        burger.classList.toggle('open');
+        drawer.classList.toggle('open');
+      }
+    }
+
+    function mobNavTo(elemId, btnElem) {
+      document.querySelectorAll('.gzw-mob-item').forEach(b => b.classList.remove('active'));
+      if (btnElem) btnElem.classList.add('active');
+      const burger = document.getElementById('gzw-burger-btn');
+      const drawer = document.getElementById('gzw-mobile-drawer');
+      if (burger && drawer) {
+        burger.classList.remove('open');
+        drawer.classList.remove('open');
+      }
+      navTo(elemId);
+    }
+
+    document.addEventListener('click', function(e) {
+      const burger = document.getElementById('gzw-burger-btn');
+      const drawer = document.getElementById('gzw-mobile-drawer');
+      if (drawer && drawer.classList.contains('open')) {
+        if (!drawer.contains(e.target) && !burger.contains(e.target)) {
+          burger.classList.remove('open');
+          drawer.classList.remove('open');
+        }
+      }
+    });
 
     // НАВИГАЦИЯ ПО ВЕРХНЕМУ МЕНЮ
     function navTo(elemId, btnElem) {
