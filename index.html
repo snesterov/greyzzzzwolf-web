@@ -256,6 +256,61 @@
     }
 
     
+    
+    /* Карточка визуализации центра управления */
+    .hero-visual-card {
+      margin: 18px 0 8px 0;
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(226, 177, 91, 0.35);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(226, 177, 91, 0.15);
+      background: #0b0e14;
+    }
+    .hero-visual-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .hero-visual-card:hover .hero-visual-img {
+      transform: scale(1.015);
+    }
+    .hero-visual-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 14px 20px;
+      background: linear-gradient(180deg, transparent 0%, rgba(11, 14, 20, 0.92) 50%, rgba(11, 14, 20, 0.98) 100%);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 10px;
+      pointer-events: none;
+    }
+    .hvc-tag {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hvc-tag span {
+      color: #10b981;
+      font-size: 10px;
+    }
+    .hvc-title {
+      font-size: 12px;
+      color: #cbd5e1;
+      font-weight: 600;
+    }
+
     /* Блок: Опыт в цифрах с 2012 года */
     .hero-stats-box {
       margin-top: 20px;
@@ -719,6 +774,17 @@
     }
 
     @media (max-width: 860px) {
+      .hero-visual-caption {
+        position: relative;
+        background: rgba(11, 14, 20, 0.95);
+        padding: 10px 12px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+      }
+      .hvc-title {
+        font-size: 11px;
+      }
       .hero-stats-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 8px;
@@ -850,6 +916,15 @@
       <p class="hero-desc">
         Точечная настройка рекламы, привлечение живой аудитории через парсинг и приглашения, проектирование AI-систем и персональное ведение рекламных кампаний.
       </p>
+      <!-- ЦЕНТР УПРАВЛЕНИЯ ТРАФИКОМ -->
+      <div class="hero-visual-card">
+        <img src="https://cdn.jsdelivr.net/gh/snesterov/greyzzzzwolf-web@main/greywolf_command_team.jpg" alt="Команда Grey Wolf в центре управления трафиком" class="hero-visual-img" />
+        <div class="hero-visual-caption">
+          <div class="hvc-tag"><span>● LIVE</span> КОНТРОЛЬ ТРАФИКА И БЮДЖЕТОВ 24/7</div>
+          <div class="hvc-title">Сергей Нестеров • Стратегия, аналитика и AI-системы лидогенерации</div>
+        </div>
+      </div>
+
       <!-- ОПЫТ В ЦИФРАХ С 2012 ГОДА -->
       <div class="hero-stats-box">
         <div class="hero-stats-heading">
