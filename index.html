@@ -255,6 +255,66 @@
       line-height: 1.6;
     }
 
+    
+    /* Блок: Опыт в цифрах с 2012 года */
+    .hero-stats-box {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(226, 177, 91, 0.2);
+    }
+    .hero-stats-heading {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--gold);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hero-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+    .hero-stat-card {
+      background: rgba(18, 23, 33, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-left: 2px solid var(--gold);
+      padding: 10px 12px;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+    }
+    .hero-stat-card:hover {
+      border-color: var(--gold);
+      background: rgba(226, 177, 91, 0.08);
+      transform: translateY(-2px);
+    }
+    .hero-stat-chan {
+      font-size: 11px;
+      font-weight: 700;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    .hero-stat-val {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: #ffffff;
+      line-height: 1.2;
+    }
+    .hero-stat-sum {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--gold);
+      margin-top: 2px;
+    }
+
     .hero-stats-row {
       display: flex;
       gap: 20px;
@@ -659,6 +719,20 @@
     }
 
     @media (max-width: 860px) {
+      .hero-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+      }
+      .hero-stat-card {
+        padding: 8px 10px;
+      }
+      .hero-stat-val {
+        font-size: 14px;
+      }
+      .hero-stat-sum {
+        font-size: 13px;
+      }
+
       .gzw-header {
         padding: 10px 16px;
         flex-direction: row;
@@ -776,22 +850,32 @@
       <p class="hero-desc">
         Точечная настройка рекламы, привлечение живой аудитории через парсинг и приглашения, проектирование AI-систем и персональное ведение рекламных кампаний.
       </p>
-      <div class="hero-stats-row">
-        <div class="hero-stat-item">
-          <div class="hero-stat-num">200+</div>
-          <div class="hero-stat-label">Проектов в РФ</div>
+      <!-- ОПЫТ В ЦИФРАХ С 2012 ГОДА -->
+      <div class="hero-stats-box">
+        <div class="hero-stats-heading">
+          <span>◆</span> ОПЫТ В ЦИФРАХ • С 2012 ГОДА
         </div>
-        <div class="hero-stat-item">
-          <div class="hero-stat-num">217</div>
-          <div class="hero-stat-label">Клиентов в Google</div>
-        </div>
-        <div class="hero-stat-item">
-          <div class="hero-stat-num">300 МЛН ₽</div>
-          <div class="hero-stat-label">Освоено бюджетов</div>
-        </div>
-        <div class="hero-stat-item">
-          <div class="hero-stat-num">2–3 ДНЯ</div>
-          <div class="hero-stat-label">Запуск за рубеж</div>
+        <div class="hero-stats-grid">
+          <div class="hero-stat-card">
+            <div class="hero-stat-chan">Google Ads</div>
+            <div class="hero-stat-val">217 клиентов</div>
+            <div class="hero-stat-sum">$3,5M+</div>
+          </div>
+          <div class="hero-stat-card">
+            <div class="hero-stat-chan">Meta (FB/IG)</div>
+            <div class="hero-stat-val">43 клиента</div>
+            <div class="hero-stat-sum">$1,3M+</div>
+          </div>
+          <div class="hero-stat-card">
+            <div class="hero-stat-chan">TikTok Business</div>
+            <div class="hero-stat-val">21 клиент</div>
+            <div class="hero-stat-sum">$0,3M+</div>
+          </div>
+          <div class="hero-stat-card">
+            <div class="hero-stat-chan">Яндекс.Директ</div>
+            <div class="hero-stat-val">200+ клиентов</div>
+            <div class="hero-stat-sum">₽300M+</div>
+          </div>
         </div>
       </div>
     </div>
