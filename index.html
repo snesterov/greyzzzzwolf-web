@@ -1464,9 +1464,48 @@
   @media (max-width: 960px) {
     .gzw-tg-grid { grid-template-columns: repeat(2, 1fr); }
   }
-  @media (max-width: 640px) {
-    .gzw-tg-grid { grid-template-columns: 1fr; }
-    .gzw-tg-title { font-size: 24px; }
+  @media (max-width: 768px) {
+    .gzw-tg-section {
+      padding: 20px 14px;
+      margin-top: 35px;
+      border-radius: 14px;
+    }
+    .gzw-tg-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .gzw-tg-title {
+      font-size: 22px;
+      line-height: 1.25;
+    }
+    .gzw-tg-sub {
+      font-size: 13px;
+    }
+    .gzw-tg-channel-btn {
+      width: 100%;
+      justify-content: center;
+      padding: 12px;
+      box-sizing: border-box;
+    }
+    .gzw-tg-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .gzw-tg-card {
+      padding: 14px;
+      border-radius: 12px;
+    }
+    .gzw-tg-card-img-wrap {
+      max-height: 200px;
+      margin-bottom: 10px;
+    }
+    .gzw-tg-card-text {
+      font-size: 13px;
+      line-height: 1.5;
+      max-height: 220px;
+    }
   }
   .gzw-tg-card {
     background: rgba(15, 15, 20, 0.75);
