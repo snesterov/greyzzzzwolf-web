@@ -770,6 +770,143 @@
   /* HIDE RAW TILDA T854 BLOCK */
   #rec4584102101 { display: none !important; }
 
+  
+  /* VIDEO SNAPSHOTS & MEDIA ENHANCEMENTS */
+  .gzw-tg-card-img-wrap {
+    width: 100%;
+    margin-bottom: 14px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #09090c;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    aspect-ratio: 16 / 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .gzw-tg-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.35s ease, filter 0.35s ease;
+  }
+  .gzw-tg-card:hover .gzw-tg-card-img {
+    transform: scale(1.04);
+    filter: brightness(1.05);
+  }
+  .gzw-tg-play-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.65) 100%);
+    pointer-events: none;
+    transition: background 0.25s;
+  }
+  .gzw-tg-card:hover .gzw-tg-play-overlay {
+    background: radial-gradient(circle, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.5) 100%);
+  }
+  .gzw-tg-play-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(245, 158, 11, 0.9);
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 900;
+    padding-left: 3px;
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.5), 0 4px 10px rgba(0,0,0,0.5);
+    transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
+  }
+  .gzw-tg-card:hover .gzw-tg-play-btn {
+    transform: scale(1.12);
+    background: #fbbf24;
+    box-shadow: 0 0 30px rgba(245, 158, 11, 0.8), 0 6px 14px rgba(0,0,0,0.6);
+  }
+  .gzw-tg-video-badge {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    color: #f59e0b;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 3px 8px;
+    border-radius: 6px;
+    text-transform: uppercase;
+  }
+  .gzw-tg-banner-wrap {
+    background: linear-gradient(135deg, #181822 0%, #0d0d14 100%);
+    border: 1px solid rgba(245, 158, 11, 0.2);
+    padding: 14px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+  .gzw-tg-banner-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.15) 2px, rgba(0,0,0,0.15) 4px);
+    pointer-events: none;
+    opacity: 0.6;
+  }
+  .gzw-tg-banner-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    z-index: 1;
+  }
+  .gzw-tg-banner-tag {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #f59e0b;
+    background: rgba(245, 158, 11, 0.15);
+    border: 1px solid rgba(245, 158, 11, 0.35);
+    padding: 2px 7px;
+    border-radius: 4px;
+  }
+  .gzw-tg-banner-wolf {
+    font-size: 11px;
+    font-weight: 700;
+    color: #71717a;
+  }
+  .gzw-tg-banner-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 6px 0;
+    z-index: 1;
+  }
+  .gzw-tg-banner-title {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: #e4e4e7;
+    z-index: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
   /* GREY WOLF TELEGRAM LIVE FEED */
   .gzw-tg-section {
     margin-top: 50px;
@@ -2018,7 +2155,7 @@
     }
   }
 
-  function renderTgPostCard(post) {
+    function renderTgPostCard(post) {
     const card = document.createElement("div");
     card.className = "gzw-tg-card";
     card.onclick = function() { playUiSound('msg'); };
@@ -2028,22 +2165,56 @@
     top.innerHTML = '<span class="gzw-tg-card-date">📅 ' + formatTgDate(post.date) + '</span><span class="gzw-tg-card-channel">@ssp_agency</span>';
     card.appendChild(top);
 
+    const text = post.text || "";
+    const isVideo = /видео|video|обзор|ролик|клип|эфир|seedance|flux|kling|0\d:\d\d/i.test(text);
+
+    // YouTube regex
+    const ytMatch = text.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|v\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/i);
+
+    // 1. Пост с картинкой из фида
     if (post.files && post.files.length > 0) {
       const imgWrap = document.createElement("div");
       imgWrap.className = "gzw-tg-card-img-wrap";
       const imgUrl = "https://news.tildacdn.com/" + post.files[0] + "/-/resize/x900/";
-      imgWrap.innerHTML = '<img src="' + imgUrl + '" class="gzw-tg-card-img" loading="lazy" alt="Медиа поста" />';
+      
+      let overlayHtml = '';
+      if (isVideo) {
+        overlayHtml = '<div class="gzw-tg-play-overlay"><span class="gzw-tg-play-btn">▶</span><span class="gzw-tg-video-badge">ВИДЕО-ОБЗОР</span></div>';
+      }
+      imgWrap.innerHTML = '<img src="' + imgUrl + '" class="gzw-tg-card-img" loading="lazy" alt="Медиа поста" />' + overlayHtml;
       card.appendChild(imgWrap);
+    }
+    // 2. Пост со ссылкой на YouTube
+    else if (ytMatch) {
+      const imgWrap = document.createElement("div");
+      imgWrap.className = "gzw-tg-card-img-wrap";
+      const ytThumb = "https://img.youtube.com/vi/" + ytMatch[1] + "/hqdefault.jpg";
+      imgWrap.innerHTML = '<img src="' + ytThumb + '" class="gzw-tg-card-img" loading="lazy" alt="YouTube видео" /><div class="gzw-tg-play-overlay"><span class="gzw-tg-play-btn">▶</span><span class="gzw-tg-video-badge">YOUTUBE ВИДЕО</span></div>';
+      card.appendChild(imgWrap);
+    }
+    // 3. Снимок / Превью-баннер для постов без файлов (видео и текстовые инсайты)
+    else {
+      const bannerWrap = document.createElement("div");
+      bannerWrap.className = "gzw-tg-card-img-wrap gzw-tg-banner-wrap";
+
+      const cleanText = text.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+      const snippet = cleanText.substring(0, 85) + (cleanText.length > 85 ? "..." : "");
+
+      const badgeText = isVideo ? "ВИДЕО / ОБЗОР" : "TELEGRAM ПУБЛИКАЦИЯ";
+      const centerIcon = isVideo ? '<span class="gzw-tg-play-btn">▶</span>' : '<span style="font-size:26px;">🐺</span>';
+
+      bannerWrap.innerHTML = '<div class="gzw-tg-banner-top"><span class="gzw-tg-banner-tag">' + badgeText + '</span><span class="gzw-tg-banner-wolf">@ssp_agency</span></div><div class="gzw-tg-banner-center">' + centerIcon + '</div><div class="gzw-tg-banner-title">' + (snippet || "Публикация в канале Сергея Нестерова") + '</div>';
+      card.appendChild(bannerWrap);
     }
 
     const body = document.createElement("div");
     body.className = "gzw-tg-card-text";
-    body.innerHTML = post.text || "";
+    body.innerHTML = text;
     card.appendChild(body);
 
     const bottom = document.createElement("div");
     bottom.className = "gzw-tg-card-bottom";
-    bottom.innerHTML = '<a href="' + TG_CHANNEL_URL + '" target="_blank" class="gzw-tg-card-link" onclick="event.stopPropagation(); playUiSound(\'click\')">Открыть в Telegram ↗</a>';
+    bottom.innerHTML = '<a href="' + (post.link || TG_CHANNEL_URL) + '" target="_blank" class="gzw-tg-card-link" onclick="event.stopPropagation(); playUiSound(\'click\')">Открыть в Telegram ↗</a>';
     card.appendChild(bottom);
 
     return card;
