@@ -1,4 +1,4 @@
-// GREYzzzzWOLF — Tilda T123 dynamic loader
+// GREYzzzzWOLF - Tilda T123 dynamic loader (sync 1791410985)
 (function() {
   function initGreyWolf() {
     var root = document.getElementById('greywolf-app');
