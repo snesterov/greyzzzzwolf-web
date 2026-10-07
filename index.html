@@ -597,6 +597,467 @@
     }
 
 
+    
+    /* СТИЛИ СЕКЦИИ КЕЙСОВ (КАРУСЕЛЬ HUD) */
+    .gzw-cases-section {
+      margin-top: 55px;
+      padding-top: 35px;
+      border-top: 1px solid #1f2735;
+      position: relative;
+    }
+
+    .gzw-cases-header {
+      margin-bottom: 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .gzw-cases-tag {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 2px;
+      color: var(--gold);
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .gzw-cases-tag span {
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      display: inline-block;
+      box-shadow: 0 0 8px var(--gold-glow);
+    }
+
+    .gzw-cases-title {
+      font-family: 'Cinzel', serif;
+      font-size: 24px;
+      font-weight: 800;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      line-height: 1.3;
+    }
+
+    .gzw-cases-title span {
+      color: var(--gold);
+    }
+
+    .gzw-cases-sub {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-top: 4px;
+      max-width: 780px;
+    }
+
+    /* Лента общих цифр */
+    .gzw-cases-stats-ribbon {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .gzw-cstat-item {
+      background: rgba(16, 22, 32, 0.7);
+      border: 1px solid #283344;
+      border-radius: 4px;
+      padding: 10px 14px;
+      display: flex;
+      flex-direction: column;
+      border-left: 3px solid var(--gold);
+    }
+
+    .gzw-cstat-num {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+      color: #ffffff;
+      line-height: 1.1;
+    }
+
+    .gzw-cstat-lbl {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 3px;
+      font-weight: 500;
+    }
+
+    /* Карусель */
+    .gzw-cases-carousel-wrapper {
+      position: relative;
+      background: linear-gradient(180deg, rgba(16, 21, 30, 0.95) 0%, rgba(10, 13, 19, 0.98) 100%);
+      border: 1px solid #2d3848;
+      border-top: 2px solid var(--gold);
+      border-radius: 6px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75);
+      padding: 24px;
+      overflow: hidden;
+    }
+
+    .gzw-cases-slides-box {
+      position: relative;
+      min-height: 480px;
+    }
+
+    .gzw-case-slide {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    .gzw-case-slide.active {
+      display: block;
+      opacity: 1;
+      animation: caseFadeIn 0.35s ease;
+    }
+
+    @keyframes caseFadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .gzw-case-card-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    /* Левая колонка - Четкая информация */
+    .gzw-case-info-pane {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .gzw-case-badge {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 4px 10px;
+      border-radius: 3px;
+      border: 1px solid currentColor;
+      width: fit-content;
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .gzw-case-badge span {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .gzw-case-heading {
+      font-family: 'Cinzel', serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.25;
+      letter-spacing: 0.5px;
+    }
+
+    .gzw-case-lead {
+      color: #fde68a;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.45;
+    }
+
+    /* Сетка ключевых цифр */
+    .gzw-cmetrics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 6px 0;
+    }
+
+    .gzw-cmetric-card {
+      background: rgba(7, 10, 15, 0.85);
+      border: 1px solid #2a3444;
+      border-radius: 4px;
+      padding: 10px 14px;
+      border-left: 3px solid var(--gold);
+    }
+
+    .gzw-cmetric-label {
+      font-size: 11px;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    .gzw-cmetric-val {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+      color: #ffffff;
+      line-height: 1.15;
+      margin-top: 2px;
+    }
+
+    .gzw-cmetric-sub {
+      font-size: 11px;
+      color: var(--gold);
+      font-weight: 500;
+      margin-top: 1px;
+    }
+
+    .gzw-case-desc {
+      color: #cbd5e1;
+      font-size: 13.5px;
+      line-height: 1.55;
+      background: rgba(14, 18, 26, 0.75);
+      border: 1px solid #232d3d;
+      border-radius: 4px;
+      padding: 12px 14px;
+    }
+
+    .gzw-case-action-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-top: 6px;
+      flex-wrap: wrap;
+    }
+
+    .gzw-case-zoom-btn {
+      background: rgba(18, 24, 34, 0.8);
+      border: 1px solid #334155;
+      color: #cbd5e1;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 1px;
+      padding: 11px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .gzw-case-zoom-btn:hover {
+      border-color: var(--gold);
+      color: #ffffff;
+      background: rgba(226, 177, 91, 0.12);
+    }
+
+    /* Правая колонка - Визуальный кадр */
+    .gzw-case-visual-pane {
+      cursor: pointer;
+      position: relative;
+    }
+
+    .gzw-case-img-frame {
+      position: relative;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid #334155;
+      background: #000000;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+      aspect-ratio: 16 / 9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .gzw-case-visual-pane:hover .gzw-case-img-frame {
+      transform: scale(1.015);
+      border-color: var(--gold);
+    }
+
+    .gzw-case-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gzw-case-img-glow {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 65%, rgba(5, 7, 10, 0.85) 100%);
+      pointer-events: none;
+    }
+
+    .gzw-case-expand-pill {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(10, 14, 20, 0.88);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(226, 177, 91, 0.5);
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 5px 10px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+      transition: background 0.2s;
+    }
+
+    .gzw-case-visual-pane:hover .gzw-case-expand-pill {
+      background: rgba(226, 177, 91, 0.9);
+      color: #000000;
+    }
+
+    /* Стрелки управления */
+    .gzw-case-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      width: 44px;
+      height: 44px;
+      background: rgba(14, 18, 26, 0.9);
+      border: 1px solid #334155;
+      color: #ffffff;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    }
+
+    .gzw-case-arrow:hover {
+      background: var(--gold);
+      color: #000000;
+      border-color: var(--gold);
+      box-shadow: 0 0 15px var(--gold-glow);
+    }
+
+    .gzw-case-prev { left: 8px; }
+    .gzw-case-next { right: 8px; }
+
+    /* Точки пагинации */
+    .gzw-cases-dots-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .gzw-cdot {
+      width: 28px;
+      height: 4px;
+      background: #2a3444;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .gzw-cdot:hover {
+      background: #475569;
+    }
+
+    .gzw-cdot.active {
+      background: var(--gold);
+      box-shadow: 0 0 8px var(--gold-glow);
+      width: 42px;
+    }
+
+    /* Lightbox Модальное окно */
+    .gzw-lightbox-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 5, 8, 0.94);
+      backdrop-filter: blur(10px);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .gzw-lightbox-backdrop.open {
+      display: flex;
+      animation: modalFadeIn 0.2s ease;
+    }
+
+    .gzw-lightbox-content {
+      position: relative;
+      max-width: 1050px;
+      width: 100%;
+      background: #0d1219;
+      border: 1px solid var(--gold);
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
+      border-radius: 6px;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .gzw-lightbox-caption {
+      font-family: 'Cinzel', serif;
+      font-size: 15px;
+      color: var(--gold);
+      margin-bottom: 12px;
+      font-weight: 700;
+      text-align: left;
+    }
+
+    .gzw-lightbox-close {
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 20px;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .gzw-lightbox-close:hover {
+      color: #ffffff;
+    }
+
+    #gzw-lb-img {
+      max-width: 100%;
+      max-height: 75vh;
+      object-fit: contain;
+      border-radius: 4px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* Адаптив для кейсов */
+    @media (max-width: 860px) {
+      .gzw-case-card-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .gzw-cases-stats-ribbon {
+        grid-template-columns: 1fr 1fr;
+      }
+      .gzw-case-arrow {
+        display: none;
+      }
+      .gzw-cases-slides-box {
+        min-height: auto;
+      }
+    }
+
     /* Кнопка гамбургера для мобильных */
     .gzw-burger {
       display: none;
@@ -1366,6 +1827,378 @@
         <button id="gzw-tg-more-btn" class="gzw-tg-more-btn" onclick="loadMoreTgPosts()">Показать ещё посты</button>
       </div>
     </section>
+
+    <!-- РАЗДЕЛ: НАШИ КЕЙСЫ И ЦИФРЫ (КАРУСЕЛЬ) -->
+    <section id="gzw-cases-section" class="gzw-cases-section">
+      <div class="gzw-cases-header">
+        <div>
+          <div class="gzw-cases-tag"><span></span> НАШ ОПЫТ В ЦИФРАХ С 2012 ГОДА</div>
+          <h2 class="gzw-cases-title">Реальные результаты и <span>кейсы клиентов</span></h2>
+          <p class="gzw-cases-sub">Контрастные показатели, чистая статистика и проверенные решения на миллионных бюджетах</p>
+        </div>
+        
+        <!-- Общая сводка достижений -->
+        <div class="gzw-cases-stats-ribbon">
+          <div class="gzw-cstat-item">
+            <span class="gzw-cstat-num">200+</span>
+            <span class="gzw-cstat-lbl">Яндекс.Директ / ₽300M+</span>
+          </div>
+          <div class="gzw-cstat-item">
+            <span class="gzw-cstat-num">217</span>
+            <span class="gzw-cstat-lbl">Google Ads / $3,5M+</span>
+          </div>
+          <div class="gzw-cstat-item">
+            <span class="gzw-cstat-num">43</span>
+            <span class="gzw-cstat-lbl">Meta FB/IG / $1,3M+</span>
+          </div>
+          <div class="gzw-cstat-item">
+            <span class="gzw-cstat-num">21</span>
+            <span class="gzw-cstat-lbl">TikTok / $0,3M+</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Главная Карусель -->
+      <div class="gzw-cases-carousel-wrapper" id="gzw-cases-carousel">
+        <button class="gzw-case-arrow gzw-case-prev" onclick="moveCaseSlide(-1)" aria-label="Предыдущий кейс">❮</button>
+        <button class="gzw-case-arrow gzw-case-next" onclick="moveCaseSlide(1)" aria-label="Следующий кейс">❯</button>
+        
+        <div class="gzw-cases-slides-box">
+          
+    <div class="gzw-case-slide active" data-index="0">
+      <div class="gzw-case-card-grid">
+        <!-- Левая колонка: четкий контрастный текст и показатели -->
+        <div class="gzw-case-info-pane">
+          <div class="gzw-case-badge" style="border-color:#4285F4; color:#4285F4;">
+            <span style="background:#4285F4;"></span>
+            GOOGLE ADS • МИР
+          </div>
+          <h3 class="gzw-case-heading">Индивидуальные туры и виллы за рубежом</h3>
+          <p class="gzw-case-lead">Масштабирование на англоязычную и русскоязычную аудиторию за границей</p>
+          
+          <div class="gzw-cmetrics-grid">
+            <div class="gzw-cmetric-card">
+              <div class="gzw-cmetric-label">Рекламный бюджет</div>
+              <div class="gzw-cmetric-val">$14 800</div>
+              <div class="gzw-cmetric-sub">в месяц</div>
+            </div><div class="gzw-cmetric-card">
+              <div class="gzw-cmetric-label">Выручка с продаж</div>
+              <div class="gzw-cmetric-val">$94 500+</div>
+              <div class="gzw-cmetric-sub">зафиксировано</div>
+            </div><div class="gzw-cmetric-card">
+              <div class="gzw-cmetric-label">Число заявок</div>
+              <div class="gzw-cmetric-val">320+</div>
+              <div class="gzw-cmetric-sub">квалифицированных</div>
+            </div><div class="gzw-cmetric-card">
+              <div class="gzw-cmetric-label">Итоговая отдача</div>
+              <div class="gzw-cmetric-val">638%</div>
+              <div class="gzw-cmetric-sub">рентабельность</div>
+            </div>
+          </div>
+          
+          <p class="gzw-case-desc">Запуск и ведение рекламы в поисковой сети Google Ads и YouTube. Тонкая сегментация по платежеспособности и гео, фильтрация нецелевых переходов и точечный ремаркетинг на горячую базу.</p>
+          
+          <div class="gzw-case-action-row">
+            <button class="btn-action" onclick="openLeadModal('Кейс: Индивидуальные туры и виллы за рубежом')">Обсудить аналогичный проект</button>
+            <button class="gzw-case-zoom-btn" onclick="openCaseLightbox('https://static.tildacdn.com/tild3363-3034-4534-b230-316533333662/169.svg', 'Индивидуальные туры и виллы за рубежом')">🔍 Исходный график</button>
+          </div>
+        </div>
+        
+        <!-- Правая колонка: графический экран кейса с контрастной подложкой -->
+        <div class="gzw-case-visual-pane" onclick="openCaseLightbox('https://static.tildacdn.com/tild3363-3034-4534-b230-316533333662/169.svg', 'Индивидуальные туры и виллы за рубежом')">
+          <div class="gzw-case-img-frame">
+            <img src="https://static.tildacdn.com/tild3363-3034-4534-b230-316533333662/169.svg" alt="Индивидуальные туры и виллы за рубежом" class="gzw-case-img" loading="lazy" />
+            <div class="gzw-case-img-glow"></div>
+            <div class="gzw-case-expand-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Увеличить карточку
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="gzw-case-slide " data-index="1">
+      <div class="gzw-case-card-grid">
+        <!-- Левая колонка: четкий контрастный текст и показатели -->
+        <div class="gzw-case-info-pane">
+          <div class="gzw-case-badge" style="border-color:#FC3F1D; color:#FC3F1D;">
+            <span style="background:#FC3F1D;"></span>
+            ЯНДЕКС.ДИРЕКТ • РФ
+          </div>
+          <h3 class="gzw-case-heading">B2B поставки промышленного оборудования</h3>
+          <p class="gzw-case-lead">Выход на стабильный поток крупных контрактов и дилеров по всей России</p>
+          
+          <div class="gzw-cmetrics-grid">
+            <div class="gzw-cmetric-card">
+              <div class="gzw-cmetric-label">Месячный бюджет</div>
+              <div class="gzw-cmetric-val">480 000 ₽</div>
+              <div class="gzw-cmetric-sub">стабильный расход</div>
+            </div><div class="gzw-cmetric-card">
+              <div class="gzw-cmetric-label">Сумма сделок</div>
+              <div class="gzw-cmetric-val">18,4 млн ₽</div>
+              <div class="gzw-cmetric-sub">за отчетный период</div>
+            </div><div class="gzw-cmetric-card">
+              <div class="gzw-cmetric-label">Цена лида (CPA)</div>
+              <div class="gzw-cmetric-val">1 150 ₽</div>
+              <div class="gzw-cmetric-sub">снижение в 2,4 раза</div>
+            </div><div class="gzw-cmetric-card">
+              <div class="gzw-cmetric-label">Рост конверсии</div>
+              <div class="gzw-cmetric-val">+185%</div>
+              <div class="gzw-cmetric-sub">в целевой договор</div>
+            </div>
+          </div>
+          
+          <p class="gzw-case-desc">Глубокая проработка семантического ядра, жесткая минусация информационных запросов, раздельные стратегии для поиска и РСЯ с упором на ключевые лица, принимающие решения.</p>
+          
+          <div class="gzw-case-action-row">
+            <button class="btn-action" onclick="openLeadModal('Кейс: B2B поставки промышленного оборудования')">Обсудить аналогичный проект</button>
+            <button class="gzw-case-zoom-btn" onclick="openCaseLightbox('https://static.tildacdn.com/tild3064-6637-4761-b332-643235656463/169.svg', 'B2B поставки промышленного оборудования')">🔍 Исходный график</button>
+          </div>
+        </div>
+        
+        <!-- Правая колонка: графический экран кейса с контрастной подложкой -->
+        <div class="gzw-case-visual-pane" onclick="openCaseLightbox('https://static.tildacdn.com/tild3064-6637-4761-b332-643235656463/169.svg', 'B2B поставки промышленного оборудования')">
+          <div class="gzw-case-img-frame">
+            <img src="https://static.tildacdn.com/tild3064-6637-4761-b332-643235656463/169.svg" alt="B2B поставки промышленного оборудования" class="gzw-case-img" loading="lazy" />
+            <div class="gzw-case-img-glow"></div>
+            <div class="gzw-case-expand-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Увеличить карточку
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="gzw-case-slide " data-index="2">
+      <div class="gzw-case-card-grid">
+        <!-- Левая колонка: четкий контрастный текст и показатели -->
+        <div class="gzw-case-info-pane">
+          <div class="gzw-case-badge" style="border-color:#10B981; color:#10B981;">
+            <span style="background:#10B981;"></span>
+            МЕЖДУНАРОДНЫЙ ТРАФИК
+          </div>
+          <h3 class="gzw-case-heading">Элитная недвижимость у моря (ОАЭ, Бали, Кипр)</h3>
+          <p class="gzw-case-lead">Привлечение инвесторов и покупателей премиальных апартаментов</p>
+          
+          <div class="gzw-cmetrics-grid">
+            <div class="gzw-cmetric-card">
+              <div class="gzw-cmetric-label">Общий бюджет</div>
+              <div class="gzw-cmetric-val">$32 000</div>
+              <div class="gzw-cmetric-sub">на мультиканалы</div>
+            </div><div class="gzw-cmetric-card">
+              <div class="gzw-cmetric-label">Продажи объектов</div>
+              <div class="gzw-cmetric-val">$1,85M+</div>
+              <div class="gzw-cmetric-sub">закрытые сделки</div>
+            </div><div class="gzw-cmetric-card">
+              <div class="gzw-cmetric-label">Стоимость брони</div>
+              <div class="gzw-cmetric-val">$95</div>
+              <div class="gzw-cmetric-sub">целевой инвестор</div>
+            </div><div class="gzw-cmetric-card">
+              <div class="gzw-cmetric-label">Окупаемость затрат</div>
+              <div class="gzw-cmetric-val">580%</div>
+              <div class="gzw-cmetric-sub">чистый результат</div>
+            </div>
+          </div>
+          
+          <p class="gzw-case-desc">Связка Meta (FB/IG) + Google Search + прогревающие цепочки в мессенджерах. Жесткий скоринг входящих заявок и отсечение нецелевых запросов на этапе квиза.</p>
+          
+          <div class="gzw-case-action-row">
+            <button class="btn-action" onclick="openLeadModal('Кейс: Элитная недвижимость у моря (ОАЭ, Бали, Кипр)')">Обсудить аналогичный проект</button>
+            <button class="gzw-case-zoom-btn" onclick="openCaseLightbox('https://static.tildacdn.com/tild6635-3461-4463-b737-653265323734/169.svg', 'Элитная недвижимость у моря (ОАЭ, Бали, Кипр)')">🔍 Исходный график</button>
+          </div>
+        </div>
+        
+        <!-- Правая колонка: графический экран кейса с контрастной подложкой -->
+        <div class="gzw-case-visual-pane" onclick="openCaseLightbox('https://static.tildacdn.com/tild6635-3461-4463-b737-653265323734/169.svg', 'Элитная недвижимость у моря (ОАЭ, Бали, Кипр)')">
+          <div class="gzw-case-img-frame">
+            <img src="https://static.tildacdn.com/tild6635-3461-4463-b737-653265323734/169.svg" alt="Элитная недвижимость у моря (ОАЭ, Бали, Кипр)" class="gzw-case-img" loading="lazy" />
+            <div class="gzw-case-img-glow"></div>
+            <div class="gzw-case-expand-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Увеличить карточку
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="gzw-case-slide " data-index="3">
+      <div class="gzw-case-card-grid">
+        <!-- Левая колонка: четкий контрастный текст и показатели -->
+        <div class="gzw-case-info-pane">
+          <div class="gzw-case-badge" style="border-color:#24A1DE; color:#24A1DE;">
+            <span style="background:#24A1DE;"></span>
+            ИНВАЙТИНГ & МЕССЕНДЖЕРЫ
+          </div>
+          <h3 class="gzw-case-heading">Косметология и премиальные услуги красоты</h3>
+          <p class="gzw-case-lead">Сбор целевой локальной аудитории в Telegram и мессенджер MAX</p>
+          
+          <div class="gzw-cmetrics-grid">
+            <div class="gzw-cmetric-card">
+              <div class="gzw-cmetric-label">Добавлено ЦА</div>
+              <div class="gzw-cmetric-val">12 500+</div>
+              <div class="gzw-cmetric-sub">живых подписчиков</div>
+            </div><div class="gzw-cmetric-card">
+              <div class="gzw-cmetric-label">Цена привлечения</div>
+              <div class="gzw-cmetric-val">4,2 ₽</div>
+              <div class="gzw-cmetric-sub">за контакт</div>
+            </div><div class="gzw-cmetric-card">
+              <div class="gzw-cmetric-label">Первичная запись</div>
+              <div class="gzw-cmetric-val">430 чел.</div>
+              <div class="gzw-cmetric-sub">в первый месяц</div>
+            </div><div class="gzw-cmetric-card">
+              <div class="gzw-cmetric-label">LTV клиентов</div>
+              <div class="gzw-cmetric-val">х3,4</div>
+              <div class="gzw-cmetric-sub">повторные чеки</div>
+            </div>
+          </div>
+          
+          <p class="gzw-case-desc">Сбор платежеспособной женской аудитории из премиальных локаций и смежных сообществ. Инвайтинг с последующим прогревом через полезный контент и специальные закрытые офферы.</p>
+          
+          <div class="gzw-case-action-row">
+            <button class="btn-action" onclick="openLeadModal('Кейс: Косметология и премиальные услуги красоты')">Обсудить аналогичный проект</button>
+            <button class="gzw-case-zoom-btn" onclick="openCaseLightbox('https://static.tildacdn.com/tild6533-3732-4335-b330-353334383035/3.svg', 'Косметология и премиальные услуги красоты')">🔍 Исходный график</button>
+          </div>
+        </div>
+        
+        <!-- Правая колонка: графический экран кейса с контрастной подложкой -->
+        <div class="gzw-case-visual-pane" onclick="openCaseLightbox('https://static.tildacdn.com/tild6533-3732-4335-b330-353334383035/3.svg', 'Косметология и премиальные услуги красоты')">
+          <div class="gzw-case-img-frame">
+            <img src="https://static.tildacdn.com/tild6533-3732-4335-b330-353334383035/3.svg" alt="Косметология и премиальные услуги красоты" class="gzw-case-img" loading="lazy" />
+            <div class="gzw-case-img-glow"></div>
+            <div class="gzw-case-expand-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Увеличить карточку
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="gzw-case-slide " data-index="4">
+      <div class="gzw-case-card-grid">
+        <!-- Левая колонка: четкий контрастный текст и показатели -->
+        <div class="gzw-case-info-pane">
+          <div class="gzw-case-badge" style="border-color:#E2B15B; color:#E2B15B;">
+            <span style="background:#E2B15B;"></span>
+            КОМПЛЕКСНЫЙ МАРКЕТИНГ
+          </div>
+          <h3 class="gzw-case-heading">Сеть клиник имплантации и эстетической медицины</h3>
+          <p class="gzw-case-lead">Яндекс.Директ + Meta + TikTok Ads под ключ</p>
+          
+          <div class="gzw-cmetrics-grid">
+            <div class="gzw-cmetric-card">
+              <div class="gzw-cmetric-label">Освоенный бюджет</div>
+              <div class="gzw-cmetric-val">1,2 млн ₽</div>
+              <div class="gzw-cmetric-sub">в месяц</div>
+            </div><div class="gzw-cmetric-card">
+              <div class="gzw-cmetric-label">Выручка клиник</div>
+              <div class="gzw-cmetric-val">8,7 млн ₽</div>
+              <div class="gzw-cmetric-sub">ежемесячно</div>
+            </div><div class="gzw-cmetric-card">
+              <div class="gzw-cmetric-label">Квалиф. звонки</div>
+              <div class="gzw-cmetric-val">560+</div>
+              <div class="gzw-cmetric-sub">в колл-центр</div>
+            </div><div class="gzw-cmetric-card">
+              <div class="gzw-cmetric-label">Доля расходов (ДРР)</div>
+              <div class="gzw-cmetric-val">13,8%</div>
+              <div class="gzw-cmetric-sub">предельная норма</div>
+            </div>
+          </div>
+          
+          <p class="gzw-case-desc">Единая мультиканальная система привлечения пациентов. Сквозная аналитика до визита в клинику, разделение брендового и общего спроса, ретаргетинг на повторные услуги.</p>
+          
+          <div class="gzw-case-action-row">
+            <button class="btn-action" onclick="openLeadModal('Кейс: Сеть клиник имплантации и эстетической медицины')">Обсудить аналогичный проект</button>
+            <button class="gzw-case-zoom-btn" onclick="openCaseLightbox('https://static.tildacdn.com/tild3265-3639-4935-a633-306333343761/2.svg', 'Сеть клиник имплантации и эстетической медицины')">🔍 Исходный график</button>
+          </div>
+        </div>
+        
+        <!-- Правая колонка: графический экран кейса с контрастной подложкой -->
+        <div class="gzw-case-visual-pane" onclick="openCaseLightbox('https://static.tildacdn.com/tild3265-3639-4935-a633-306333343761/2.svg', 'Сеть клиник имплантации и эстетической медицины')">
+          <div class="gzw-case-img-frame">
+            <img src="https://static.tildacdn.com/tild3265-3639-4935-a633-306333343761/2.svg" alt="Сеть клиник имплантации и эстетической медицины" class="gzw-case-img" loading="lazy" />
+            <div class="gzw-case-img-glow"></div>
+            <div class="gzw-case-expand-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Увеличить карточку
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="gzw-case-slide " data-index="5">
+      <div class="gzw-case-card-grid">
+        <!-- Левая колонка: четкий контрастный текст и показатели -->
+        <div class="gzw-case-info-pane">
+          <div class="gzw-case-badge" style="border-color:#A855F7; color:#A855F7;">
+            <span style="background:#A855F7;"></span>
+            НАСТРОЙКА + ОБУЧЕНИЕ
+          </div>
+          <h3 class="gzw-case-heading">Строительство загородных домов и коттеджей</h3>
+          <p class="gzw-case-lead">Перезапуск рекламных кампаний заказчика с передачей навыков инхаус</p>
+          
+          <div class="gzw-cmetrics-grid">
+            <div class="gzw-cmetric-card">
+              <div class="gzw-cmetric-label">Бюджет кампании</div>
+              <div class="gzw-cmetric-val">350 000 ₽</div>
+              <div class="gzw-cmetric-sub">в месяц</div>
+            </div><div class="gzw-cmetric-card">
+              <div class="gzw-cmetric-label">Заключено договоров</div>
+              <div class="gzw-cmetric-val">7 домов</div>
+              <div class="gzw-cmetric-sub">чек от 6 млн ₽</div>
+            </div><div class="gzw-cmetric-card">
+              <div class="gzw-cmetric-label">Снижение цены лида</div>
+              <div class="gzw-cmetric-val">-52%</div>
+              <div class="gzw-cmetric-sub">после доработки</div>
+            </div><div class="gzw-cmetric-card">
+              <div class="gzw-cmetric-label">Самостоятельность</div>
+              <div class="gzw-cmetric-val">100%</div>
+              <div class="gzw-cmetric-sub">клиент ведет сам</div>
+            </div>
+          </div>
+          
+          <p class="gzw-case-desc">Полная перенастройка существующего кабинета вместе с владельцем. Обучение на его реальных цифрах, устранение слива бюджета, внедрение связки квиз + автостратегии.</p>
+          
+          <div class="gzw-case-action-row">
+            <button class="btn-action" onclick="openLeadModal('Кейс: Строительство загородных домов и коттеджей')">Обсудить аналогичный проект</button>
+            <button class="gzw-case-zoom-btn" onclick="openCaseLightbox('https://static.tildacdn.com/tild6530-6462-4639-a439-623634343265/1.svg', 'Строительство загородных домов и коттеджей')">🔍 Исходный график</button>
+          </div>
+        </div>
+        
+        <!-- Правая колонка: графический экран кейса с контрастной подложкой -->
+        <div class="gzw-case-visual-pane" onclick="openCaseLightbox('https://static.tildacdn.com/tild6530-6462-4639-a439-623634343265/1.svg', 'Строительство загородных домов и коттеджей')">
+          <div class="gzw-case-img-frame">
+            <img src="https://static.tildacdn.com/tild6530-6462-4639-a439-623634343265/1.svg" alt="Строительство загородных домов и коттеджей" class="gzw-case-img" loading="lazy" />
+            <div class="gzw-case-img-glow"></div>
+            <div class="gzw-case-expand-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Увеличить карточку
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+        </div>
+        
+        <div class="gzw-cases-dots-bar">
+          <button class="gzw-cdot active" onclick="goToCaseSlide(0)" aria-label="Слайд 1"></button><button class="gzw-cdot " onclick="goToCaseSlide(1)" aria-label="Слайд 2"></button><button class="gzw-cdot " onclick="goToCaseSlide(2)" aria-label="Слайд 3"></button><button class="gzw-cdot " onclick="goToCaseSlide(3)" aria-label="Слайд 4"></button><button class="gzw-cdot " onclick="goToCaseSlide(4)" aria-label="Слайд 5"></button><button class="gzw-cdot " onclick="goToCaseSlide(5)" aria-label="Слайд 6"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lightbox Модальное окно для исходного графика/изображения -->
+    <div id="gzw-case-lightbox" class="gzw-lightbox-backdrop" onclick="closeCaseLightbox()">
+      <div class="gzw-lightbox-content" onclick="event.stopPropagation()">
+        <button class="gzw-lightbox-close" onclick="closeCaseLightbox()">✕</button>
+        <div class="gzw-lightbox-caption" id="gzw-lb-caption">График кейса</div>
+        <img id="gzw-lb-img" src="" alt="Детали кейса" />
+      </div>
+    </div>
 
   </main>
 
