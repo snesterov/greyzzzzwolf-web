@@ -1888,83 +1888,264 @@
 
 
   /* 2. УВЕДОМЛЕНИЕ COOKIE В СТИЛЕ HUD */
+    /* 2. УВЕДОМЛЕНИЕ COOKIE (В СТИЛЕ ЯНДЕКСА + HUD) */
   .gzw-cookie-banner {
     position: fixed;
-    bottom: 24px;
-    left: 24px;
-    max-width: 420px;
-    width: calc(100% - 48px);
-    background: linear-gradient(180deg, rgba(18, 24, 34, 0.97) 0%, rgba(10, 14, 20, 0.98) 100%);
-    border: 1px solid var(--gold);
-    border-left: 4px solid var(--gold);
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.85), 0 0 15px var(--gold-glow);
-    border-radius: 6px;
-    padding: 16px 20px;
-    z-index: 995;
+    bottom: 20px;
+    left: 20px;
+    max-width: 440px;
+    width: calc(100% - 40px);
+    background: #171e29;
+    border: 1.5px solid var(--gold);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.9), 0 0 22px rgba(226, 177, 91, 0.25);
+    border-radius: 16px;
+    padding: 22px;
+    z-index: 9999;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(20px);
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(25px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    box-sizing: border-box;
+    color: #e2e8f0;
   }
-  .gzw-cookie-banner.show {
+
+  .gzw-cookie-banner.visible {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
   }
-  .gzw-cookie-header {
+
+  .gzw-cookie-view {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .gzw-cookie-view.hidden {
+    display: none;
+  }
+
+  .gzw-cookie-top-nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .gzw-cookie-back-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(226, 177, 91, 0.35);
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    flex-shrink: 0;
+  }
+
+  .gzw-cookie-back-btn:hover {
+    background: var(--gold);
+    color: #0b0f17;
+    transform: scale(1.05);
+  }
+
+  .gzw-cookie-title {
+    font-family: 'Cinzel', serif;
+    font-size: 16.5px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.3;
+  }
+
+  .gzw-cookie-text {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #94a3b8;
+  }
+
+  .gzw-cookie-text a {
+    color: #fbbf24;
+    text-decoration: underline;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .gzw-cookie-text a:hover {
+    color: #ffffff;
+  }
+
+  .gzw-cookie-btn-col {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 4px;
+  }
+
+  .gzw-cookie-btn-primary {
+    background: #fbc02d;
+    background: linear-gradient(135deg, #fcd34d 0%, #f59e0b 100%);
+    color: #0b0f17;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.2s, filter 0.2s;
+    text-align: center;
+  }
+
+  .gzw-cookie-btn-primary:hover {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 18px rgba(251, 191, 36, 0.45);
+  }
+
+  .gzw-cookie-btn-secondary {
+    background: #fcd34d;
+    background: linear-gradient(135deg, #fde68a 0%, #f59e0b 100%);
+    color: #0b0f17;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.2s, filter 0.2s;
+    text-align: center;
+  }
+
+  .gzw-cookie-btn-secondary:hover {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 18px rgba(251, 191, 36, 0.4);
+  }
+
+  .gzw-cookie-btn-dark {
+    background: #252e3d;
+    color: #cbd5e1;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 12px 18px;
+    border: 1px solid #334155;
+    border-radius: 9px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    text-align: center;
+  }
+
+  .gzw-cookie-btn-dark:hover {
+    background: #334155;
+    color: #ffffff;
+    border-color: var(--gold);
+  }
+
+  /* Список категорий cookie с переключателями */
+  .gzw-cookie-toggles-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 6px 0;
+  }
+
+  .gzw-cookie-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+    gap: 10px;
+  }
+
+  .gzw-cookie-item-label {
+    font-size: 13px;
+    color: #cbd5e1;
+    font-weight: 600;
     display: flex;
     align-items: center;
     gap: 8px;
-    font-family: 'Cinzel', serif;
-    font-size: 13px;
-    font-weight: 800;
-    color: #ffffff;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-  .gzw-cookie-text {
-    font-size: 12.5px;
-    color: var(--text-muted);
-    line-height: 1.5;
-  }
-  .gzw-cookie-actions {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 4px;
-  }
-  .gzw-cookie-accept {
-    background: linear-gradient(135deg, #1b7a42 0%, #27ae60 100%);
-    color: #ffffff;
-    font-family: 'Cinzel', serif;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    border: 1px solid #2ecc71;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .gzw-cookie-accept:hover {
-    box-shadow: 0 0 15px rgba(46, 204, 113, 0.6);
-  }
-  .gzw-cookie-link {
-    font-size: 11.5px;
-    color: var(--gold);
-    text-decoration: underline;
-    cursor: pointer;
-    background: transparent;
-    border: none;
-    font-family: inherit;
-    padding: 0;
   }
 
-  /* 3. МОДАЛЬНОЕ ОКНО ПОЛИТИКИ КОНФИДЕНЦИАЛЬНОСТИ */
+  .gzw-cookie-item-label span {
+    color: var(--gold);
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  /* Стилизация свитчера (Toggle Switch) */
+  .gzw-switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+
+  .gzw-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .gzw-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #334155;
+    transition: 0.25s;
+    border-radius: 24px;
+  }
+
+  .gzw-slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: #ffffff;
+    transition: 0.25s;
+    border-radius: 50%;
+  }
+
+  .gzw-switch input:checked + .gzw-slider {
+    background-color: #f59e0b;
+  }
+
+  .gzw-switch input:checked + .gzw-slider:before {
+    transform: translateX(20px);
+  }
+
+  .gzw-switch input:disabled + .gzw-slider {
+    opacity: 0.65;
+    cursor: not-allowed;
+  }
+
+  @media (max-width: 600px) {
+    .gzw-cookie-banner {
+      left: 12px;
+      right: 12px;
+      width: calc(100% - 24px);
+      bottom: 14px;
+      padding: 18px 16px;
+      border-radius: 14px;
+    }
+  }
+
   .gzw-policy-backdrop {
     display: none;
     position: fixed;
@@ -2920,17 +3101,70 @@
     </svg>
   </button>
 
-  <!-- УВЕДОМЛЕНИЕ COOKIE -->
+    <!-- УВЕДОМЛЕНИЕ И НАСТРОЙКИ COOKIE (ЯНДЕКС-СТИЛЬ) -->
   <div id="gzw-cookie-banner" class="gzw-cookie-banner">
-    <div class="gzw-cookie-header">
-      <span>🍪</span> Мы используем Cookie
+    <!-- Шаг 1: Главное окно согласия -->
+    <div id="gzw-cookie-view-main" class="gzw-cookie-view">
+      <div class="gzw-cookie-title">GREYzzzzWOLF использует файлы cookie</div>
+      <div class="gzw-cookie-text">
+        Они необходимы для правильной и надежной работы сайта и сервисов. Подробнее прочитайте в <a onclick="openPolicyModal()">Политике использования файлов cookie</a>
+      </div>
+      <div class="gzw-cookie-btn-col">
+        <button type="button" class="gzw-cookie-btn-primary" onclick="acceptAllCookies()">Разрешить все</button>
+        <button type="button" class="gzw-cookie-btn-secondary" onclick="acceptEssentialCookies()">Разрешить обязательные</button>
+        <button type="button" class="gzw-cookie-btn-dark" onclick="showCookieSettings()">Настроить</button>
+      </div>
     </div>
-    <div class="gzw-cookie-text">
-      Этот сайт использует файлы cookie и аналитические сервисы для стабильной работы каруселей, Telegram-эфира и персонализации медиапланов.
-    </div>
-    <div class="gzw-cookie-actions">
-      <button class="gzw-cookie-accept" onclick="acceptCookie()">Принять</button>
-      <button class="gzw-cookie-link" onclick="openPolicyModal()">Подробнее</button>
+
+    <!-- Шаг 2: Детальные настройки категорий -->
+    <div id="gzw-cookie-view-settings" class="gzw-cookie-view hidden">
+      <div class="gzw-cookie-top-nav">
+        <button type="button" class="gzw-cookie-back-btn" onclick="hideCookieSettings()" title="Назад" aria-label="Назад">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 19l-7-7 7-7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="gzw-cookie-title">Настройки файлов cookie</div>
+      </div>
+      
+      <div class="gzw-cookie-text">
+        Сервис использует технические файлы cookie для функционирования сайта. Также используются маркетинговые и аналитические файлы cookie для улучшения взаимодействия и показа релевантных материалов. Подробнее читайте в <a onclick="openPolicyModal()">Политике использования файлов cookie</a>
+      </div>
+
+      <div class="gzw-cookie-toggles-list">
+        <div class="gzw-cookie-item">
+          <div class="gzw-cookie-item-label">
+            <span>+</span> Технические, всегда активны
+          </div>
+          <label class="gzw-switch">
+            <input type="checkbox" checked disabled>
+            <span class="gzw-slider"></span>
+          </label>
+        </div>
+
+        <div class="gzw-cookie-item">
+          <div class="gzw-cookie-item-label">
+            <span>+</span> Аналитические / маркетинговые
+          </div>
+          <label class="gzw-switch">
+            <input type="checkbox" id="gzw-cookie-toggle-analytics" checked>
+            <span class="gzw-slider"></span>
+          </label>
+        </div>
+
+        <div class="gzw-cookie-item">
+          <div class="gzw-cookie-item-label">
+            <span>+</span> Другие файлы cookie
+          </div>
+          <label class="gzw-switch">
+            <input type="checkbox" id="gzw-cookie-toggle-other" checked>
+            <span class="gzw-slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="gzw-cookie-btn-col">
+        <button type="button" class="gzw-cookie-btn-primary" onclick="acceptSelectedCookies()">Разрешить выбранные</button>
+        <button type="button" class="gzw-cookie-btn-dark" onclick="acceptEssentialCookies()">Разрешить обязательные</button>
+      </div>
     </div>
   </div>
 
@@ -3909,23 +4143,83 @@
     } catch(e) {}
   }
 
-  function acceptCookie() {
-    if (typeof playUiSound === 'function') playUiSound('click');
-    try { localStorage.setItem('gzw_cookie_accepted', 'true'); } catch(e) {}
-    var b = document.getElementById('gzw-cookie-banner');
-    if (b) b.classList.remove('show');
-  }
-  window.acceptCookie = acceptCookie;
+      // УПРАВЛЕНИЕ COOKIE (ЯНДЕКС-СТИЛЬ)
+    function showCookieSettings() {
+      if (typeof playUiSound === 'function') playUiSound('click');
+      var mainView = document.getElementById('gzw-cookie-view-main');
+      var settingsView = document.getElementById('gzw-cookie-view-settings');
+      if (mainView && settingsView) {
+        mainView.classList.add('hidden');
+        settingsView.classList.remove('hidden');
+      }
+    }
+    window.showCookieSettings = showCookieSettings;
 
-  function openCookieBanner() {
-    if (typeof playUiSound === 'function') playUiSound('click');
-    var b = document.getElementById('gzw-cookie-banner');
-    if (b) b.classList.add('show');
-  }
-  window.openCookieBanner = openCookieBanner;
+    function hideCookieSettings() {
+      if (typeof playUiSound === 'function') playUiSound('click');
+      var mainView = document.getElementById('gzw-cookie-view-main');
+      var settingsView = document.getElementById('gzw-cookie-view-settings');
+      if (mainView && settingsView) {
+        settingsView.classList.add('hidden');
+        mainView.classList.remove('hidden');
+      }
+    }
+    window.hideCookieSettings = hideCookieSettings;
 
-  // Модальное окно политики конфиденциальности
-  function openPolicyModal() {
+    function saveCookieConsent(preferences) {
+      try {
+        localStorage.setItem('gzw_cookie_consent', JSON.stringify({
+          status: 'accepted',
+          time: Date.now(),
+          prefs: preferences
+        }));
+      } catch (e) {}
+      var banner = document.getElementById('gzw-cookie-banner');
+      if (banner) {
+        banner.classList.remove('visible');
+        setTimeout(function() {
+          banner.style.display = 'none';
+        }, 350);
+      }
+    }
+
+    function acceptAllCookies() {
+      if (typeof playUiSound === 'function') playUiSound('click');
+      saveCookieConsent({ technical: true, analytics: true, other: true });
+    }
+    window.acceptAllCookies = acceptAllCookies;
+
+    function acceptEssentialCookies() {
+      if (typeof playUiSound === 'function') playUiSound('click');
+      saveCookieConsent({ technical: true, analytics: false, other: false });
+    }
+    window.acceptEssentialCookies = acceptEssentialCookies;
+
+    function acceptSelectedCookies() {
+      if (typeof playUiSound === 'function') playUiSound('click');
+      var analyticsToggle = document.getElementById('gzw-cookie-toggle-analytics');
+      var otherToggle = document.getElementById('gzw-cookie-toggle-other');
+      saveCookieConsent({
+        technical: true,
+        analytics: analyticsToggle ? analyticsToggle.checked : true,
+        other: otherToggle ? otherToggle.checked : true
+      });
+    }
+    window.acceptSelectedCookies = acceptSelectedCookies;
+
+    function checkCookieConsent() {
+      try {
+        var saved = localStorage.getItem('gzw_cookie_consent');
+        if (!saved) {
+          setTimeout(function() {
+            var banner = document.getElementById('gzw-cookie-banner');
+            if (banner) banner.classList.add('visible');
+          }, 900);
+        }
+      } catch (e) {}
+    }
+
+    function openPolicyModal() {
     if (typeof playUiSound === 'function') playUiSound('msg');
     var modal = document.getElementById('gzw-policy-modal');
     if (modal) modal.classList.add('open');
