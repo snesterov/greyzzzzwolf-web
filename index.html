@@ -4130,7 +4130,11 @@
     top.innerHTML = '<span class="gzw-tg-card-date">📅 ' + formatTgDate(post.date) + '</span><span class="gzw-tg-card-channel">@ssp_agency</span>';
     card.appendChild(top);
 
-    const text = post.text || "";
+    let text = post.text || "";
+    // Clean deleted external music links
+    text = text.replace(/<a[^>]*href=["'][^"']*music\.yandex\.[^"']*["'][^>]*>.*?<\/a>/gi, "");
+    text = text.replace(/https?:\/\/music\.yandex\.\S+/gi, "");
+    text = text.replace(/(<br\s*\/?>\s*)+$/gi, "").trim();
     const isVideo = /видео|video|обзор|ролик|клип|эфир|seedance|flux|kling|0\d:\d\d/i.test(text);
 
     // YouTube regex
