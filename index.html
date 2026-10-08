@@ -4121,6 +4121,8 @@
   }
 
   function renderTgPostCard(post) {
+    const pid = Number(post.messageid);
+    if (pid === 921 || (post.link && post.link.indexOf('/921') !== -1)) return null;
     const card = document.createElement("div");
     card.className = "gzw-tg-card";
     card.onclick = function() { playUiSound('msg'); };
@@ -4216,7 +4218,10 @@
         }
 
         msgs.forEach(function(post) {
-          grid.appendChild(renderTgPostCard(post));
+          const pid = Number(post.messageid);
+          if (pid === 921 || (post.link && post.link.indexOf('/921') !== -1)) return;
+          const card = renderTgPostCard(post);
+          if (card) grid.appendChild(card);
         });
 
         tgPostsFrom += msgs.length;
