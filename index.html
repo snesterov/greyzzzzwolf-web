@@ -1889,6 +1889,32 @@
 
   /* 2. УВЕДОМЛЕНИЕ COOKIE В СТИЛЕ HUD */
     /* 2. УВЕДОМЛЕНИЕ COOKIE (В СТИЛЕ ЯНДЕКСА + HUD) */
+  .gzw-cookie-close-corner {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #cbd5e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 13px;
+    line-height: 1;
+    padding: 0;
+    transition: all 0.2s;
+    z-index: 10;
+  }
+  .gzw-cookie-close-corner:hover {
+    background: var(--gold);
+    color: #0b0f17;
+    border-color: var(--gold);
+  }
+
   .gzw-cookie-banner {
     position: fixed;
     bottom: 20px;
@@ -1900,7 +1926,7 @@
     box-shadow: 0 18px 45px rgba(0, 0, 0, 0.9), 0 0 22px rgba(226, 177, 91, 0.25);
     border-radius: 16px;
     padding: 22px;
-    z-index: 9999;
+    z-index: 999999;
     display: flex;
     flex-direction: column;
     gap: 14px;
@@ -2136,7 +2162,33 @@
   }
 
   @media (max-width: 600px) {
-    .gzw-cookie-banner {
+    .gzw-cookie-close-corner {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #cbd5e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 13px;
+    line-height: 1;
+    padding: 0;
+    transition: all 0.2s;
+    z-index: 10;
+  }
+  .gzw-cookie-close-corner:hover {
+    background: var(--gold);
+    color: #0b0f17;
+    border-color: var(--gold);
+  }
+
+  .gzw-cookie-banner {
       left: 12px;
       right: 12px;
       width: calc(100% - 24px);
@@ -3092,7 +3144,7 @@
     <div style="font-size: 10.5px; color: #64748b; margin-top: 4px;">*Meta признана экстремистской организацией и запрещена на территории РФ</div>
     <div class="gzw-footer-links">
       <button class="gzw-footer-link" onclick="openPolicyModal()">Политика конфиденциальности</button>
-      <button class="gzw-footer-link" onclick="openCookieBanner()">Настройки Cookie</button>
+      <button class="gzw-footer-link" onclick="openCookieSettings()">Настройки Cookie</button>
     </div>
   </footer>
 
@@ -3105,6 +3157,7 @@
 
     <!-- УВЕДОМЛЕНИЕ И НАСТРОЙКИ COOKIE (ЯНДЕКС-СТИЛЬ) -->
   <div id="gzw-cookie-banner" class="gzw-cookie-banner">
+    <button type="button" class="gzw-cookie-close-corner" onclick="closeCookieBanner()" title="Закрыть" aria-label="Закрыть">✕</button>
     <!-- Шаг 1: Главное окно согласия -->
     <div id="gzw-cookie-view-main" class="gzw-cookie-view">
       <div class="gzw-cookie-title">GREYzzzzWOLF использует файлы cookie</div>
@@ -4166,93 +4219,131 @@
     }
   }, { passive: true });
 
-  // Cookie баннер
-  function checkCookieBanner() {
+  // УПРАВЛЕНИЕ COOKIE (ЯНДЕКС-СТИЛЬ + HUD)
+  function openCookieSettings() {
+    if (typeof playUiSound === 'function') playUiSound('click');
+    var banner = document.getElementById('gzw-cookie-banner');
+    if (!banner) return;
+    banner.style.display = 'flex';
+    var mainView = document.getElementById('gzw-cookie-view-main');
+    var settingsView = document.getElementById('gzw-cookie-view-settings');
+    if (mainView && settingsView) {
+      mainView.classList.add('hidden');
+      settingsView.classList.remove('hidden');
+    }
     try {
-      if (!localStorage.getItem('gzw_cookie_accepted')) {
-        setTimeout(function() {
-          var b = document.getElementById('gzw-cookie-banner');
-          if (b) b.classList.add('show');
-        }, 1500);
+      var saved = localStorage.getItem('gzw_cookie_consent');
+      if (saved) {
+        var parsed = JSON.parse(saved);
+        if (parsed && parsed.prefs) {
+          var aTog = document.getElementById('gzw-cookie-toggle-analytics');
+          var oTog = document.getElementById('gzw-cookie-toggle-other');
+          if (aTog) aTog.checked = parsed.prefs.analytics !== false;
+          if (oTog) oTog.checked = parsed.prefs.other !== false;
+        }
       }
-    } catch(e) {}
+    } catch (e) {}
+    setTimeout(function() {
+      banner.classList.add('visible');
+    }, 20);
+  }
+  window.openCookieSettings = openCookieSettings;
+  window.openCookieBanner = openCookieSettings;
+
+  function closeCookieBanner() {
+    if (typeof playUiSound === 'function') playUiSound('click');
+    var banner = document.getElementById('gzw-cookie-banner');
+    if (banner) {
+      banner.classList.remove('visible');
+      setTimeout(function() {
+        banner.style.display = 'none';
+      }, 350);
+    }
+  }
+  window.closeCookieBanner = closeCookieBanner;
+
+  function showCookieSettings() {
+    if (typeof playUiSound === 'function') playUiSound('click');
+    var mainView = document.getElementById('gzw-cookie-view-main');
+    var settingsView = document.getElementById('gzw-cookie-view-settings');
+    if (mainView && settingsView) {
+      mainView.classList.add('hidden');
+      settingsView.classList.remove('hidden');
+    }
+  }
+  window.showCookieSettings = showCookieSettings;
+
+  function hideCookieSettings() {
+    if (typeof playUiSound === 'function') playUiSound('click');
+    var mainView = document.getElementById('gzw-cookie-view-main');
+    var settingsView = document.getElementById('gzw-cookie-view-settings');
+    if (mainView && settingsView) {
+      settingsView.classList.add('hidden');
+      mainView.classList.remove('hidden');
+    }
+  }
+  window.hideCookieSettings = hideCookieSettings;
+
+  function saveCookieConsent(preferences) {
+    try {
+      localStorage.setItem('gzw_cookie_consent', JSON.stringify({
+        status: 'accepted',
+        time: Date.now(),
+        prefs: preferences
+      }));
+      localStorage.setItem('gzw_cookie_accepted', '1');
+    } catch (e) {}
+    closeCookieBanner();
   }
 
-      // УПРАВЛЕНИЕ COOKIE (ЯНДЕКС-СТИЛЬ)
-    function showCookieSettings() {
-      if (typeof playUiSound === 'function') playUiSound('click');
-      var mainView = document.getElementById('gzw-cookie-view-main');
-      var settingsView = document.getElementById('gzw-cookie-view-settings');
-      if (mainView && settingsView) {
-        mainView.classList.add('hidden');
-        settingsView.classList.remove('hidden');
-      }
-    }
-    window.showCookieSettings = showCookieSettings;
+  function acceptAllCookies() {
+    if (typeof playUiSound === 'function') playUiSound('click');
+    saveCookieConsent({ technical: true, analytics: true, other: true });
+  }
+  window.acceptAllCookies = acceptAllCookies;
 
-    function hideCookieSettings() {
-      if (typeof playUiSound === 'function') playUiSound('click');
-      var mainView = document.getElementById('gzw-cookie-view-main');
-      var settingsView = document.getElementById('gzw-cookie-view-settings');
-      if (mainView && settingsView) {
-        settingsView.classList.add('hidden');
-        mainView.classList.remove('hidden');
-      }
-    }
-    window.hideCookieSettings = hideCookieSettings;
+  function acceptEssentialCookies() {
+    if (typeof playUiSound === 'function') playUiSound('click');
+    saveCookieConsent({ technical: true, analytics: false, other: false });
+  }
+  window.acceptEssentialCookies = acceptEssentialCookies;
 
-    function saveCookieConsent(preferences) {
-      try {
-        localStorage.setItem('gzw_cookie_consent', JSON.stringify({
-          status: 'accepted',
-          time: Date.now(),
-          prefs: preferences
-        }));
-      } catch (e) {}
-      var banner = document.getElementById('gzw-cookie-banner');
-      if (banner) {
-        banner.classList.remove('visible');
+  function acceptSelectedCookies() {
+    if (typeof playUiSound === 'function') playUiSound('click');
+    var analyticsToggle = document.getElementById('gzw-cookie-toggle-analytics');
+    var otherToggle = document.getElementById('gzw-cookie-toggle-other');
+    saveCookieConsent({
+      technical: true,
+      analytics: analyticsToggle ? analyticsToggle.checked : true,
+      other: otherToggle ? otherToggle.checked : true
+    });
+  }
+  window.acceptSelectedCookies = acceptSelectedCookies;
+
+  function checkCookieConsent() {
+    try {
+      var saved = localStorage.getItem('gzw_cookie_consent') || localStorage.getItem('gzw_cookie_accepted');
+      if (!saved) {
         setTimeout(function() {
-          banner.style.display = 'none';
-        }, 350);
+          var banner = document.getElementById('gzw-cookie-banner');
+          if (banner) {
+            banner.style.display = 'flex';
+            var mainView = document.getElementById('gzw-cookie-view-main');
+            var settingsView = document.getElementById('gzw-cookie-view-settings');
+            if (mainView && settingsView) {
+              mainView.classList.remove('hidden');
+              settingsView.classList.add('hidden');
+            }
+            setTimeout(function() {
+              banner.classList.add('visible');
+            }, 30);
+          }
+        }, 1200);
       }
-    }
-
-    function acceptAllCookies() {
-      if (typeof playUiSound === 'function') playUiSound('click');
-      saveCookieConsent({ technical: true, analytics: true, other: true });
-    }
-    window.acceptAllCookies = acceptAllCookies;
-
-    function acceptEssentialCookies() {
-      if (typeof playUiSound === 'function') playUiSound('click');
-      saveCookieConsent({ technical: true, analytics: false, other: false });
-    }
-    window.acceptEssentialCookies = acceptEssentialCookies;
-
-    function acceptSelectedCookies() {
-      if (typeof playUiSound === 'function') playUiSound('click');
-      var analyticsToggle = document.getElementById('gzw-cookie-toggle-analytics');
-      var otherToggle = document.getElementById('gzw-cookie-toggle-other');
-      saveCookieConsent({
-        technical: true,
-        analytics: analyticsToggle ? analyticsToggle.checked : true,
-        other: otherToggle ? otherToggle.checked : true
-      });
-    }
-    window.acceptSelectedCookies = acceptSelectedCookies;
-
-    function checkCookieConsent() {
-      try {
-        var saved = localStorage.getItem('gzw_cookie_consent');
-        if (!saved) {
-          setTimeout(function() {
-            var banner = document.getElementById('gzw-cookie-banner');
-            if (banner) banner.classList.add('visible');
-          }, 900);
-        }
-      } catch (e) {}
-    }
+    } catch (e) {}
+  }
+  window.checkCookieConsent = checkCookieConsent;
+  window.checkCookieBanner = checkCookieConsent;
 
     function openPolicyModal() {
     if (typeof playUiSound === 'function') playUiSound('msg');
@@ -4269,16 +4360,13 @@
   window.closePolicyModal = closePolicyModal;
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', checkCookieBanner);
+    document.addEventListener('DOMContentLoaded', checkCookieConsent);
   } else {
-    checkCookieBanner();
+    checkCookieConsent();
   }
 
 })();
 </script>
-
-</body>
-</html>
 
 </body>
 </html>
