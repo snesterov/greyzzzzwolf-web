@@ -3357,8 +3357,7 @@
       </div>
 
       <div class="ssp-chips-wrap">
-        <button class="ssp-chip ssp-chip-highlight" data-query="Настройка рекламы">🎯 Настройка рекламы</button>
-        <button class="ssp-chip ssp-chip-cyber" data-query="Разработка AI">🤖 Разработка AI</button>
+        <button class="ssp-chip ssp-chip-highlight" data-query="Настройка рекламы и AI">🎯 Настройка рекламы & Разработка AI</button>
         <button class="ssp-chip" data-query="Стоматология">🦷 Стоматология</button>
         <button class="ssp-chip" data-query="Ремонт квартир">🔨 Ремонт квартир</button>
         <button class="ssp-chip" data-query="Банкротство физлиц">⚖️ Банкротство физлиц</button>
@@ -3623,24 +3622,11 @@
 
   const NICHES_BASE = [
     {
-      keys: ["реклам", "директ", "таргет", "трафик", "маркетинг", "ведение", "яндекс"],
-      title: "🎯 Настройка рекламы (Яндекс Директ под ключ)",
-      budget: "от 45 000 до 150 000 ₽/мес",
-      cpc: "Поиск 45–180 ₽ | РСЯ 15–35 ₽",
-      cpl: "450 – 1 200 ₽ за целевой лид",
-      volume: "60 – 180+ заявок в месяц",
-      verdict: "Сергей Нестеров лично ведет и настраивает рекламные кампании (стаж более 15 лет в Яндекс Директ). Сбор чистой целевой семантики, отсечение минус-слов, гиперсегментация объявлений и сквозной контроль окупаемости каждого вложенного рубля.",
-      speech: "Сергей Нестеров лично ведет и настраивает рекламу в Яндекс Директ. 15 лет практики, точный аудит ставок и стабильный поток целевых заявок без слива бюджета."
-    },
-    {
-      keys: ["ai", "аи", "ии", "нейро", "бот", "ассистент", "автоматизац", "чат-бот"],
-      title: "🤖 Разработка AI-систем и нейросетей под ключ",
-      budget: "от 80 000 ₽ (проектное решение)",
-      cpc: "Автономная работа 24/7 без зарплат",
-      cpl: "Сокращение стоимости лида на 35–60%",
-      volume: "Мгновенный ответ до 3 сек • 100% охват",
-      verdict: "Сергей Нестеров проектирует и внедряет умные AI-системы: автономные боты-консультанты, расчет смет, квалификация лидов и автоматический дожим клиентов до оплаты в Telegram и мессенджере MAX.",
-      speech: "Сергей Нестеров разрабатывает умные нейросети и AI-ассистентов под ключ. Автоматизация продаж, моментальные ответы клиентам и интеграция с мессенджерами."
+      keys: ["реклам", "директ", "таргет", "трафик", "маркетинг", "ведение", "яндекс", "ai", "аи", "ии", "нейро", "бот", "ассистент", "автоматизац", "чат-бот"],
+      isDirectContact: true,
+      title: "🎯 Индивидуальная настройка рекламы & Разработка AI",
+      verdict: "Сергей Нестеров лично ведет индивидуальные проекты по настройке рекламы (Яндекс Директ, Google Ads, VK — стаж более 15 лет) и разработке персональных AI-систем под ключ.<br><br>Здесь нет шаблонного калькулятора: задачи, объемы и архитектура определяются под ваш проект. Напишите напрямую Сергею для обсуждения условий и запуска:",
+      speech: "Сергей Нестеров лично ведет настройку рекламы и разработку умных нейросетей под ключ. Напишите напрямую для обсуждения вашего проекта."
     },
     {
       keys: ["стомат", "зуб", "имплант", "винир", "брекет", "клиник", "доктор", "пациент"],
@@ -3837,6 +3823,35 @@
   }
 
   function renderResultCard(data) {
+    if (data.isDirectContact) {
+      return `
+        <div class="ssp-res-box">
+          <div class="ssp-res-title">${data.title}</div>
+          <div class="ssp-res-verdict" style="font-size: 13px; line-height: 1.6; color: #f4f4f5; background: rgba(245, 158, 11, 0.08); border-left: 3px solid #f59e0b; padding: 12px 14px; border-radius: 8px;">
+            ${data.verdict}
+          </div>
+          <div class="ssp-brand-stack" style="margin-top: 10px;">
+            <div class="ssp-messengers-grid">
+              <a href="${TG_LINK}" target="_blank" class="ssp-btn-tg" onclick="playUiSound('click')">
+                ${tgSvgMed}
+                <div>
+                  <div class="ssp-bm-title">Telegram (@GREYzzzzWOLF)</div>
+                  <div class="ssp-bm-sub">Написать Сергею напрямую</div>
+                </div>
+              </a>
+              <a href="${MAX_LINK}" target="_blank" class="ssp-btn-max" onclick="playUiSound('click')">
+                ${maxSvgMed}
+                <div>
+                  <div class="ssp-bmax-title">Мессенджер MAX</div>
+                  <div class="ssp-bmax-sub">Сергей Нестеров (личный диалог)</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
     return `
       <div class="ssp-res-box">
         <div class="ssp-res-title">${data.title}</div>
@@ -3869,7 +3884,7 @@
             <a href="${TG_LINK}" target="_blank" class="ssp-btn-tg" onclick="playUiSound('click')">
               ${tgSvgMed}
               <div>
-                <div class="ssp-bm-title">Telegram</div>
+                <div class="ssp-bm-title">Telegram (@GREYzzzzWOLF)</div>
                 <div class="ssp-bm-sub">Написать Сергею</div>
               </div>
             </a>
