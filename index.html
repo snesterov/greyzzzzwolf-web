@@ -1079,43 +1079,86 @@
     }
 
     /* Стрелки навигации полноэкранного режима */
-    .gzw-lb-nav-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 50px;
-      height: 50px;
-      background: rgba(13, 18, 25, 0.92);
-      border: 1.5px solid var(--gold);
-      border-radius: 50%;
+    .gzw-lb-nav-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 3px 6px;
+      border-radius: 6px;
+      border: 1px solid rgba(226, 177, 91, 0.2);
+    }
+
+    .gzw-lb-top-btn {
+      background: rgba(226, 177, 91, 0.12);
+      border: 1px solid var(--gold);
       color: var(--gold);
-      font-size: 24px;
+      border-radius: 4px;
+      width: 28px;
+      height: 24px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      z-index: 10002;
+      font-size: 14px;
+      font-weight: 700;
+      transition: background 0.2s, color 0.2s, transform 0.15s;
+    }
+
+    .gzw-lb-top-btn:hover {
+      background: var(--gold);
+      color: #0a0e14;
+      transform: scale(1.08);
+    }
+
+    .gzw-lb-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 54px;
+      height: 54px;
+      background: rgba(13, 18, 25, 0.9);
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10005;
       transition: transform 0.2s, background 0.2s, color 0.2s, box-shadow 0.2s;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8), 0 0 14px var(--gold-glow);
+      box-shadow: 0 4px 22px rgba(0, 0, 0, 0.9), 0 0 16px var(--gold-glow);
       user-select: none;
+    }
+
+    .gzw-lb-nav-btn svg path {
+      stroke: var(--gold);
+      transition: stroke 0.2s;
     }
 
     .gzw-lb-nav-btn:hover {
       background: var(--gold);
-      color: #000;
-      transform: translateY(-50%) scale(1.12);
-      box-shadow: 0 6px 25px rgba(226, 177, 91, 0.6);
+      transform: translateY(-50%) scale(1.14);
+      box-shadow: 0 6px 30px rgba(226, 177, 91, 0.75);
+    }
+
+    .gzw-lb-nav-btn:hover svg path {
+      stroke: #0a0e14;
     }
 
     .gzw-lb-prev {
-      left: -65px;
+      left: 14px;
     }
 
     .gzw-lb-next {
-      right: -65px;
+      right: 14px;
     }
 
-    @media (max-width: 1200px) {
+    @media (max-width: 768px) {
+      .gzw-lb-nav-btn {
+        width: 44px;
+        height: 44px;
+      }
       .gzw-lb-prev { left: 8px; }
       .gzw-lb-next { right: 8px; }
     }
@@ -2594,16 +2637,24 @@
     <div id="gzw-case-lightbox" class="gzw-lightbox-backdrop" onclick="closeCaseLightbox()">
       <div class="gzw-lightbox-content" onclick="event.stopPropagation()">
         <button class="gzw-lightbox-close" onclick="closeCaseLightbox()" title="Закрыть (Esc)">✕</button>
-        <button class="gzw-lb-nav-btn gzw-lb-prev" onclick="stepCaseLightbox(-1)" title="Предыдущий слайд (←)">❮</button>
-        <button class="gzw-lb-nav-btn gzw-lb-next" onclick="stepCaseLightbox(1)" title="Следующий слайд (→)">❯</button>
         
         <div class="gzw-lb-top-bar">
           <div class="gzw-lightbox-caption" id="gzw-lb-caption">График кейса</div>
-          <div class="gzw-lb-counter" id="gzw-lb-counter">1 / 6</div>
+          <div class="gzw-lb-nav-group">
+            <button type="button" class="gzw-lb-top-btn" onclick="stepCaseLightbox(-1)" title="Предыдущий слайд (←)">❮</button>
+            <div class="gzw-lb-counter" id="gzw-lb-counter">1 / 6</div>
+            <button type="button" class="gzw-lb-top-btn" onclick="stepCaseLightbox(1)" title="Следующий слайд (→)">❯</button>
+          </div>
         </div>
         
         <div class="gzw-lb-img-wrap">
+          <button type="button" class="gzw-lb-nav-btn gzw-lb-prev" onclick="stepCaseLightbox(-1)" title="Предыдущий слайд (←)" aria-label="Предыдущий слайд">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M15 19l-7-7 7-7" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
           <img id="gzw-lb-img" src="" alt="Детали кейса" />
+          <button type="button" class="gzw-lb-nav-btn gzw-lb-next" onclick="stepCaseLightbox(1)" title="Следующий слайд (→)" aria-label="Следующий слайд">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
         </div>
       </div>
     </div>
@@ -2851,7 +2902,7 @@
       </div>
       <div class="gzw-policy-body">
         <h4>1. Общие положения</h4>
-        <p>Настоящая политика обработки персональных данных составлена в соответствии с требованиями Федерального закона от 27.07.2006 № 152-ФЗ «О персональных данных» и определяет порядок обработки персональных данных и меры по обеспечению безопасности данных, предпринимаемые сервисом GREYzzzzWOLF (Нестеров С. Е. — Сергей Евгеньевич).</p>
+        <p>Настоящая политика обработки персональных данных составлена в соответствии с требованиями Федерального закона от 27.07.2006 № 152-ФЗ «О персональных данных» и определяет порядок обработки персональных данных и меры по обеспечению безопасности данных, предпринимаемые сервисом GREYzzzzWOLF (Нестеров Сергей Евгеньевич).</p>
         
         <h4>2. Цели обработки данных</h4>
         <p>Персональные данные (имя, номер телефона, Telegram / мессенджер MAX, сфера деятельности) обрабатываются исключительно в целях предоставления консультаций по интернет-рекламе, расчета медиапланов, связи с маркетологом и исполнения взаимных договоренностей.</p>
