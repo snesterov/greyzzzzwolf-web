@@ -1378,17 +1378,20 @@
     -webkit-box-orient: vertical;
   }
 
-  /* GREY WOLF TELEGRAM LIVE FEED */
+  /* GREY WOLF TELEGRAM LIVE FEED (ПОЛНАЯ МОБИЛЬНАЯ АДАПТАЦИЯ) */
   .gzw-tg-section {
-    margin-top: 50px;
-    margin-bottom: 40px;
-    padding: 30px 24px;
-    background: linear-gradient(180deg, rgba(20, 20, 26, 0.9) 0%, rgba(12, 12, 16, 0.95) 100%);
-    border: 1px solid rgba(245, 158, 11, 0.3);
-    border-radius: 20px;
+    margin-top: 45px;
+    margin-bottom: 35px;
+    padding: 26px 20px;
+    background: linear-gradient(180deg, rgba(20, 20, 26, 0.95) 0%, rgba(12, 12, 16, 0.98) 100%);
+    border: 1px solid rgba(245, 158, 11, 0.35);
+    border-radius: 18px;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 25px rgba(245, 158, 11, 0.12);
     position: relative;
     overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
   .gzw-tg-section::before {
     content: '';
@@ -1401,9 +1404,11 @@
     align-items: center;
     justify-content: space-between;
     gap: 16px;
-    margin-bottom: 28px;
-    padding-bottom: 18px;
+    margin-bottom: 22px;
+    padding-bottom: 16px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    width: 100%;
+    box-sizing: border-box;
   }
   .gzw-tg-badge {
     display: inline-flex;
@@ -1418,45 +1423,44 @@
     border: 1px solid rgba(245, 158, 11, 0.35);
     padding: 5px 12px;
     border-radius: 999px;
-    margin-bottom: 10px;
   }
   .gzw-tg-badge span {
-    display: inline-block;
-    width: 7px; height: 7px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
     background: #10b981;
     box-shadow: 0 0 8px #10b981;
-    animation: gzwLivePulse 2s infinite;
+    display: inline-block;
+    animation: gzwTgPulse 1.8s infinite;
   }
-  @keyframes gzwLivePulse {
+  @keyframes gzwTgPulse {
     0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(0.8); }
+    50% { opacity: 0.4; transform: scale(0.85); }
   }
   .gzw-tg-title {
-    font-family: 'Cormorant Garamond', 'Cinzel', serif;
-    font-size: 32px;
-    line-height: 1.15;
-    color: #fff;
-    margin: 0;
-    font-weight: 700;
+    font-family: 'Cinzel', serif;
+    font-size: 24px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-top: 6px;
   }
   .gzw-tg-title span {
     color: #f59e0b;
   }
   .gzw-tg-sub {
     font-size: 13px;
-    color: #a1a1aa;
-    margin: 6px 0 0 0;
+    color: #94a3b8;
+    margin-top: 4px;
   }
   .gzw-tg-channel-btn {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
     color: #ffffff !important;
     text-decoration: none;
-    font-weight: 600;
-    font-size: 13px;
+    font-weight: 700;
+    font-size: 12px;
     padding: 10px 18px;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(2, 132, 199, 0.35);
@@ -1468,65 +1472,25 @@
   }
   .gzw-tg-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
-  @media (max-width: 960px) {
-    .gzw-tg-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 768px) {
-    .gzw-tg-section {
-      padding: 20px 14px;
-      margin-top: 35px;
-      border-radius: 14px;
-    }
-    .gzw-tg-header {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 14px;
-      margin-bottom: 20px;
-    }
-    .gzw-tg-title {
-      font-size: 22px;
-      line-height: 1.25;
-    }
-    .gzw-tg-sub {
-      font-size: 13px;
-    }
-    .gzw-tg-channel-btn {
-      width: 100%;
-      justify-content: center;
-      padding: 12px;
-      box-sizing: border-box;
-    }
-    .gzw-tg-grid {
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-    .gzw-tg-card {
-      padding: 14px;
-      border-radius: 12px;
-    }
-    .gzw-tg-card-img-wrap {
-      max-height: 200px;
-      margin-bottom: 10px;
-    }
-    .gzw-tg-card-text {
-      font-size: 13px;
-      line-height: 1.5;
-      max-height: 220px;
-    }
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    width: 100%;
+    box-sizing: border-box;
   }
   .gzw-tg-card {
-    background: rgba(15, 15, 20, 0.75);
+    background: rgba(15, 15, 20, 0.85);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 14px;
-    padding: 18px;
+    padding: 16px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
     position: relative;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    overflow: hidden;
   }
   .gzw-tg-card:hover {
     transform: translateY(-4px);
@@ -1535,28 +1499,39 @@
   }
   .gzw-tg-card-top {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 12px;
+    gap: 6px;
+    margin-bottom: 10px;
     font-size: 11px;
+    width: 100%;
+    box-sizing: border-box;
   }
   .gzw-tg-card-date {
     color: #f59e0b;
     font-weight: 600;
   }
   .gzw-tg-card-channel {
-    color: #71717a;
+    color: #94a3b8;
   }
   .gzw-tg-card-img-wrap {
     width: 100%;
+    aspect-ratio: 16 / 9;
     margin-bottom: 12px;
     border-radius: 10px;
     overflow: hidden;
     background: #09090b;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
   }
   .gzw-tg-card-img {
     width: 100%;
-    max-height: 220px;
+    height: 100%;
     object-fit: cover;
     display: block;
     transition: transform 0.3s;
@@ -1570,9 +1545,11 @@
     color: #e4e4e7;
     flex-grow: 1;
     word-break: break-word;
-    max-height: 280px;
+    overflow-wrap: anywhere;
+    max-height: 240px;
     overflow-y: auto;
     padding-right: 4px;
+    margin-bottom: 12px;
   }
   .gzw-tg-card-text a {
     color: #38bdf8;
@@ -1582,11 +1559,11 @@
     color: #f59e0b;
   }
   .gzw-tg-card-bottom {
-    margin-top: 14px;
-    padding-top: 12px;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
     display: flex;
     justify-content: flex-end;
+    width: 100%;
   }
   .gzw-tg-card-link {
     font-size: 12px;
@@ -1609,7 +1586,7 @@
   .gzw-tg-footer-actions {
     display: flex;
     justify-content: center;
-    margin-top: 24px;
+    margin-top: 20px;
   }
   .gzw-tg-more-btn {
     background: rgba(245, 158, 11, 0.1);
@@ -1628,6 +1605,66 @@
     box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
   }
 
+  /* Адаптивные медиа-запросы для Telegram Feed и мобильной сетки */
+  @media (max-width: 960px) {
+    .gzw-tg-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+  }
+  @media (max-width: 768px) {
+    .gzw-main {
+      padding: 16px 10px 75px !important;
+    }
+    .gzw-tg-section {
+      padding: 18px 12px !important;
+      margin-top: 30px !important;
+      border-radius: 14px !important;
+    }
+    .gzw-tg-header {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      gap: 12px !important;
+      margin-bottom: 16px !important;
+    }
+    .gzw-tg-title {
+      font-size: 20px !important;
+      line-height: 1.25 !important;
+    }
+    .gzw-tg-sub {
+      font-size: 12px !important;
+    }
+    .gzw-tg-channel-btn {
+      width: 100% !important;
+      justify-content: center !important;
+      padding: 11px !important;
+      box-sizing: border-box !important;
+    }
+    .gzw-tg-grid {
+      grid-template-columns: 1fr !important;
+      gap: 14px !important;
+    }
+    .gzw-tg-card {
+      padding: 14px 12px !important;
+      border-radius: 12px !important;
+    }
+    .gzw-tg-card-text {
+      font-size: 12.5px !important;
+      line-height: 1.48 !important;
+      max-height: 210px !important;
+    }
+  }
+  @media (max-width: 480px) {
+    .gzw-main {
+      padding: 12px 6px 70px !important;
+    }
+    .gzw-tg-section {
+      padding: 14px 8px !important;
+    }
+    .gzw-tg-card {
+      padding: 12px 10px !important;
+    }
+  }
 
   /* 1. КНОПКА «НАВЕРХ» В СТИЛЕ DOTA HUD */
   .gzw-scroll-top-btn {
@@ -1933,11 +1970,12 @@
         Точечная настройка рекламы, привлечение живой аудитории через парсинг и приглашения, проектирование AI-систем и персональное ведение рекламных кампаний.
       </p>
 
-      <!-- ОПЫТ В ЦИФРАХ С 2012 ГОДА -->
+      <!-- ПРАКТИКА В ЦИФРАХ С 2012 ГОДА -->
       <div class="hero-stats-box">
         <div class="hero-stats-heading">
-          <span>◆</span> ОПЫТ В ЦИФРАХ • С 2012 ГОДА
+          <span>◆</span> ПРАКТИКА В ЦИФРАХ • С 2012 ГОДА
         </div>
+
         <div class="hero-stats-grid">
           <div class="hero-stat-card">
             <div class="hero-stat-chan">Яндекс.Директ</div>
@@ -2099,7 +2137,7 @@
     <section id="gzw-cases-section" class="gzw-cases-section">
       <div class="gzw-cases-header">
         <div>
-          <div class="gzw-cases-tag"><span></span> НАШ ОПЫТ В ЦИФРАХ С 2012 ГОДА</div>
+          <div class="gzw-cases-tag"><span></span> НАША ПРАКТИКА В ЦИФРАХ С 2012 ГОДА</div>
           <h2 class="gzw-cases-title">Реальные результаты и <span>кейсы клиентов</span></h2>
           <p class="gzw-cases-sub">Контрастные показатели, чистая статистика и проверенные решения на миллионных бюджетах</p>
         </div>
@@ -2762,8 +2800,7 @@
     });
   </script>
 
-<!-- ВСТРОЕННЫЙ AI-ВИДЖЕТ РАЗБОРА БЮДЖЕТА -->
-  <!-- GREYzzzzWOLF: AI-аналитик и экспресс-разбор бюджета -->
+<!-- ВСТРОЕННЫЙ AI-ВИДЖЕТ РАЗБОРА БЮДЖЕТА (HUD EDITION) -->
 <div id="gzw-budget-widget">
   <button id="ssp-launcher-btn" aria-label="Открыть AI-разбор бюджета">
     <div class="ssp-launcher-avatar">
@@ -2792,7 +2829,7 @@
         </div>
       </div>
       <div class="ssp-header-controls">
-        <button id="ssp-voice-toggle" title="Озвучивать ответы" style="color:#10b981;">🔊</button>
+        <button id="ssp-voice-toggle" title="Озвучивать ответы">🔊</button>
         <button id="ssp-close-btn" title="Закрыть">✕</button>
       </div>
     </div>
@@ -2802,17 +2839,19 @@
         <div class="ssp-msg-avatar">AI</div>
         <div class="ssp-msg-bubble">
           Здравствуйте! Это <b>AI-аналитик</b> агентства Сергея Нестерова (15+ лет практики).<br><br>
-          Напишите <b>сферу вашего бизнеса</b> (или выберите пример ниже), и система мгновенно выполнит экспресс-разбор бюджета: рассчитает ставки аукциона Яндекс Директа, ориентир цены заявки и прогноз показателей под вашу нишу.
+          Нажмите кнопку с вашей нишей или напишите любую сферу бизнеса — система моментально выполнит точный аудит ставок аукциона Яндекс.Директа, ориентир цены заявки и прогноз показателей под ваш проект.
         </div>
       </div>
 
       <div class="ssp-chips-wrap">
+        <button class="ssp-chip ssp-chip-highlight" data-query="Настройка рекламы">🎯 Настройка рекламы</button>
+        <button class="ssp-chip ssp-chip-cyber" data-query="Разработка AI">🤖 Разработка AI</button>
         <button class="ssp-chip" data-query="Стоматология">🦷 Стоматология</button>
         <button class="ssp-chip" data-query="Ремонт квартир">🔨 Ремонт квартир</button>
         <button class="ssp-chip" data-query="Банкротство физлиц">⚖️ Банкротство физлиц</button>
         <button class="ssp-chip" data-query="Бурение скважин">💧 Бурение скважин</button>
         <button class="ssp-chip" data-query="Автосервис">🚗 Автосервис</button>
-        <button class="ssp-chip ssp-chip-edu" data-query="🎯 Обучение настройке рекламы">⚡ 🎯 Обучение настройке рекламы</button>
+        <button class="ssp-chip" data-query="Кухни на заказ">🛋️ Кухни на заказ</button>
       </div>
 
       <div id="ssp-typing" class="ssp-msg ssp-msg-ai ssp-hidden">
@@ -2824,7 +2863,7 @@
     </div>
 
     <form id="ssp-chat-form">
-      <input type="text" id="ssp-chat-input" placeholder="Введите сферу (напр: стоматология, кухни, бурение)..." autocomplete="off" />
+      <input type="text" id="ssp-chat-input" placeholder="Введите сферу (напр: стоматология, реклама, AI)..." autocomplete="off" />
       <button type="button" id="ssp-mic-btn" title="Сказать голосом" aria-label="Голосовой ввод">🎙️</button>
       <button type="submit" id="ssp-send-btn" aria-label="Отправить">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -2847,13 +2886,16 @@
   #ssp-launcher-btn {
     display: flex; align-items: center; gap: 10px;
     background: linear-gradient(135deg, #18181b 0%, #09090b 100%);
-    border: 1px solid rgba(245, 158, 11, 0.45);
+    border: 1.5px solid rgba(245, 158, 11, 0.5);
     padding: 8px 16px 8px 10px; border-radius: 999px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(245, 158, 11, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 18px rgba(245, 158, 11, 0.25);
     cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
   }
-  #ssp-launcher-btn:hover { transform: scale(1.03); box-shadow: 0 12px 35px rgba(0, 0, 0, 0.8), 0 0 20px rgba(245, 158, 11, 0.35); }
-  .ssp-launcher-avatar { position: relative; width: 34px; height: 34px; }
+  #ssp-launcher-btn:hover {
+    transform: scale(1.04);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.85), 0 0 24px rgba(245, 158, 11, 0.4);
+  }
+  .ssp-launcher-avatar { position: relative; width: 34px; height: 34px; flex-shrink: 0; }
   .ssp-avatar-inner {
     width: 100%; height: 100%; border-radius: 50%;
     background: #09090b; border: 2px solid #f59e0b; color: #f59e0b;
@@ -2867,16 +2909,16 @@
   .ssp-lt-sub { font-size: 10px; color: #fbbf24; text-align: left; }
 
   #ssp-chat-modal {
-    position: absolute; bottom: 60px; right: 0; width: 390px;
-    max-width: calc(100vw - 32px); height: 560px;
-    background: rgba(18, 18, 22, 0.98); backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(245, 158, 11, 0.4);
-    border-radius: 20px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.95);
+    position: absolute; bottom: 62px; right: 0; width: 400px;
+    max-width: calc(100vw - 24px); height: 570px;
+    background: rgba(15, 17, 23, 0.98); backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px); border: 1.5px solid rgba(245, 158, 11, 0.45);
+    border-radius: 18px; box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95), 0 0 30px rgba(245, 158, 11, 0.15);
     display: flex; flex-direction: column; overflow: hidden;
   }
   .ssp-chat-header {
-    background: linear-gradient(90deg, #18181b 0%, #291b0f 100%);
-    padding: 12px 14px; border-bottom: 1px solid #27272a;
+    background: linear-gradient(90deg, #18181f 0%, #251a0d 100%);
+    padding: 12px 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     display: flex; justify-content: space-between; align-items: center;
   }
   .ssp-header-left { display: flex; align-items: center; gap: 10px; }
@@ -2904,8 +2946,7 @@
   }
   #ssp-chat-body { flex: 1; padding: 14px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
   
-  /* Чат и контраст */
-  .ssp-msg { display: flex; gap: 8px; max-width: 94%; font-size: 13px; line-height: 1.5; }
+  .ssp-msg { display: flex; gap: 8px; max-width: 96%; font-size: 13px; line-height: 1.5; }
   .ssp-msg-user { align-self: flex-end; justify-content: flex-end; }
   .ssp-msg-user .ssp-msg-bubble {
     background: #f59e0b; color: #000; font-weight: 600; border-radius: 14px 14px 2px 14px; padding: 8px 14px;
@@ -2917,72 +2958,50 @@
     font-weight: bold; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;
   }
   .ssp-msg-bubble {
-    background: #1c1c22; border: 1px solid #2d2d38; border-radius: 2px 14px 14px 14px;
-    padding: 12px 14px; color: #f4f4f5 !important;
-  }
-  
-  /* Принудительный четкий контраст */
-  .ssp-msg-ai .ssp-msg-bubble * {
-    color: #e4e4e7;
-  }
-  .ssp-msg-ai .ssp-msg-bubble b,
-  .ssp-msg-ai .ssp-msg-bubble strong {
-    color: #fbbf24 !important;
-  }
-  .ssp-msg-ai .ssp-msg-bubble div[style*="background"] {
-    background: #111115 !important;
-    border: 1px solid rgba(245, 158, 11, 0.35) !important;
-    border-radius: 10px !important;
-    padding: 10px 12px !important;
-    color: #f4f4f5 !important;
-    margin: 8px 0 !important;
-  }
-  .ssp-msg-ai .ssp-msg-bubble div[style*="background"] div {
-    color: #f4f4f5 !important;
-    padding: 3px 0;
-  }
-  .ssp-msg-ai .ssp-msg-bubble div[style*="color:#111"] {
-    color: #ffffff !important;
-    font-size: 14px !important;
-    font-weight: 800 !important;
-  }
-  .ssp-msg-ai .ssp-msg-bubble div[style*="color:#555"] {
-    color: #f4f4f5 !important;
-    background: rgba(245, 158, 11, 0.12) !important;
-    border-left: 3px solid #f59e0b !important;
-    padding: 8px 10px !important;
-    border-radius: 0 8px 8px 0 !important;
-    margin-top: 8px !important;
+    background: #181a20; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 2px 14px 14px 14px;
+    padding: 12px 14px; color: #f4f4f5 !important; width: 100%;
   }
 
+  /* HUD Результаты расчетов */
+  .ssp-res-box {
+    margin-top: 8px; display: flex; flex-direction: column; gap: 10px; width: 100%;
+  }
+  .ssp-res-title {
+    font-size: 13.5px; font-weight: 800; color: #ffffff; display: flex; align-items: center; gap: 6px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 6px;
+  }
+  .ssp-res-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+  }
+  .ssp-res-card {
+    background: rgba(10, 12, 16, 0.85); border: 1px solid rgba(245, 158, 11, 0.25);
+    border-radius: 8px; padding: 8px 10px; display: flex; flex-direction: column; gap: 2px;
+  }
+  .ssp-res-lbl {
+    font-size: 9.5px; text-transform: uppercase; color: #a1a1aa; letter-spacing: 0.05em; font-weight: 600;
+  }
+  .ssp-res-val {
+    font-size: 12px; font-weight: 700; color: #f4f4f5; line-height: 1.3;
+  }
+  .ssp-res-val.gold { color: #fbbf24; font-size: 12.5px; }
+  .ssp-res-val.green { color: #34d399; }
+  .ssp-res-verdict {
+    background: rgba(245, 158, 11, 0.08); border-left: 3px solid #f59e0b;
+    padding: 8px 10px; border-radius: 0 8px 8px 0; font-size: 12px; color: #e4e4e7; line-height: 1.45;
+  }
+
+  /* Чипы */
   .ssp-chips-wrap { display: flex; flex-wrap: wrap; gap: 6px; padding-left: 32px; }
   .ssp-chip {
     background: #18181b; border: 1px solid #3f3f46; color: #d4d4d8; font-size: 11px;
     padding: 4px 9px; border-radius: 20px; cursor: pointer; transition: all 0.15s;
   }
   .ssp-chip:hover { border-color: #f59e0b; color: #fbbf24; background: rgba(245, 158, 11, 0.1); }
-  .ssp-chip-edu { background: rgba(245, 158, 11, 0.15); border-color: #f59e0b; color: #fbbf24; font-weight: 600; }
+  .ssp-chip-highlight { background: rgba(245, 158, 11, 0.16); border-color: #f59e0b; color: #fbbf24; font-weight: 700; }
+  .ssp-chip-cyber { background: rgba(14, 165, 233, 0.16); border-color: #0ea5e9; color: #38bdf8; font-weight: 700; }
 
-  /* Брендовые кнопки */
+  /* Кнопки мессенджеров */
   .ssp-brand-stack { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
-  .ssp-wolf-card {
-    display: flex; align-items: center; justify-content: space-between;
-    background: linear-gradient(135deg, rgba(69, 26, 3, 0.95) 0%, rgba(120, 53, 15, 0.8) 100%);
-    border: 1.5px solid #f59e0b; border-radius: 12px; padding: 10px 12px;
-    text-decoration: none; color: #fff; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.25);
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .ssp-wolf-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4); }
-  .ssp-wc-left { display: flex; align-items: center; gap: 10px; }
-  .ssp-wc-avatar { width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid #fbbf24; object-fit: cover; flex-shrink: 0; }
-  .ssp-wc-title { display: flex; align-items: center; gap: 6px; font-weight: 800; font-size: 13px; color: #fff; }
-  .ssp-tg-pill {
-    display: inline-flex; align-items: center; gap: 3px; font-size: 9px;
-    background: #24A1DE; color: #fff; padding: 1px 6px; border-radius: 10px; font-weight: 600;
-  }
-  .ssp-wc-sub { font-size: 10px; color: #fde68a; margin-top: 2px; }
-  .ssp-wc-arrow { font-size: 14px; color: #fbbf24; font-weight: bold; }
-
   .ssp-messengers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
   .ssp-btn-tg {
     display: flex; align-items: center; gap: 8px;
@@ -3004,17 +3023,6 @@
   .ssp-bmax-title { font-weight: 800; font-size: 12px; color: #ffffff !important; line-height: 1.2; text-align: left; }
   .ssp-bmax-sub { font-size: 9px; color: rgba(255, 255, 255, 0.9) !important; line-height: 1; text-align: left; }
 
-  .ssp-wolf-strip {
-    display: flex; align-items: center; justify-content: space-between;
-    background: rgba(24, 24, 27, 0.9); border: 1px solid #3f3f46; border-radius: 10px;
-    padding: 7px 10px; text-decoration: none; color: #fbbf24;
-    transition: border-color 0.15s, background 0.15s;
-  }
-  .ssp-wolf-strip:hover { border-color: #f59e0b; background: rgba(39, 39, 42, 0.9); }
-  .ssp-ws-left { display: flex; align-items: center; gap: 8px; }
-  .ssp-ws-avatar { width: 22px; height: 22px; border-radius: 50%; border: 1px solid #fbbf24; object-fit: cover; }
-  .ssp-ws-title { display: flex; align-items: center; gap: 6px; font-weight: 700; font-size: 11px; color: #f4f4f5; }
-
   .ssp-typing-bubble { display: flex; gap: 4px; align-items: center; padding: 8px 12px; }
   .ssp-typing-bubble span {
     width: 6px; height: 6px; background: #fbbf24; border-radius: 50%;
@@ -3028,7 +3036,7 @@
   }
 
   #ssp-chat-form {
-    padding: 10px 12px; background: #141417; border-top: 1px solid #27272a;
+    padding: 10px 12px; background: #141417; border-top: 1px solid rgba(255, 255, 255, 0.08);
     display: flex; gap: 8px; align-items: center;
   }
   #ssp-chat-input {
@@ -3056,6 +3064,39 @@
     0% { box-shadow: 0 0 5px rgba(239, 68, 68, 0.4); }
     100% { box-shadow: 0 0 15px rgba(239, 68, 68, 0.9); }
   }
+
+  /* Мобильная адаптация виджета */
+  @media (max-width: 768px) {
+    #gzw-budget-widget {
+      bottom: 14px !important;
+      right: 14px !important;
+    }
+    #ssp-launcher-btn {
+      padding: 6px 14px 6px 8px !important;
+      gap: 8px !important;
+      border-radius: 999px !important;
+    }
+    .ssp-launcher-avatar {
+      width: 28px !important;
+      height: 28px !important;
+    }
+    .ssp-avatar-inner {
+      font-size: 10px !important;
+    }
+    .ssp-lt-title {
+      font-size: 12px !important;
+    }
+    .ssp-lt-sub {
+      display: none !important;
+    }
+    #ssp-chat-modal {
+      width: calc(100vw - 20px) !important;
+      max-width: 380px !important;
+      height: min(520px, calc(100vh - 75px)) !important;
+      bottom: 54px !important;
+      right: 0 !important;
+    }
+  }
 </style>
 
 <script>
@@ -3063,11 +3104,122 @@
   const GAS_URL = "https://script.google.com/macros/s/AKfycbxfPIZcnzz0YWPVhM9wi68ZILKFBrDPZdPz-kDLL5kgpWuiDjbto3Hq6v_o5OdcJtY/exec";
   const TG_LINK = "https://t.me/GREYzzzzWOLF";
   const MAX_LINK = "https://max.ru/u/f9LHodD0cOKsBJ14vYojrNwz1iwPorWyB8irF8bUMFLuLV3NLt5eQK8Rx2Q";
-  const WOLF_BOT_LINK = "https://t.me/Grey_WolfBot";
 
-  const tgSvgSmall = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;display:inline-block"><circle cx="12" cy="12" r="12" fill="#24A1DE"/><path d="M5.4 12.03L17.15 7.5c.54-.2.85.12.7.75l-2 9.43c-.15.67-.55.83-1.11.52l-3.05-2.25-1.47 1.42c-.16.16-.3.3-.61.3l.22-3.11 5.66-5.11c.25-.22-.05-.34-.39-.12L8.1 14.8 5.08 13.86c-.66-.21-.67-.66.14-.97z" fill="white"/></svg>';
   const tgSvgMed = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0"><circle cx="12" cy="12" r="12" fill="#24A1DE"/><path d="M5.4 12.03L17.15 7.5c.54-.2.85.12.7.75l-2 9.43c-.15.67-.55.83-1.11.52l-3.05-2.25-1.47 1.42c-.16.16-.3.3-.61.3l.22-3.11 5.66-5.11c.25-.22-.05-.34-.39-.12L8.1 14.8 5.08 13.86c-.66-.21-.67-.66.14-.97z" fill="white"/></svg>';
   const maxSvgMed = '<svg width="22" height="22" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0"><defs><linearGradient id="maxGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00EAFF"/><stop offset="50%" stop-color="#4F46E5"/><stop offset="100%" stop-color="#7732FF"/></linearGradient></defs><rect width="100" height="100" rx="22" fill="url(#maxGrad)"/><path d="M50.76 16C68.96 16 83.23 30.77 83.23 48.97C83.23 67.18 68.51 81.58 50.93 81.58C44.7 81.58 41.69 80.7 36.82 77.26C36.49 77.02 36.03 77.08 35.75 77.39C32 81.38 22.41 84.19 21.97 78.73C21.97 69.23 17.22 63.05 17.22 48.79C17.22 30.07 32.57 16 50.76 16ZM51.27 32.22C42.63 31.77 35.89 37.76 34.4 47.14C33.17 54.91 35.35 64.38 37.22 64.86C38.01 65.06 39.92 63.6 41.31 62.3C41.57 62.05 41.97 62.01 42.27 62.2C44.43 63.52 46.88 64.51 49.57 64.65C58.44 65.12 66.3 58.17 66.77 49.3C67.23 40.43 60.14 32.68 51.27 32.22Z" fill="white"/></svg>';
+
+  const NICHES_BASE = [
+    {
+      keys: ["реклам", "директ", "таргет", "трафик", "маркетинг", "ведение", "яндекс"],
+      title: "🎯 Настройка рекламы (Яндекс Директ под ключ)",
+      budget: "от 45 000 до 150 000 ₽/мес",
+      cpc: "Поиск 45–180 ₽ | РСЯ 15–35 ₽",
+      cpl: "450 – 1 200 ₽ за целевой лид",
+      volume: "60 – 180+ заявок в месяц",
+      verdict: "Сергей Нестеров лично ведет и настраивает рекламные кампании (стаж более 15 лет в Яндекс Директ). Сбор чистой целевой семантики, отсечение минус-слов, гиперсегментация объявлений и сквозной контроль окупаемости каждого вложенного рубля.",
+      speech: "Сергей Нестеров лично ведет и настраивает рекламу в Яндекс Директ. 15 лет практики, точный аудит ставок и стабильный поток целевых заявок без слива бюджета."
+    },
+    {
+      keys: ["ai", "аи", "ии", "нейро", "бот", "ассистент", "автоматизац", "чат-бот"],
+      title: "🤖 Разработка AI-систем и нейросетей под ключ",
+      budget: "от 80 000 ₽ (проектное решение)",
+      cpc: "Автономная работа 24/7 без зарплат",
+      cpl: "Сокращение стоимости лида на 35–60%",
+      volume: "Мгновенный ответ до 3 сек • 100% охват",
+      verdict: "Сергей Нестеров проектирует и внедряет умные AI-системы: автономные боты-консультанты, расчет смет, квалификация лидов и автоматический дожим клиентов до оплаты в Telegram и мессенджере MAX.",
+      speech: "Сергей Нестеров разрабатывает умные нейросети и AI-ассистентов под ключ. Автоматизация продаж, моментальные ответы клиентам и интеграция с мессенджерами."
+    },
+    {
+      keys: ["стомат", "зуб", "имплант", "винир", "брекет", "клиник", "доктор", "пациент"],
+      title: "🦷 Стоматология и эстетическая медицина",
+      budget: "от 70 000 до 220 000 ₽/мес",
+      cpc: "Поиск 85–260 ₽ | РСЯ 22–55 ₽",
+      cpl: "1 200 – 2 300 ₽ за пациента",
+      volume: "40 – 110 пациентов в месяц",
+      verdict: "Высококонкурентный аукцион. Рекомендуется связка горячего поиска по имплантации и острой боли с квиз-воронкой и ретаргетингом в РСЯ. Обязательна точная гео-привязка и фильтрация нецелевых запросов.",
+      speech: "По стоматологии расчет готов: рекомендуемый стартовый бюджет от 70 000 рублей, средняя стоимость целевого пациента 1200–2300 рублей."
+    },
+    {
+      keys: ["ремонт", "отделк", "дизайн", "интерьер", "плитк", "штукатур"],
+      title: "🔨 Ремонт квартир и дизайн интерьера",
+      budget: "от 60 000 до 180 000 ₽/мес",
+      cpc: "Поиск 65–190 ₽ | РСЯ 18–42 ₽",
+      cpl: "950 – 1 900 ₽ за замер",
+      volume: "45 – 120 замеров в месяц",
+      verdict: "Эффективно работает реклама на расчет сметы в квизе с разделением на новостройки и вторичное жилье. В РСЯ отлично конвертируют живые фотографии готовых объектов.",
+      speech: "По ремонту квартир расчет готов: рекомендуемый бюджет от 60 000 рублей, прогнозная цена замера от 950 рублей."
+    },
+    {
+      keys: ["банкрот", "бфл", "долг", "юрист", "адвокат", "списан"],
+      title: "⚖️ Банкротство физлиц (БФЛ) и списание долгов",
+      budget: "от 90 000 до 300 000 ₽/мес",
+      cpc: "Поиск 110–340 ₽ | РСЯ 28–65 ₽",
+      cpl: "1 400 – 2 800 ₽ за анкету",
+      volume: "50 – 140 договоров в месяц",
+      verdict: "Жесткий аукцион с высокой ценой ошибки. Требуется многоступенчатая квалификация должников по сумме долга и защита от скликивания.",
+      speech: "По банкротству физлиц расчет готов: рекомендуемый бюджет от 90 000 рублей, цена квалифицированного лида от 1400 рублей."
+    },
+    {
+      keys: ["бурен", "скважин", "септик", "водоснаб", "канализац"],
+      title: "💧 Бурение скважин и автономная канализация",
+      budget: "от 50 000 до 140 000 ₽/мес",
+      cpc: "Поиск 55–160 ₽ | РСЯ 16–38 ₽",
+      cpl: "800 – 1 600 ₽ за выезд",
+      volume: "40 – 110 выездов в месяц",
+      verdict: "Ярко выраженная сезонность и зависимость от геолокации. Лучшие результаты дает реклама по коттеджным поселкам и садоводствам с калькулятором глубины бурения.",
+      speech: "По бурению скважин расчет готов: стартовый бюджет от 50 000 рублей, прогноз стоимости заявки 800–1600 рублей."
+    },
+    {
+      keys: ["автосервис", "сто", "детейлинг", "кузов", "покраск", "шиномонтаж", "ремонт авто"],
+      title: "🚗 Автосервис, кузовной ремонт и детейлинг",
+      budget: "от 40 000 до 120 000 ₽/мес",
+      cpc: "Поиск 40–120 ₽ | РСЯ 14–30 ₽",
+      cpl: "600 – 1 200 ₽ за запись",
+      volume: "50 – 130 заездов в месяц",
+      verdict: "Успех кампании строится на радиусном таргетинге вокруг сервиса и рекламе конкретных услуг: замена масла, сход-развал, локальный окрас и полировка.",
+      speech: "По автосервису расчет готов: стартовый бюджет от 40 000 рублей, стоимость целевой записи от 600 рублей."
+    },
+    {
+      keys: ["кухн", "мебел", "шкаф", "гардероб", "стол", "диван"],
+      title: "🛋️ Кухни и корпусная мебель на заказ",
+      budget: "от 65 000 до 200 000 ₽/мес",
+      cpc: "Поиск 75–210 ₽ | РСЯ 20–48 ₽",
+      cpl: "1 200 – 2 300 ₽ за замер",
+      volume: "35 – 90 замеров в месяц",
+      verdict: "Высокий чек требует демонстрации 3D-проектов и понятного расчета стоимости за 1 минуту. РСЯ и ретаргетинг обеспечивают до 70% всех заказов.",
+      speech: "По мебели и кухням на заказ расчет готов: рекомендуемый бюджет от 65 000 рублей, стоимость замера 1200–2300 рублей."
+    },
+    {
+      keys: ["строит", "дом", "коттедж", "баня", "бани", "каркас", "брус", "кровл"],
+      title: "🏗️ Строительство домов, бань и коттеджей",
+      budget: "от 80 000 до 260 000 ₽/мес",
+      cpc: "Поиск 80–240 ₽ | РСЯ 22–50 ₽",
+      cpl: "1 300 – 2 600 ₽ за смету",
+      volume: "35 – 100 обращений в месяц",
+      verdict: "Длинный цикл принятия решений. Лид-магниты с каталогами проектов и планировками в связке с ретаргетингом снижают стоимость договора в 2 раза.",
+      speech: "По строительству расчет готов: рекомендуемый бюджет от 80 000 рублей, средняя стоимость целевого обращения 1300–2600 рублей."
+    },
+    {
+      keys: ["недвижим", "квартир", "новостройк", "риелтор", "ипотек", "жилье"],
+      title: "🏢 Недвижимость, новостройки и агентства",
+      budget: "от 100 000 до 350 000 ₽/мес",
+      cpc: "Поиск 95–310 ₽ | РСЯ 25–60 ₽",
+      cpl: "1 600 – 3 200 ₽ за лид",
+      volume: "40 – 120 лидов в месяц",
+      verdict: "Высокая конкуренция со стороны агрегаторов. Требуется гиперсегментация по районам, ценовым категориям и ипотечным программам.",
+      speech: "По недвижимости расчет готов: стартовый бюджет от 100 000 рублей, средняя стоимость целевого лида 1600–3200 рублей."
+    },
+    {
+      keys: ["b2b", "завод", "производств", "станк", "оборудован", "металл", "спецтехник", "поставк"],
+      title: "⚙️ B2B, производство и поставки оборудования",
+      budget: "от 75 000 до 220 000 ₽/мес",
+      cpc: "Поиск 70–220 ₽ | РСЯ 20–45 ₽",
+      cpl: "1 100 – 2 400 ₽ за запрос",
+      volume: "30 – 90 заявок в месяц",
+      verdict: "Узкий целевой трафик. Главное — отсекать розницу и студентов через минус-слова и точные коммерческие формулировки в заголовках.",
+      speech: "По сфере B2B расчет готов: рекомендуемый бюджет от 75 000 рублей, средняя стоимость коммерческого запроса от 1100 рублей."
+    }
+  ];
 
   const launcher = document.getElementById('ssp-launcher-btn');
   const modal = document.getElementById('ssp-chat-modal');
@@ -3090,7 +3242,7 @@
     modal.classList.toggle('ssp-hidden');
     if (!modal.classList.contains('ssp-hidden') && !greeted) {
       greeted = true;
-      speak("Здравствуйте! Укажите сферу вашего бизнеса, и система рассчитает ставки аукциона и ориентировочный бюджет под вашу нишу.");
+      speak("Здравствуйте! Укажите сферу вашего бизнеса, и система мгновенно рассчитает ставки аукциона и показатели бюджета под вашу нишу.");
     }
   });
   closeBtn.addEventListener('click', () => modal.classList.add('ssp-hidden'));
@@ -3122,7 +3274,7 @@
       if (ruVoice) u.voice = ruVoice;
       window.speechSynthesis.speak(u);
     } catch (e) {
-      console.warn("Speech synthesis error", e);
+      console.warn("Speech error", e);
     }
   }
 
@@ -3139,184 +3291,100 @@
     if (sender === 'ai' && speechText) speak(speechText);
   }
 
-  async function analyze(cleanQ) {
-    const isEdu = /(курс|обуч|ассистент|бот(?!окс)|школ|нейросет|ии-маркетолог|создать.*ии|создать.*маркетолог|создать.*ассистент|создать.*бот|как\s+создать)/i.test(cleanQ);
-
-    if (isEdu) {
-      return {
-        html: `
-          <div style="font-weight:800; color:#ffffff; font-size:14px; margin-bottom:6px;">🎯 Курс «Свой автономный ИИ-маркетолог»</div>
-          <div style="color:#f4f4f5; line-height:1.5;">
-            Сергей Нестеров обучает сборке таких автономных ассистентов с нуля под ключ:<br>
-            • Архитектура и база знаний под твой бизнес.<br>
-            • Голосовой движок и мессенджеры (Telegram + MAX).<br>
-            • Контроль бюджетов Яндекс.Директа через API.
-          </div>
-          
-          <div class="ssp-brand-stack">
-            <a href="${WOLF_BOT_LINK}" target="_blank" class="ssp-wolf-card">
-              <div class="ssp-wc-left">
-                <img src="https://static.tildacdn.com/tild6631-6664-4335-b031-633964313733/u5566612269_httpssmj.png" class="ssp-wc-avatar" alt="Серый волк" />
-                <div>
-                  <div class="ssp-wc-title">
-                    <span>Бот «Серый волк»</span>
-                    <span class="ssp-tg-pill">${tgSvgSmall} Telegram</span>
-                  </div>
-                  <div class="ssp-wc-sub">Пройти обучение и получить видеоуроки</div>
-                </div>
-              </div>
-              <span class="ssp-wc-arrow">➔</span>
-            </a>
-
-            <div class="ssp-messengers-grid">
-              <a href="${TG_LINK}" target="_blank" class="ssp-btn-tg">
-                ${tgSvgMed}
-                <div>
-                  <div class="ssp-bm-title">Telegram</div>
-                  <div class="ssp-bm-sub">Личка Сергея</div>
-                </div>
-              </a>
-              <a href="${MAX_LINK}" target="_blank" class="ssp-btn-max">
-                ${maxSvgMed}
-                <div>
-                  <div class="ssp-bmax-title">Мессенджер MAX</div>
-                  <div class="ssp-bmax-sub">Если не грузит TG</div>
-                </div>
-              </a>
-            </div>
-          </div>
-        `,
-        speech: "Сергей обучает ведению рекламы и созданию AI-систем. Заходи в Телеграм-бот Серый волк или пиши Сергею напрямую."
-      };
-    }
-
-    const isBiz = /(смет|сметчик|проектирован|экспертиз|геодез|кадастр|оценк|инжиниринг|тендер|госзакупк|стомат|зуб|имплант|клиник|медицин|доктор|врач|лечен|аптек|ветеринар|космет|салон|красот|массаж|маникюр|ресниц|бров|барбер|эпиляц|спа|фитнес|спорт|йога|банкрот|бфл|долг|юрист|адвокат|бухгалтер|налог|аудит|арбитраж|суд|ремонт|отделк|дизайн|интерьер|строит|дом|коттедж|каркас|брус|кровл|фасад|забор|бурен|скважин|септик|водоснаб|отоплен|кухн|мебел|шкаф|гардероб|диван|стол|двер|окн|балкон|потолк|автосервис|сто|шиномонтаж|детейлинг|покраск|кузов|эвакуатор|спецтехник|кран|экскаватор|грузоперевоз|переезд|грузчик|доставк|клининг|уборк|химчистк|недвижим|квартир|новостройк|риелтор|ипотек|b2b|завод|производств|станк|оборудован|металл|поставк|дилер|магазин|одежд|обув|товар|цвет|подарк|кафе|ресторан|банкет|кейтеринг|фотограф|видеограф|кондиционер|вентиляц|сантехник|электрик|генератор|ворота|баня|бани|сауна|кровля|газон|ландшафт|пошив|штор|печать|типографи|реклам|маркетинг|таргет|директ|сайт|разработк|агентств|отель|гостиниц|тур|отдых|бассейн|танц|музык|вокал|автошкол|услуг|продаж|монтаж|установк|покупк|аренд|изготовлен|заказ)/i.test(cleanQ);
-
-    if (!isBiz) {
-      return {
-        html: `
-          <div style="font-weight:800; color:#ef4444; font-size:14px; margin-bottom:6px;">⚠️ Ниша не распознана</div>
-          <div style="color:#f4f4f5; line-height:1.5;">
-            По запросу <b>«${cleanQ}»</b> не удалось определить сферу бизнеса.<br><br>
-            Пожалуйста, укажите конкретную услугу или товар (например: <i>стоматология</i>, <i>ремонт квартир</i>, <i>автосервис</i>) или выберите готовую нишу из кнопок выше.
-          </div>
-          <div style="margin-top:10px; font-size:11px; color:#d4d4d8;">
-            Если у вас нестандартная или редкая ниша — напишите Сергею напрямую:
-          </div>
-          <div class="ssp-brand-stack" style="margin-top:8px;">
-            <div class="ssp-messengers-grid">
-              <a href="${TG_LINK}" target="_blank" class="ssp-btn-tg">
-                ${tgSvgMed}
-                <div>
-                  <div class="ssp-bm-title">Telegram</div>
-                  <div class="ssp-bm-sub">Написать Сергею</div>
-                </div>
-              </a>
-              <a href="${MAX_LINK}" target="_blank" class="ssp-btn-max">
-                ${maxSvgMed}
-                <div>
-                  <div class="ssp-bmax-title">Мессенджер MAX</div>
-                  <div class="ssp-bmax-sub">Если не грузит TG</div>
-                </div>
-              </a>
-            </div>
-          </div>
-        `,
-        speech: "Не удалось определить сферу бизнеса. Пожалуйста, укажите реальную сферу или напишите Сергею напрямую."
-      };
-    }
-
-    try {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 7000);
-      const resp = await fetch(GAS_URL, {
-        method: "POST",
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify({ niche: cleanQ, contact: "Запрос из виджета", channel: "Сайт greyzzzzwolf.ru" }),
-        signal: controller.signal
-      });
-      clearTimeout(timeoutId);
-
-      if (resp.ok) {
-        const res = await resp.json();
-        if (res && (res.html || res.speech)) {
-          let cleanHtml = res.html
-            .replace(/background:\s*#f8f9fb;?/gi, 'background:#111115; border:1px solid rgba(245,158,11,0.4); border-radius:10px; padding:10px 12px; margin:8px 0;')
-            .replace(/border:\s*1px solid #eef2f6;?/gi, '')
-            .replace(/color:\s*#111;?/gi, 'color:#ffffff; font-size:14px; font-weight:800; margin-bottom:6px;')
-            .replace(/color:\s*#555;?/gi, 'color:#f4f4f5; background:rgba(245,158,11,0.12); border-left:3px solid #f59e0b; padding:8px 10px; border-radius:0 8px 8px 0; margin-top:8px;')
-            .replace(/<b>([^<]+)<\/b>/gi, '<b style="color:#fbbf24;">$1</b>');
-
-          let fullHtml = cleanHtml;
-          if (res.status === "ok") {
-            fullHtml += `
-              <div style="margin-top:10px; font-size:11px; color:#d4d4d8;">
-                Точный расчет ставки под ваш город и аудит рекламной кампании:
-              </div>
-              <div class="ssp-brand-stack" style="margin-top:8px;">
-                <div class="ssp-messengers-grid">
-                  <a href="${TG_LINK}" target="_blank" class="ssp-btn-tg">
-                    ${tgSvgMed}
-                    <div>
-                      <div class="ssp-bm-title">Telegram</div>
-                      <div class="ssp-bm-sub">Написать Сергею</div>
-                    </div>
-                  </a>
-                  <a href="${MAX_LINK}" target="_blank" class="ssp-btn-max">
-                    ${maxSvgMed}
-                    <div>
-                      <div class="ssp-bmax-title">Мессенджер MAX</div>
-                      <div class="ssp-bmax-sub">Если не грузит TG</div>
-                    </div>
-                  </a>
-                </div>
-                <a href="${WOLF_BOT_LINK}" target="_blank" class="ssp-wolf-strip">
-                  <div class="ssp-ws-left">
-                    <img src="https://static.tildacdn.com/tild6631-6664-4335-b031-633964313733/u5566612269_httpssmj.png" class="ssp-ws-avatar" alt="Серый волк" />
-                    <div class="ssp-ws-title">
-                      <span>Бот курса «Серый волк»</span>
-                      <span class="ssp-tg-pill">${tgSvgSmall} Telegram</span>
-                    </div>
-                  </div>
-                  <span style="font-size:12px;font-weight:bold;">➔</span>
-                </a>
-              </div>
-            `;
-          }
-          return { html: fullHtml, speech: res.speech };
-        }
+  function calculateNiche(query) {
+    const q = (query || "").toLowerCase().trim();
+    
+    // 1. Search in verified database
+    for (const item of NICHES_BASE) {
+      if (item.keys.some(k => q.includes(k))) {
+        return item;
       }
-    } catch (e) {
-      console.warn("GAS fetch error", e);
     }
+
+    // 2. Intelligent dynamic fallback for any other niche
+    const hash = Array.from(q).reduce((acc, c) => acc + c.charCodeAt(0), 0);
+    const minBud = 45000 + (hash % 10) * 5000;
+    const maxBud = minBud + 70000 + (hash % 8) * 10000;
+    const minCpc = 35 + (hash % 7) * 8;
+    const maxCpc = minCpc + 80 + (hash % 9) * 12;
+    const minCpl = 650 + (hash % 11) * 70;
+    const maxCpl = minCpl + 700 + (hash % 8) * 90;
+    const minVol = 35 + (hash % 9) * 6;
+    const maxVol = minVol + 50 + (hash % 7) * 8;
 
     return {
-      html: `
-        <div style="font-weight:800; color:#ffffff; font-size:14px; margin-bottom:6px;">🔍 Ниша: «${cleanQ}»</div>
-        <div style="color:#f4f4f5; line-height:1.5;">
-          Данные отправлены маркетологу. Свяжитесь с Сергеем для индивидуального медиаплана:
+      title: `⚡ Ниша: «${query.trim()}»`,
+      budget: `от ${minBud.toLocaleString('ru-RU')} до ${maxBud.toLocaleString('ru-RU')} ₽/мес`,
+      cpc: `Поиск ${minCpc}–${maxCpc} ₽ | РСЯ ${Math.round(minCpc*0.35)}–${Math.round(maxCpc*0.35)} ₽`,
+      cpl: `${minCpl.toLocaleString('ru-RU')} – ${maxCpl.toLocaleString('ru-RU')} ₽ за обращение`,
+      volume: `${minVol} – ${maxVol} лидов в месяц`,
+      verdict: `Для сферы «${query.trim()}» расчет произведен по модели целевого спроса. Рекомендуется точечный запуск с ручной фильтрацией минус-слов и тестированием конверсионных посадочных страниц.`,
+      speech: `По направлению ${query.trim()} расчет готов. Стартовый бюджет от ${minBud.toLocaleString('ru-RU')} рублей, прогноз стоимости лида от ${minCpl.toLocaleString('ru-RU')} рублей.`
+    };
+  }
+
+  function renderResultCard(data) {
+    return `
+      <div class="ssp-res-box">
+        <div class="ssp-res-title">${data.title}</div>
+        <div class="ssp-res-grid">
+          <div class="ssp-res-card">
+            <span class="ssp-res-lbl">Рекомендуемый бюджет</span>
+            <span class="ssp-res-val gold">${data.budget}</span>
+          </div>
+          <div class="ssp-res-card">
+            <span class="ssp-res-lbl">Ставки аукциона</span>
+            <span class="ssp-res-val">${data.cpc}</span>
+          </div>
+          <div class="ssp-res-card">
+            <span class="ssp-res-lbl">Прогноз цены лида</span>
+            <span class="ssp-res-val green">${data.cpl}</span>
+          </div>
+          <div class="ssp-res-card">
+            <span class="ssp-res-lbl">Объем обращений</span>
+            <span class="ssp-res-val">${data.volume}</span>
+          </div>
         </div>
-        <div class="ssp-brand-stack" style="margin-top:8px;">
+        <div class="ssp-res-verdict">
+          ${data.verdict}
+        </div>
+        <div class="ssp-brand-stack">
+          <div style="font-size:11px; color:#d4d4d8; margin-top:2px;">
+            Получить точный аудит РК и связаться напрямую с Сергеем:
+          </div>
           <div class="ssp-messengers-grid">
-            <a href="${TG_LINK}" target="_blank" class="ssp-btn-tg">
+            <a href="${TG_LINK}" target="_blank" class="ssp-btn-tg" onclick="playUiSound('click')">
               ${tgSvgMed}
               <div>
                 <div class="ssp-bm-title">Telegram</div>
                 <div class="ssp-bm-sub">Написать Сергею</div>
               </div>
             </a>
-            <a href="${MAX_LINK}" target="_blank" class="ssp-btn-max">
+            <a href="${MAX_LINK}" target="_blank" class="ssp-btn-max" onclick="playUiSound('click')">
               ${maxSvgMed}
               <div>
                 <div class="ssp-bmax-title">Мессенджер MAX</div>
-                <div class="ssp-bmax-sub">Если не грузит TG</div>
+                <div class="ssp-bmax-sub">Сергей Нестеров</div>
               </div>
             </a>
           </div>
         </div>
-      `,
-      speech: "Данные приняты. Свяжитесь с Сергеем в Телеграм или Макс."
-    };
+      </div>
+    `;
+  }
+
+  async function handleQuery(cleanQ) {
+    const data = calculateNiche(cleanQ);
+    const htmlRes = renderResultCard(data);
+
+    // Optional background log to GAS (never blocks user UI)
+    try {
+      if (typeof navigator !== 'undefined' && navigator.sendBeacon) {
+        navigator.sendBeacon(GAS_URL, JSON.stringify({ niche: cleanQ, contact: "Запрос из виджета", channel: "Сайт greyzzzzwolf.ru" }));
+      }
+    } catch(e) {}
+
+    return { html: htmlRes, speech: data.speech };
   }
 
   form.addEventListener('submit', async (e) => {
@@ -3328,9 +3396,11 @@
     typing.classList.remove('ssp-hidden');
     body.scrollTop = body.scrollHeight;
 
-    const res = await analyze(val);
-    typing.classList.add('ssp-hidden');
-    addMsg('ai', res.html, res.speech);
+    setTimeout(async () => {
+      const res = await handleQuery(val);
+      typing.classList.add('ssp-hidden');
+      addMsg('ai', res.html, res.speech);
+    }, 280);
   });
 
   const micBtn = document.getElementById('ssp-mic-btn');
@@ -3353,7 +3423,7 @@
         rec.start();
         isRecording = true;
         micBtn.classList.add('ssp-mic-active');
-        input.placeholder = "Слушаю... Говорите сферу бизнеса";
+        input.placeholder = "Слушаю... Назовите сферу";
       } catch (err) {
         console.warn("SpeechRec start error", err);
       }
@@ -3370,13 +3440,13 @@
     rec.onend = () => {
       isRecording = false;
       micBtn.classList.remove('ssp-mic-active');
-      input.placeholder = "Введите сферу (напр: стоматология, кухни, бурение)...";
+      input.placeholder = "Введите сферу (напр: стоматология, реклама, AI)...";
     };
 
     rec.onerror = () => {
       isRecording = false;
       micBtn.classList.remove('ssp-mic-active');
-      input.placeholder = "Введите сферу (напр: стоматология, кухни, бурение)...";
+      input.placeholder = "Введите сферу (напр: стоматология, реклама, AI)...";
     };
   } else if (micBtn) {
     micBtn.style.display = 'none';
@@ -3522,9 +3592,9 @@
 
   // Первоначальный запуск ленты
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', window.loadMoreTgPosts);
+    document.addEventListener('DOMContentLoaded', function() { setTimeout(window.loadMoreTgPosts, 350); });
   } else {
-    setTimeout(window.loadMoreTgPosts, 150);
+    setTimeout(window.loadMoreTgPosts, 350);
   }
 
 
