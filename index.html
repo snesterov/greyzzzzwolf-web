@@ -3062,7 +3062,9 @@
       }
     }, { passive: true });
   })();
-<!-- МОДАЛЬНОЕ ОКНО СВЯЗИ -->
+  </script>
+
+  <!-- МОДАЛЬНОЕ ОКНО СВЯЗИ -->
   <div id="lead-modal" class="gzw-modal-backdrop">
     <div class="gzw-modal" onclick="event.stopPropagation()">
       <div style="font-size: 32px; margin-bottom: 6px;">🐺</div>
@@ -3298,15 +3300,22 @@
 
     // МОДАЛЬНОЕ ОКНО
     function openLeadModal(serviceName) {
-      playUiSound('msg');
-      document.getElementById('modal-service-name').innerText = serviceName;
-      document.getElementById('lead-modal').classList.add('open');
+      if (typeof playUiSound === 'function') playUiSound('click');
+      const modal = document.getElementById('lead-modal');
+      const title = document.getElementById('modal-service-name');
+      if (serviceName && title) {
+        title.innerText = serviceName;
+      }
+      if (modal) modal.classList.add('open');
     }
+    window.openLeadModal = openLeadModal;
 
     function closeLeadModal() {
-      playUiSound('click');
-      document.getElementById('lead-modal').classList.remove('open');
+      if (typeof playUiSound === 'function') playUiSound('click');
+      const modal = document.getElementById('lead-modal');
+      if (modal) modal.classList.remove('open');
     }
+    window.closeLeadModal = closeLeadModal;
 
     document.getElementById('lead-modal').addEventListener('click', function(e) {
       if (e.target === this) closeLeadModal();
