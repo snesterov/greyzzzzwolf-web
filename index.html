@@ -1883,13 +1883,14 @@
     .gzw-scroll-top-btn {
       left: 16px !important;
       right: auto !important;
-      bottom: 20px !important;
-      width: 50px !important;
-      height: 50px !important;
+      bottom: 76px !important;
+      width: 48px !important;
+      height: 48px !important;
+      z-index: 995 !important;
     }
     .gzw-scroll-top-btn svg {
-      width: 24px !important;
-      height: 24px !important;
+      width: 22px !important;
+      height: 22px !important;
     }
   }
 
@@ -3401,7 +3402,10 @@
       <span class="ssp-launcher-ping"></span>
     </div>
     <div class="ssp-launcher-text">
-      <div class="ssp-lt-title">AI-Аудит • Разбор бюджета в Яндекс Директ</div>
+      <div class="ssp-lt-title">
+        <span class="gzw-desk-title">AI-Аудит • Разбор бюджета в Яндекс Директ</span>
+        <span class="gzw-mob-title">AI-Разбор бюджета Директа</span>
+      </div>
       <div class="ssp-lt-sub">Расчет ставок, бюджета и лидов для России</div>
     </div>
   </button>
@@ -3498,6 +3502,7 @@
     background: #10b981; border: 2px solid #18181b; border-radius: 50%;
   }
   .ssp-lt-title { font-weight: 800; font-size: 13px; color: #f4f4f5; text-align: left; }
+  .gzw-mob-title { display: none; }
   .ssp-lt-sub { font-size: 10px; color: #fbbf24; text-align: left; }
 
   #ssp-chat-modal {
@@ -3659,24 +3664,27 @@
 
   /* Мобильная адаптация виджета */
   @media (max-width: 768px) {
+    .gzw-desk-title { display: none !important; }
+    .gzw-mob-title { display: inline !important; }
     #gzw-budget-widget {
       bottom: 14px !important;
       right: 14px !important;
     }
     #ssp-launcher-btn {
-      padding: 6px 14px 6px 8px !important;
-      gap: 8px !important;
+      padding: 6px 12px 6px 8px !important;
+      gap: 7px !important;
       border-radius: 999px !important;
     }
     .ssp-launcher-avatar {
-      width: 28px !important;
-      height: 28px !important;
+      width: 26px !important;
+      height: 26px !important;
     }
     .ssp-avatar-inner {
       font-size: 10px !important;
     }
     .ssp-lt-title {
-      font-size: 12px !important;
+      font-size: 11.5px !important;
+      white-space: nowrap !important;
     }
     .ssp-lt-sub {
       display: none !important;
