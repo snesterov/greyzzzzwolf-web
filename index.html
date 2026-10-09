@@ -1841,12 +1841,13 @@
   .gzw-scroll-top-btn {
     position: fixed;
     bottom: 28px;
-    right: 28px;
-    width: 46px;
-    height: 46px;
+    left: 28px;
+    right: auto;
+    width: 48px;
+    height: 48px;
     background: linear-gradient(135deg, rgba(20, 26, 38, 0.95) 0%, rgba(10, 13, 19, 0.98) 100%);
     border: 1.5px solid var(--gold);
-    border-radius: 6px;
+    border-radius: 8px;
     color: var(--gold);
     display: flex;
     align-items: center;
@@ -1871,8 +1872,8 @@
     transform: translateY(-2px);
   }
   .gzw-scroll-top-btn svg {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
     transition: transform 0.2s;
   }
   .gzw-scroll-top-btn:hover svg {
@@ -1880,9 +1881,15 @@
   }
   @media (max-width: 860px) {
     .gzw-scroll-top-btn {
-      left: 18px !important;
+      left: 16px !important;
       right: auto !important;
-      bottom: 22px !important;
+      bottom: 20px !important;
+      width: 50px !important;
+      height: 50px !important;
+    }
+    .gzw-scroll-top-btn svg {
+      width: 24px !important;
+      height: 24px !important;
     }
   }
 
