@@ -1229,6 +1229,297 @@
       }
     }
 
+    /* ========================================================================
+       AI-КЕЙСЫ И СИНХРОНИЗАЦИЯ (DOTA HUD EDITION)
+       ======================================================================== */
+    .gzw-ai-cases-section {
+      margin-top: 55px;
+      padding-top: 35px;
+      border-top: 1px solid #1f2735;
+      position: relative;
+    }
+
+    .gzw-ai-case-card {
+      background: linear-gradient(180deg, rgba(16, 21, 30, 0.95) 0%, rgba(10, 14, 20, 0.98) 100%);
+      border: 1.5px solid #2a3444;
+      border-radius: 8px;
+      padding: 24px;
+      position: relative;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .gzw-ai-case-card:hover {
+      border-color: rgba(16, 185, 129, 0.6);
+      box-shadow: 0 14px 45px rgba(0, 0, 0, 0.85), 0 0 25px rgba(16, 185, 129, 0.15);
+    }
+
+    .gzw-case-link-btn {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.45);
+      color: #34d399;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 1px;
+      padding: 11px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .gzw-case-link-btn:hover {
+      background: rgba(16, 185, 129, 0.3);
+      border-color: #34d399;
+      color: #ffffff;
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.35);
+      transform: translateY(-1px);
+    }
+
+    /* Интерактивный браузер / фрейм */
+    .gzw-hud-frame-box {
+      border: 1.5px solid #2a3444;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #090d14;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.9);
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+
+    .gzw-hud-frame-box:hover {
+      border-color: rgba(226, 177, 91, 0.6);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.95), 0 0 20px rgba(226, 177, 91, 0.18);
+    }
+
+    .gzw-hud-frame-top {
+      background: #121824;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid #1f2735;
+    }
+
+    .gzw-hud-dots {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .hud-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .dot-red { background: #ef4444; }
+    .dot-yellow { background: #f59e0b; }
+    .dot-green { background: #10b981; }
+
+    .gzw-hud-url-bar {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 13px;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.35);
+      padding: 4px 12px;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .hud-live-tag {
+      color: #10b981;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+
+    .gzw-hud-expand-btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--gold);
+      border-radius: 4px;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .gzw-hud-expand-btn:hover {
+      background: var(--gold);
+      color: #0b0e14;
+      border-color: var(--gold);
+    }
+
+    .gzw-hud-iframe-wrapper {
+      position: relative;
+      height: 440px;
+      background: #000000;
+      overflow: hidden;
+    }
+
+    .gzw-hud-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    .gzw-hud-overlay-interact {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(10, 14, 20, 0.9);
+      border: 1px solid var(--gold);
+      color: #ffffff;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8), 0 0 10px var(--gold-glow);
+      transition: all 0.2s ease;
+      z-index: 10;
+    }
+
+    .gzw-hud-overlay-interact:hover {
+      background: var(--gold);
+      color: #0b0e14;
+      transform: scale(1.05);
+    }
+
+    /* Модалка полноэкранного фрейма */
+    .gzw-frame-modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 5, 8, 0.95);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      z-index: 10008;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      box-sizing: border-box;
+    }
+
+    .gzw-frame-modal-backdrop.open {
+      display: flex;
+      animation: modalFadeIn 0.2s ease;
+    }
+
+    .gzw-frame-modal-content {
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+      height: 88vh;
+      background: #0d1219;
+      border: 1.5px solid var(--gold);
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.95), 0 0 25px rgba(226, 177, 91, 0.25);
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+
+    .gzw-fmodal-bar {
+      background: #141a26;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #1f2735;
+      gap: 12px;
+    }
+
+    .gzw-fmodal-title {
+      font-family: 'Cinzel', serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .gzw-fmodal-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .gzw-fmodal-ext-link {
+      color: #38bdf8;
+      font-size: 12px;
+      text-decoration: none;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .gzw-fmodal-ext-link:hover {
+      text-decoration: underline;
+    }
+
+    .gzw-fmodal-close {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 24px;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0 4px;
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .gzw-fmodal-close:hover {
+      color: #ffffff;
+      transform: scale(1.15);
+    }
+
+    .gzw-fmodal-iframe-box {
+      flex: 1;
+      width: 100%;
+      background: #000;
+      position: relative;
+    }
+
+    .gzw-fmodal-iframe-box iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    @media (max-width: 860px) {
+      .gzw-hud-iframe-wrapper {
+        height: 320px;
+      }
+      .gzw-frame-modal-content {
+        height: 94vh;
+        max-width: 100%;
+      }
+    }
+
     /* Кнопка гамбургера для мобильных */
     .gzw-burger {
       display: none;
@@ -2317,7 +2608,8 @@
         <button class="gzw-menu-btn" onclick="navTo('b4', this)">AI-СИСТЕМЫ</button>
         <button class="gzw-menu-btn" onclick="navTo('b5', this)">ОБУЧЕНИЕ</button>
         <button class="gzw-menu-btn" onclick="navTo('gzw-telegram-feed', this)">ЭФИР TG</button>
-        <button class="gzw-menu-btn" onclick="navTo('gzw-cases-section', this)">КЕЙСЫ</button>
+        <button class="gzw-menu-btn" onclick="navTo('gzw-cases-section', this)">РЕКЛАМА (КЕЙСЫ)</button>
+        <button class="gzw-menu-btn" onclick="navTo('gzw-ai-cases-section', this)">AI-КЕЙСЫ</button>
       </nav>
     </div>
 
@@ -2363,7 +2655,10 @@
         <span>📡</span> ЭФИР TG
       </button>
       <button class="gzw-mob-item" onclick="mobNavTo('gzw-cases-section', this)">
-        <span>🏆</span> КЕЙСЫ
+        <span>📊</span> РЕКЛАМА (КЕЙСЫ)
+      </button>
+      <button class="gzw-mob-item" onclick="mobNavTo('gzw-ai-cases-section', this)">
+        <span>🤖</span> AI-КЕЙСЫ
       </button>
     </div>
 
@@ -2554,13 +2849,13 @@
       </div>
     </section>
 
-    <!-- РАЗДЕЛ: НАШИ КЕЙСЫ И ЦИФРЫ (КАРУСЕЛЬ) -->
+    <!-- РАЗДЕЛ: РЕКЛАМНЫЕ КЕЙСЫ И ЦИФРЫ (КАРУСЕЛЬ) -->
     <section id="gzw-cases-section" class="gzw-cases-section">
       <div class="gzw-cases-header">
         <div>
-          <div class="gzw-cases-tag"><span></span> НАША ПРАКТИКА В ЦИФРАХ С 2012 ГОДА</div>
-          <h2 class="gzw-cases-title">Реальные результаты и <span>кейсы клиентов</span></h2>
-          <p class="gzw-cases-sub">Контрастные показатели, чистая статистика и проверенные решения на миллионных бюджетах</p>
+          <div class="gzw-cases-tag"><span></span> РЕКЛАМНЫЙ ТРАФИК И ЦИФРЫ С 2012 ГОДА</div>
+          <h2 class="gzw-cases-title">Результаты и <span>рекламные кейсы</span></h2>
+          <p class="gzw-cases-sub">Чистая статистика рекламных кампаний в Яндекс Директ, Google Ads, Meta и TikTok на миллионных бюджетах</p>
         </div>
         
         <!-- Общая сводка достижений -->
@@ -2942,6 +3237,133 @@
       </div>
     </div>
 
+    <!-- РАЗДЕЛ: AI-КЕЙСЫ И СИНХРОНИЗАЦИЯ -->
+    <section id="gzw-ai-cases-section" class="gzw-ai-cases-section">
+      <div class="gzw-cases-header">
+        <div>
+          <div class="gzw-cases-tag"><span></span> ИНЖЕНЕРИЯ, СИНХРОНИЗАЦИЯ И AI-АВТОМАТИЗАЦИЯ</div>
+          <h2 class="gzw-cases-title">Реальные внедрения и <span>AI-кейсы</span></h2>
+          <p class="gzw-cases-sub">Бессерверные связки мессенджеров с сайтами, умные витрины и автоматизация продаж без абонентской платы</p>
+        </div>
+
+        <div class="gzw-cases-stats-ribbon">
+          <div class="gzw-cstat-item">
+            <span class="gzw-cstat-num">0 мин</span>
+            <span class="gzw-cstat-lbl">Ручной работы / автопилот</span>
+          </div>
+          <div class="gzw-cstat-item">
+            <span class="gzw-cstat-num">0 ₽</span>
+            <span class="gzw-cstat-lbl">Серверных расходов в месяц</span>
+          </div>
+          <div class="gzw-cstat-item">
+            <span class="gzw-cstat-num">15 мин</span>
+            <span class="gzw-cstat-lbl">Цикл автообновления витрины</span>
+          </div>
+          <div class="gzw-cstat-item">
+            <span class="gzw-cstat-num">+35%</span>
+            <span class="gzw-cstat-lbl">Дожим лидов со статуса SOLD</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gzw-ai-case-card">
+        <div class="gzw-case-card-grid">
+          <div class="gzw-case-info-pane">
+            <div class="gzw-case-badge" style="border-color:#10b981; color:#10b981;">
+              <span style="background:#10b981;"></span>
+              СИНХРОНИЗАЦИЯ TELEGRAM & TILDA • RU & EN
+            </div>
+            <h3 class="gzw-case-heading">BLONDHUNTER — ЖИВАЯ ВИТРИНА ШТУЧНОГО ТОВАРА ИЗ TELEGRAM</h3>
+            <p class="gzw-case-lead">Сергей Нестеров • Архитектура решения и бессерверный стек</p>
+
+            <div class="gzw-cmetrics-grid">
+              <div class="gzw-cmetric-card">
+                <div class="gzw-cmetric-label">Ниша и чек</div>
+                <div class="gzw-cmetric-val">130 000 – 200 000 ₽</div>
+                <div class="gzw-cmetric-sub">детский славянский блонд</div>
+              </div>
+              <div class="gzw-cmetric-card">
+                <div class="gzw-cmetric-label">Управление сайтом</div>
+                <div class="gzw-cmetric-val">0 минут в день</div>
+                <div class="gzw-cmetric-sub">только посты в Telegram</div>
+              </div>
+              <div class="gzw-cmetric-card">
+                <div class="gzw-cmetric-label">Статус «SOLD»</div>
+                <div class="gzw-cmetric-val">Штамп «ПРОДАН»</div>
+                <div class="gzw-cmetric-sub">кнопка «Запросить аналог»</div>
+              </div>
+              <div class="gzw-cmetric-card">
+                <div class="gzw-cmetric-label">Мультиязычность</div>
+                <div class="gzw-cmetric-val">RU + EN WhatsApp</div>
+                <div class="gzw-cmetric-sub">автоподстановка лота</div>
+              </div>
+            </div>
+
+            <p class="gzw-case-desc">
+              <strong>Проблема:</strong> каждый срез волос уникален и продается за считанные часы прямо из Telegram-канала. Ручной перенос фото, описаний и цен в Тильду отнимал часы, а сайт быстро становился неактуальным.<br>
+              <strong>Решение:</strong> бессерверный парсер GitHub Actions (0 ₽ расходов на серверы) каждые 15 минут собирает последние 12 лотов с оригинальными HD-фото. При добавлении в пост слова «Продан» или «Sold» сайт мгновенно накладывает красный штамп поверх фото, а кнопка заказа трансформируется в «Запросить аналог» (+35% дожим лидов). Встроена англоязычная витрина с переходом в WhatsApp и видео 9:16 Kinescope.
+            </p>
+
+            <div class="gzw-case-action-row">
+              <button class="btn-action" onclick="openLeadModal('AI-Синхронизация Telegram с сайтом (Кейс Blondhunter)')">Обсудить вашу задачу</button>
+              <button class="gzw-case-zoom-btn" onclick="openAiFrameModal('https://blondhunter.com/', 'BLONDHUNTER — Синхронизация Telegram и Tilda')">🖥️ Живой просмотр витрины</button>
+              <a href="https://blondhunter.com/" target="_blank" rel="noopener" class="gzw-case-link-btn" title="Открыть blondhunter.com в новой вкладке">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                blondhunter.com
+              </a>
+            </div>
+          </div>
+
+          <div class="gzw-case-visual-pane">
+            <div class="gzw-hud-frame-box">
+              <div class="gzw-hud-frame-top">
+                <div class="gzw-hud-dots">
+                  <span class="hud-dot dot-red"></span>
+                  <span class="hud-dot dot-yellow"></span>
+                  <span class="hud-dot dot-green"></span>
+                </div>
+                <div class="gzw-hud-url-bar">
+                  <span class="hud-lock">🔒</span> https://blondhunter.com/
+                  <span class="hud-live-tag">● LIVE SYNC</span>
+                </div>
+                <button class="gzw-hud-expand-btn" onclick="openAiFrameModal('https://blondhunter.com/', 'BLONDHUNTER — Синхронизация Telegram и Tilda')" title="Развернуть во весь экран" aria-label="Развернуть во весь экран">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+              </div>
+
+              <div class="gzw-hud-iframe-wrapper">
+                <iframe src="https://blondhunter.com/" class="gzw-hud-iframe" title="Витрина Blondhunter" loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+                <div class="gzw-hud-overlay-interact" onclick="openAiFrameModal('https://blondhunter.com/', 'BLONDHUNTER — Синхронизация Telegram и Tilda')">
+                  <span>🔍 Нажмите для полноэкранного изучения</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Полноэкранный модальный фрейм для AI-кейсов -->
+    <div id="gzw-ai-frame-modal" class="gzw-frame-modal-backdrop" onclick="closeAiFrameModal()">
+      <div class="gzw-frame-modal-content" onclick="event.stopPropagation()">
+        <div class="gzw-fmodal-bar">
+          <div class="gzw-fmodal-title">
+            <span>🖥️</span>
+            <span id="gzw-fmodal-title">Интерактивный просмотр витрины</span>
+          </div>
+          <div class="gzw-fmodal-actions">
+            <a id="gzw-fmodal-ext-link" href="https://blondhunter.com/" target="_blank" rel="noopener" class="gzw-fmodal-ext-link">
+              <span>↗</span> Открыть сайт в новой вкладке
+            </a>
+            <button class="gzw-fmodal-close" onclick="closeAiFrameModal()" title="Закрыть (Esc)">✕</button>
+          </div>
+        </div>
+        <div class="gzw-fmodal-iframe-box">
+          <iframe id="gzw-fmodal-iframe" src="" title="Интерактивный фрейм сайта" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+        </div>
+      </div>
+    </div>
+
   <script>
   // ========================================================================
   // ИНТЕРАКТИВ КАРУСЕЛИ КЕЙСОВ И ПОЛНОЭКРАННОГО РЕЖИМА
@@ -3123,6 +3545,35 @@
       }
     }, { passive: true });
   })();
+
+  // Интерактивный полноэкранный фрейм для AI-кейсов
+  function openAiFrameModal(url, title) {
+    if (typeof playUiSound === 'function') playUiSound('msg');
+    var m = document.getElementById('gzw-ai-frame-modal');
+    var f = document.getElementById('gzw-fmodal-iframe');
+    var t = document.getElementById('gzw-fmodal-title');
+    var l = document.getElementById('gzw-fmodal-ext-link');
+    if (f && url && (!f.src || f.src === 'about:blank' || f.src !== url)) {
+      f.src = url;
+    }
+    if (t && title) t.textContent = title;
+    if (l && url) l.href = url;
+    if (m) m.classList.add('open');
+  }
+  window.openAiFrameModal = openAiFrameModal;
+
+  function closeAiFrameModal() {
+    if (typeof playUiSound === 'function') playUiSound('click');
+    var m = document.getElementById('gzw-ai-frame-modal');
+    if (m) m.classList.remove('open');
+  }
+  window.closeAiFrameModal = closeAiFrameModal;
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeAiFrameModal();
+    }
+  });
   </script>
 
   <!-- МОДАЛЬНОЕ ОКНО СВЯЗИ -->
