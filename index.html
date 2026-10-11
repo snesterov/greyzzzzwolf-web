@@ -255,8 +255,84 @@
       line-height: 1.6;
     }
 
-    
-    
+    /* Раскладка главного баннера с видео */
+    .hero-banner-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .hero-banner-col-text {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .hero-banner-col-video {
+      flex-shrink: 0;
+      width: 290px;
+    }
+
+    .hero-video-box {
+      background: rgba(13, 17, 23, 0.95);
+      border: 1px solid rgba(226, 177, 91, 0.35);
+      border-radius: 12px;
+      padding: 6px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 16px rgba(226, 177, 91, 0.12);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hero-video-box:hover {
+      border-color: var(--gold);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.7), 0 0 22px rgba(226, 177, 91, 0.25);
+    }
+
+    .hero-video-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--gold);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 2px 6px 6px 4px;
+    }
+
+    .hero-video-dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #10b981;
+      animation: gzwPulse 2s infinite;
+    }
+
+    .hero-video-player-wrap {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 */
+      border-radius: 8px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .hero-video-player-wrap iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 8px;
+      display: block;
+    }
+
     /* Блок: Опыт в цифрах с 2012 года */
     .hero-stats-box {
       margin-top: 20px;
@@ -1697,6 +1773,16 @@
       .gzw-card {
         grid-template-columns: 1fr;
       }
+      .hero-banner-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+      }
+      .hero-banner-col-video {
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+      }
       .hero-title {
         font-size: 22px;
       }
@@ -2695,11 +2781,33 @@
 
     <!-- ГЛАВНЫЙ БАННЕР -->
     <div id="hero-all" class="hero-banner">
-      <div class="hero-tag">Услуги и сопровождение • Сергей Нестеров</div>
-      <h1 class="hero-title">Маркетинг без воды и слива бюджета</h1>
-      <p class="hero-desc">
-        Точечная настройка рекламы, привлечение живой аудитории через парсинг и приглашения, проектирование AI-систем и персональное ведение рекламных кампаний.
-      </p>
+      <div class="hero-banner-row">
+        <div class="hero-banner-col-text">
+          <div class="hero-tag">Услуги и сопровождение • Сергей Нестеров</div>
+          <h1 class="hero-title">Маркетинг без воды и слива бюджета</h1>
+          <p class="hero-desc">
+            Точечная настройка рекламы, привлечение живой аудитории через парсинг и приглашения, проектирование AI-систем и персональное ведение рекламных кампаний.
+          </p>
+        </div>
+
+        <div class="hero-banner-col-video">
+          <div class="hero-video-box">
+            <div class="hero-video-badge">
+              <span class="hero-video-dot"></span> AI-АВАТАР ВОЛК
+            </div>
+            <div class="hero-video-player-wrap">
+              <iframe
+                id="hero-kinescope-player"
+                src="https://kinescope.io/embed/8oArn482YqLHTXEQSkJf7t?autoplay=1&muted=1&loop=1&controls=0&ui=0"
+                allow="autoplay; fullscreen; picture-in-picture; encrypted-media;"
+                allowfullscreen
+                loading="lazy"
+                title="AI Аватар Волк">
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- ПРАКТИКА В ЦИФРАХ С 2012 ГОДА -->
       <div class="hero-stats-box">
