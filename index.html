@@ -1320,29 +1320,70 @@
        AI-КЕЙСЫ И СИНХРОНИЗАЦИЯ (DOTA HUD EDITION)
        ======================================================================== */
     
-    /* Стили карусели AI-кейсов */
+    /* Стили карусели AI-кейсов (полная ширина и боковые отступы под стрелки) */
     .gzw-ai-carousel-wrapper {
+      position: relative;
+      background: linear-gradient(180deg, rgba(16, 21, 30, 0.95) 0%, rgba(10, 13, 19, 0.98) 100%);
+      border: 1px solid #2d3848;
       border-top: 2px solid #10b981;
+      border-radius: 8px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75);
+      padding: 24px 64px;
+      overflow: hidden;
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+      display: block !important;
+    }
+    .gzw-ai-slides-box {
+      width: 100% !important;
+      position: relative;
+      min-height: 480px;
+    }
+    .gzw-ai-slide {
+      width: 100% !important;
     }
     .gzw-ai-carousel-wrapper .gzw-ai-case-card {
       border: none !important;
       background: transparent !important;
       padding: 0 !important;
       box-shadow: none !important;
+      width: 100% !important;
     }
     .gzw-ai-carousel-wrapper .gzw-case-arrow {
-      border-color: #10b981;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 25;
+      width: 46px;
+      height: 46px;
+      background: rgba(12, 17, 24, 0.95);
+      border: 1.5px solid #10b981;
       color: #10b981;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.85), 0 0 14px rgba(16, 185, 129, 0.35);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.2s ease;
+    }
+    .gzw-ai-carousel-wrapper .gzw-case-prev {
+      left: 12px;
+    }
+    .gzw-ai-carousel-wrapper .gzw-case-next {
+      right: 12px;
     }
     .gzw-ai-carousel-wrapper .gzw-case-arrow:hover {
       background: #10b981;
       color: #0a0e14;
+      transform: translateY(-50%) scale(1.1);
       box-shadow: 0 6px 25px rgba(16, 185, 129, 0.65);
     }
     .gzw-ai-dots-bar .gzw-ai-cdot.active {
       background: #10b981;
       box-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
+      width: 42px;
     }
     .gzw-ai-dots-bar .gzw-case-dot-nav {
       border-color: #10b981;
@@ -1352,6 +1393,15 @@
     .gzw-ai-dots-bar .gzw-case-dot-nav:hover {
       background: #10b981;
       color: #0a0e14;
+    }
+
+    @media (max-width: 900px) {
+      .gzw-ai-carousel-wrapper {
+        padding: 20px 14px;
+      }
+      .gzw-ai-carousel-wrapper .gzw-case-arrow {
+        display: none !important;
+      }
     }
 
     .gzw-ai-cases-section {
@@ -3458,6 +3508,8 @@
             <span class="gzw-cstat-num">+35%</span>
             <span class="gzw-cstat-lbl">Дожим лидов со статуса SOLD</span>
           </div>
+        </div>
+      </div>
 
       <!-- AI-КЕЙСЫ КАРУСЕЛЬ С ПЕРЕМОТКОЙ ВПРАВО/ВЛЕВО -->
       <div class="gzw-cases-carousel-wrapper gzw-ai-carousel-wrapper" id="gzw-ai-cases-carousel">
@@ -4276,7 +4328,39 @@
     }
 
     // МОДАЛЬНОЕ ОКНО
-    function openLeadModal(serviceName) {
+    
+  // ========================================================================
+  // ШЛЮЗ УВЕДОМЛЕНИЙ В TELEGRAM ЧЕРЕЗ @Grey_WolfBot (RENDER 24/7)
+  // ========================================================================
+  function sendWolfHuntNotify(serviceName, extra) {
+    var adminChatId = "684683297"; // Сергей Нестеров
+    var dateStr = new Date().toLocaleString("ru-RU", { timeZone: "Europe/Moscow" });
+    var msg = "🐺 <b>Новая заявка на greyzzzzwolf.ru!</b>\n\n" +
+              "📌 <b>Услуга:</b> " + (serviceName || "Консультация / Проект") + "\n" +
+              (extra ? "ℹ️ <b>Детали:</b> " + extra + "\n" : "") +
+              "⏱ <b>Время:</b> " + dateStr + " МСК\n" +
+              "🌐 <b>Источник:</b> Сайт (Шлюз Render 24/7)";
+
+    try {
+      fetch("https://wolfhunt-tg.onrender.com/api/notify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: adminChatId,
+          text: msg,
+          parse_mode: "HTML"
+        })
+      }).catch(function(e) {
+        console.warn("[WolfHunt Notify] fetch error:", e);
+      });
+    } catch(err) {
+      console.warn("[WolfHunt Notify] error:", err);
+    }
+  }
+  window.sendWolfHuntNotify = sendWolfHuntNotify;
+
+  function openLeadModal(serviceName) {
+    sendWolfHuntNotify(serviceName);
       if (typeof playUiSound === 'function') playUiSound('click');
       const modal = document.getElementById('lead-modal');
       const title = document.getElementById('lead-modal-title');
