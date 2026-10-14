@@ -1319,6 +1319,41 @@
     /* ========================================================================
        AI-КЕЙСЫ И СИНХРОНИЗАЦИЯ (DOTA HUD EDITION)
        ======================================================================== */
+    
+    /* Стили карусели AI-кейсов */
+    .gzw-ai-carousel-wrapper {
+      border-top: 2px solid #10b981;
+    }
+    .gzw-ai-carousel-wrapper .gzw-ai-case-card {
+      border: none !important;
+      background: transparent !important;
+      padding: 0 !important;
+      box-shadow: none !important;
+    }
+    .gzw-ai-carousel-wrapper .gzw-case-arrow {
+      border-color: #10b981;
+      color: #10b981;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.85), 0 0 14px rgba(16, 185, 129, 0.35);
+    }
+    .gzw-ai-carousel-wrapper .gzw-case-arrow:hover {
+      background: #10b981;
+      color: #0a0e14;
+      box-shadow: 0 6px 25px rgba(16, 185, 129, 0.65);
+    }
+    .gzw-ai-dots-bar .gzw-ai-cdot.active {
+      background: #10b981;
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
+    }
+    .gzw-ai-dots-bar .gzw-case-dot-nav {
+      border-color: #10b981;
+      color: #10b981;
+      background: rgba(16, 185, 129, 0.12);
+    }
+    .gzw-ai-dots-bar .gzw-case-dot-nav:hover {
+      background: #10b981;
+      color: #0a0e14;
+    }
+
     .gzw-ai-cases-section {
       margin-top: 55px;
       padding-top: 35px;
@@ -3423,10 +3458,20 @@
             <span class="gzw-cstat-num">+35%</span>
             <span class="gzw-cstat-lbl">Дожим лидов со статуса SOLD</span>
           </div>
-        </div>
-      </div>
 
-      <div class="gzw-ai-case-card">
+      <!-- AI-КЕЙСЫ КАРУСЕЛЬ С ПЕРЕМОТКОЙ ВПРАВО/ВЛЕВО -->
+      <div class="gzw-cases-carousel-wrapper gzw-ai-carousel-wrapper" id="gzw-ai-cases-carousel">
+        <button type="button" class="gzw-case-arrow gzw-case-prev" onclick="moveAiCaseSlide(-1)" aria-label="Предыдущий AI-кейс">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M15 19l-7-7 7-7" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button type="button" class="gzw-case-arrow gzw-case-next" onclick="moveAiCaseSlide(1)" aria-label="Следующий AI-кейс">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+
+        <div class="gzw-cases-slides-box gzw-ai-slides-box" id="gzw-ai-slides-box">
+          <!-- Слайд 1: Кейс Blondhunter -->
+          <div class="gzw-case-slide gzw-ai-slide active" data-index="0">
+            <div class="gzw-ai-case-card">
         <div class="gzw-case-card-grid">
           <div class="gzw-case-info-pane">
             <div class="gzw-case-badge" style="border-color:#10b981; color:#10b981;">
@@ -3501,9 +3546,11 @@
           </div>
         </div>
       </div>
+          </div>
 
-      <!-- Кейс 2: Бот-эксперт «Брадобрей» для 5700+ мастеров -->
-      <div class="gzw-ai-case-card" style="margin-top: 35px;">
+          <!-- Слайд 2: Кейс Брадобрей -->
+          <div class="gzw-case-slide gzw-ai-slide" data-index="1">
+            <div class="gzw-ai-case-card">
         <div class="gzw-case-card-grid">
           <div class="gzw-case-info-pane">
             <div class="gzw-case-badge" style="border-color:#38bdf8; color:#38bdf8;">
@@ -3578,6 +3625,16 @@
           </div>
         </div>
       </div>
+          </div>
+        </div>
+
+        <div class="gzw-cases-dots-bar gzw-ai-dots-bar">
+          <button type="button" class="gzw-case-dot-nav" onclick="moveAiCaseSlide(-1)" title="Предыдущий кейс" aria-label="Предыдущий кейс">❮</button>
+          <button class="gzw-cdot gzw-ai-cdot active" onclick="goToAiCaseSlide(0)" aria-label="Кейс 1: Blondhunter"></button>
+          <button class="gzw-cdot gzw-ai-cdot" onclick="goToAiCaseSlide(1)" aria-label="Кейс 2: Брадобрей"></button>
+          <button type="button" class="gzw-case-dot-nav" onclick="moveAiCaseSlide(1)" title="Следующий кейс">❯</button>
+        </div>
+      </div>
     </section>
 
     <!-- Полноэкранный модальный просмотр скриншота кейса -->
@@ -3602,6 +3659,88 @@
     </div>
 
   <script>
+  
+  // ========================================================================
+  // УПРАВЛЕНИЕ КАРУСЕЛЬЮ AI-КЕЙСОВ (ПЕРЕМОТКА ВПРАВО / ВЛЕВО)
+  // ========================================================================
+  var currentAiCaseIndex = 0;
+  var aiCaseAutoTimer = null;
+
+  function showAiCaseSlide(index) {
+    var slides = document.querySelectorAll('.gzw-ai-slide');
+    var dots = document.querySelectorAll('.gzw-ai-cdot');
+    if (!slides.length) return;
+
+    if (index >= slides.length) index = 0;
+    if (index < 0) index = slides.length - 1;
+    currentAiCaseIndex = index;
+
+    for (var i = 0; i < slides.length; i++) {
+      if (i === index) {
+        slides[i].classList.add('active');
+      } else {
+        slides[i].classList.remove('active');
+      }
+    }
+
+    for (var j = 0; j < dots.length; j++) {
+      if (j === index) {
+        dots[j].classList.add('active');
+      } else {
+        dots[j].classList.remove('active');
+      }
+    }
+  }
+  window.showAiCaseSlide = showAiCaseSlide;
+
+  function moveAiCaseSlide(delta) {
+    if (typeof playUiSound === 'function') playUiSound('click');
+    resetAiCaseTimer();
+    showAiCaseSlide(currentAiCaseIndex + delta);
+  }
+  window.moveAiCaseSlide = moveAiCaseSlide;
+
+  function goToAiCaseSlide(idx) {
+    if (typeof playUiSound === 'function') playUiSound('click');
+    resetAiCaseTimer();
+    showAiCaseSlide(idx);
+  }
+  window.goToAiCaseSlide = goToAiCaseSlide;
+
+  function resetAiCaseTimer() {
+    if (aiCaseAutoTimer) clearInterval(aiCaseAutoTimer);
+    aiCaseAutoTimer = setInterval(function() {
+      showAiCaseSlide(currentAiCaseIndex + 1);
+    }, 10000);
+  }
+  window.resetAiCaseTimer = resetAiCaseTimer;
+
+  // Touch swipe support for AI carousel
+  document.addEventListener('DOMContentLoaded', function() {
+    var box = document.getElementById('gzw-ai-cases-carousel');
+    if (!box) return;
+    var startX = 0, startY = 0;
+    box.addEventListener('touchstart', function(e) {
+      if (e.touches && e.touches[0]) {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+      }
+    }, {passive: true});
+    box.addEventListener('touchend', function(e) {
+      if (e.changedTouches && e.changedTouches[0]) {
+        var dx = e.changedTouches[0].clientX - startX;
+        var dy = e.changedTouches[0].clientY - startY;
+        if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+          if (dx < 0) {
+            moveAiCaseSlide(1);
+          } else {
+            moveAiCaseSlide(-1);
+          }
+        }
+      }
+    }, {passive: true});
+  });
+
   // ========================================================================
   // ИНТЕРАКТИВ КАРУСЕЛИ КЕЙСОВ И ПОЛНОЭКРАННОГО РЕЖИМА
   // ========================================================================
