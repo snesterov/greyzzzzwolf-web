@@ -1577,6 +1577,34 @@
       z-index: 10;
     }
 
+    
+    .gzw-hud-mobile-scroll-hint {
+      display: none;
+      position: sticky;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(9, 13, 20, 0.96) 0%, rgba(9, 13, 20, 0.82) 75%, transparent 100%);
+      padding: 8px 12px;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--gold);
+      z-index: 5;
+      border-top: 1px solid rgba(226, 177, 91, 0.25);
+      pointer-events: auto;
+    }
+    .gzw-hud-zoom-chip {
+      background: rgba(226, 177, 91, 0.16);
+      border: 1px solid var(--gold);
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-size: 10px;
+      color: #ffffff;
+      white-space: nowrap;
+    }
+
     .gzw-hud-overlay-interact:hover {
       background: var(--gold);
       color: #0b0e14;
@@ -1698,12 +1726,109 @@
     }
 
     @media (max-width: 860px) {
+      .gzw-header {
+        background: rgba(11, 14, 20, 0.98) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+      }
       .gzw-hud-iframe-wrapper {
-        height: 320px;
+        height: 380px !important;
+        max-height: 52vh !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        overscroll-behavior-y: contain !important;
+        touch-action: pan-y !important;
+        scrollbar-width: thin;
+        scrollbar-color: var(--gold) rgba(0, 0, 0, 0.4);
+      }
+      .gzw-hud-iframe-wrapper::-webkit-scrollbar {
+        width: 4px;
+      }
+      .gzw-hud-iframe-wrapper::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.4);
+      }
+      .gzw-hud-iframe-wrapper::-webkit-scrollbar-thumb {
+        background: var(--gold);
+        border-radius: 4px;
+      }
+      .gzw-hud-case-img {
+        width: 100% !important;
+        height: auto !important;
+        min-height: 100% !important;
+        object-fit: contain !important;
+        object-position: top center !important;
+        display: block !important;
+        transform: none !important;
+      }
+      .gzw-hud-overlay-interact {
+        display: none !important;
+      }
+      .gzw-hud-mobile-scroll-hint {
+        display: flex !important;
+      }
+      .gzw-frame-modal-backdrop {
+        padding: 0 !important;
+        background: rgba(3, 5, 8, 0.98) !important;
       }
       .gzw-frame-modal-content {
-        height: 94vh;
-        max-width: 100%;
+        width: 100vw !important;
+        height: 100vh !important;
+        max-width: 100vw !important;
+        max-height: 100vh !important;
+        border-radius: 0 !important;
+        border: none !important;
+        display: flex !important;
+        flex-direction: column !important;
+      }
+      .gzw-fmodal-bar {
+        padding: 10px 12px !important;
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 30 !important;
+        background: #141a26 !important;
+        flex-shrink: 0 !important;
+      }
+      .gzw-fmodal-title {
+        font-size: 13px !important;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 58vw;
+      }
+      .gzw-fmodal-actions {
+        gap: 8px !important;
+      }
+      .gzw-fmodal-ext-link {
+        font-size: 11px !important;
+        padding: 5px 8px !important;
+        white-space: nowrap;
+      }
+      .gzw-fmodal-close {
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 20px !important;
+        border-radius: 6px !important;
+        flex-shrink: 0 !important;
+      }
+      .gzw-fmodal-iframe-box {
+        display: block !important;
+        flex: 1 !important;
+        width: 100% !important;
+        height: calc(100vh - 58px) !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        overscroll-behavior-y: contain !important;
+        padding: 10px 8px 60px 8px !important;
+        box-sizing: border-box !important;
+      }
+      .gzw-fmodal-case-img {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        display: block !important;
+        margin: 0 auto !important;
       }
     }
 
@@ -2917,7 +3042,8 @@
             <div class="hero-video-player-wrap">
               <iframe
                 id="hero-kinescope-player"
-                src="https://kinescope.io/embed/8oArn482YqLHTXEQSkJf7t?autoplay=1&muted=1&loop=1&controls=0&ui=0"
+                data-src="https://kinescope.io/embed/8oArn482YqLHTXEQSkJf7t?autoplay=1&muted=1&loop=1&controls=0&ui=0"
+                src="about:blank"
                 allow="autoplay; fullscreen; picture-in-picture; encrypted-media;"
                 allowfullscreen
                 loading="lazy"
@@ -3592,6 +3718,10 @@
                 <div class="gzw-hud-overlay-interact">
                   <span>🔍 Нажмите для полноэкранного изучения</span>
                 </div>
+                              <div class="gzw-hud-mobile-scroll-hint">
+                  <span>📜 Листайте скриншот вниз</span>
+                  <span class="gzw-hud-zoom-chip">🔍 На весь экран</span>
+                </div>
               </div>
             </div>
           </div>
@@ -3673,7 +3803,11 @@
                     <div class="gzw-hud-overlay-interact">
                       <span>🔍 Нажмите для полноэкранного изучения</span>
                     </div>
-                  </div>
+                                  <div class="gzw-hud-mobile-scroll-hint">
+                  <span>📜 Листайте скриншот вниз</span>
+                  <span class="gzw-hud-zoom-chip">🔍 На весь экран</span>
+                </div>
+              </div>
                 </div>
               </div>
             </div>
@@ -3750,6 +3884,10 @@
                 <img src="https://cdn.jsdelivr.net/gh/snesterov/greyzzzzwolf-web@main/bradobrey_chat_window.png" class="gzw-hud-case-img" alt="Окно бота Брадобрей в Telegram" loading="lazy" />
                 <div class="gzw-hud-overlay-interact">
                   <span>🔍 Нажмите для полноэкранного изучения</span>
+                </div>
+                              <div class="gzw-hud-mobile-scroll-hint">
+                  <span>📜 Листайте скриншот вниз</span>
+                  <span class="gzw-hud-zoom-chip">🔍 На весь экран</span>
                 </div>
               </div>
             </div>
@@ -4072,7 +4210,11 @@
         extLink.style.display = 'none';
       }
     }
-    if (m) m.classList.add('open');
+    if (m) {
+      m.classList.add('open');
+      var box = m.querySelector('.gzw-fmodal-iframe-box');
+      if (box) box.scrollTop = 0;
+    }
   }
   window.openAiImageModal = openAiImageModal;
   window.openAiFrameModal = openAiImageModal;
@@ -5316,11 +5458,56 @@
   };
 
   // Первоначальный запуск ленты
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function() { setTimeout(window.loadMoreTgPosts, 350); });
-  } else {
-    setTimeout(window.loadMoreTgPosts, 350);
-  }
+  // 1. Интеллектуальный запуск Kinescope без задержки первого экрана
+  (function initKinescopeLazy() {
+    function loadKinescope() {
+      var iframe = document.getElementById('hero-kinescope-player');
+      if (iframe && iframe.dataset && iframe.dataset.src && (!iframe.src || iframe.src === 'about:blank' || iframe.src.indexOf('kinescope.io') === -1)) {
+        iframe.src = iframe.dataset.src;
+      }
+    }
+    if (window.requestIdleCallback) {
+      window.requestIdleCallback(loadKinescope, { timeout: 1200 });
+    } else {
+      setTimeout(loadKinescope, 750);
+    }
+  })();
+
+  // 2. Интеллектуальная загрузка Telegram-ленты только при прокрутке к разделу
+  (function initTgFeedObserver() {
+    var tgGrid = document.getElementById('gzw-tg-feed-grid');
+    if (!tgGrid) return;
+    var triggered = false;
+    function triggerFeed() {
+      if (triggered) return;
+      triggered = true;
+      if (typeof window.loadMoreTgPosts === 'function') {
+        window.loadMoreTgPosts();
+      }
+    }
+    if ('IntersectionObserver' in window) {
+      var obs = new IntersectionObserver(function(entries) {
+        if (entries[0] && entries[0].isIntersecting) {
+          triggerFeed();
+          obs.disconnect();
+        }
+      }, { rootMargin: '450px 0px' });
+      obs.observe(tgGrid);
+    } else {
+      setTimeout(triggerFeed, 1200);
+    }
+  })();
+
+  // 3. Остановка таймеров каруселей при скрытии вкладки (экономия ресурсов)
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+      if (caseAutoTimer) clearInterval(caseAutoTimer);
+      if (aiCaseAutoTimer) clearInterval(aiCaseAutoTimer);
+    } else {
+      if (typeof resetCaseTimer === 'function') resetCaseTimer();
+      if (typeof resetAiCaseTimer === 'function') resetAiCaseTimer();
+    }
+  }, { passive: true });
 
 
   // ========================================================================
