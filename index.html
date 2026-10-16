@@ -1832,6 +1832,60 @@
       }
     }
 
+    
+    /* ========================================================================
+       ЯЗЫКОВОЙ ПЕРЕКЛЮЧАТЕЛЬ И ДВУЯЗЫЧНЫЙ РЕЖИМ (RU / EN)
+       ======================================================================== */
+    .gzw-lang-toggle {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(14, 20, 32, 0.9);
+      border: 1px solid rgba(226, 177, 91, 0.45);
+      border-radius: 20px;
+      padding: 2px;
+      gap: 2px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+      user-select: none;
+    }
+    .gzw-lang-btn {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      padding: 4px 10px;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      line-height: 1;
+      font-family: inherit;
+      font-weight: inherit;
+    }
+    .gzw-lang-btn:hover {
+      color: #ffffff;
+    }
+    .gzw-lang-btn.active {
+      background: linear-gradient(135deg, var(--gold) 0%, #ca8a04 100%);
+      color: #0b0e14;
+      box-shadow: 0 0 8px rgba(226, 177, 91, 0.45);
+    }
+
+    /* Скрытие/показ языковых слоев */
+    .gzw-i18n-en { display: none !important; }
+    .gzw-i18n-ru { display: inline; }
+    div.gzw-i18n-ru, p.gzw-i18n-ru, h1.gzw-i18n-ru, h2.gzw-i18n-ru, h3.gzw-i18n-ru, section.gzw-i18n-ru { display: block; }
+    div.gzw-i18n-ru.gzw-flex { display: flex; }
+    div.gzw-i18n-ru.gzw-grid { display: grid; }
+
+    /* Активен английский режим */
+    .gzw-lang-en .gzw-i18n-ru { display: none !important; }
+    .gzw-lang-en .gzw-i18n-en { display: inline !important; }
+    .gzw-lang-en div.gzw-i18n-en, .gzw-lang-en p.gzw-i18n-en, .gzw-lang-en h1.gzw-i18n-en, .gzw-lang-en h2.gzw-i18n-en, .gzw-lang-en h3.gzw-i18n-en, .gzw-lang-en section.gzw-i18n-en { display: block !important; }
+    .gzw-lang-en div.gzw-i18n-en.gzw-flex { display: flex !important; }
+    .gzw-lang-en div.gzw-i18n-en.gzw-grid { display: grid !important; }
+
     /* Кнопка гамбургера для мобильных */
     .gzw-burger {
       display: none;
@@ -3037,7 +3091,7 @@
         <div class="hero-banner-col-video">
           <div class="hero-video-box">
             <div class="hero-video-badge">
-              <span class="hero-video-dot"></span> ШТАБ УПРАВЛЕНИЯ ТРАФИКОМ • LIVE
+              <span class="hero-video-dot"></span> <span class="gzw-i18n-ru">ШТАБ УПРАВЛЕНИЯ ТРАФИКОМ • LIVE</span><span class="gzw-i18n-en">GLOBAL TRAFFIC DISPATCH • LIVE</span>
             </div>
             <div class="hero-video-player-wrap">
               <iframe
@@ -3051,7 +3105,7 @@
               </iframe>
             </div>
             <div class="hero-video-footer">
-              <span>🛡️ Контроль связок и ставок 24/7</span>
+              <span><span class="gzw-i18n-ru">🛡️ Контроль связок и ставок 24/7</span><span class="gzw-i18n-en">🛡️ 24/7 Campaign & Bid Control</span></span>
             </div>
           </div>
         </div>
@@ -3060,7 +3114,7 @@
       <!-- ПРАКТИКА В ЦИФРАХ С 2012 ГОДА -->
       <div class="hero-stats-box">
         <div class="hero-stats-heading">
-          <span>◆</span> ПРАКТИКА В ЦИФРАХ • С 2012 ГОДА
+          <span class="gzw-i18n-ru"><span>◆</span> ПРАКТИКА В ЦИФРАХ • С 2012 ГОДА</span><span class="gzw-i18n-en"><span>◆</span> TRACK RECORD IN NUMBERS • SINCE 2012</span>
         </div>
 
         <div class="hero-stats-grid">
@@ -4238,7 +4292,7 @@
   <div id="lead-modal" class="gzw-modal-backdrop">
     <div class="gzw-modal" onclick="event.stopPropagation()">
       <div style="font-size: 32px; margin-bottom: 6px;">🐺</div>
-      <h3 class="modal-title" id="lead-modal-title">Обсудить ваш проект</h3>
+      <h3 class="modal-title" id="lead-modal-title"><span class="gzw-i18n-ru">Обсудить ваш проект</span><span class="gzw-i18n-en">Discuss Your Project</span></h3>
       <p class="modal-sub">
         <span id="modal-service-wrap" style="display: none;">Направление: <strong id="modal-service-name" style="color: var(--gold);">Реклама по России</strong>.<br></span>
         <span id="lead-modal-sub-text">Напишите Сергею Нестерову напрямую для согласования условий и запуска вашего проекта:</span>
@@ -5529,6 +5583,74 @@
       btn.classList.remove('visible');
     }
   }, { passive: true });
+
+  
+  // ========================================================================
+  // ЕДИНЫЙ ДВУЯЗЫЧНЫЙ ДВИЖОК (RU / EN) С АВТООПРЕДЕЛЕНИЕМ
+  // ========================================================================
+  function setSiteLanguage(lang, manual) {
+    var isEn = (lang === 'en');
+    var app = document.getElementById('greywolf-app') || document.body;
+    if (isEn) {
+      app.classList.add('gzw-lang-en');
+      document.body.classList.add('gzw-lang-en');
+      document.documentElement.lang = 'en';
+    } else {
+      app.classList.remove('gzw-lang-en');
+      document.body.classList.remove('gzw-lang-en');
+      document.documentElement.lang = 'ru';
+    }
+
+    // Обновление кнопок тумблера
+    var ruBtns = document.querySelectorAll('#gzw-btn-lang-ru, .gzw-lang-btn:first-child');
+    var enBtns = document.querySelectorAll('#gzw-btn-lang-en, .gzw-lang-btn:last-child');
+    ruBtns.forEach(function(b) {
+      if (isEn) b.classList.remove('active'); else b.classList.add('active');
+    });
+    enBtns.forEach(function(b) {
+      if (isEn) b.classList.add('active'); else b.classList.remove('active');
+    });
+
+    if (manual) {
+      try {
+        localStorage.setItem('gzw_user_lang', lang);
+      } catch(e) {}
+      if (typeof playUiSound === 'function') playUiSound('click');
+    }
+  }
+  window.setSiteLanguage = setSiteLanguage;
+
+  // Автоматический запуск проверки языка
+  (function initLanguageDetection() {
+    var saved = null;
+    try {
+      saved = localStorage.getItem('gzw_user_lang');
+    } catch(e) {}
+
+    // 1. Проверяем URL: если путь содержит /en или параметр ?lang=en или хеш #en
+    var path = window.location.pathname.toLowerCase();
+    var search = window.location.search.toLowerCase();
+    var hash = window.location.hash.toLowerCase();
+    if (path.indexOf('/en') !== -1 || search.indexOf('lang=en') !== -1 || hash === '#en') {
+      setSiteLanguage('en', false);
+      return;
+    }
+
+    // 2. Если сохранен ручной выбор
+    if (saved === 'en' || saved === 'ru') {
+      setSiteLanguage(saved, false);
+      return;
+    }
+
+    // 3. Считываем язык браузера
+    var navLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+    var isRuZone = navLang.indexOf('ru') === 0 || navLang.indexOf('be') === 0 || navLang.indexOf('kk') === 0 || navLang.indexOf('uk') === 0;
+    if (!isRuZone && navLang !== '') {
+      setSiteLanguage('en', false);
+    } else {
+      setSiteLanguage('ru', false);
+    }
+  })();
 
   // УПРАВЛЕНИЕ COOKIE (ЯНДЕКС-СТИЛЬ + HUD)
   function openCookieSettings() {
