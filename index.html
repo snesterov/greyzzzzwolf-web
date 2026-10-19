@@ -6329,21 +6329,11 @@
             <div class="hero-video-player-wrap">
 
               <iframe
-
                 id="hero-kinescope-player"
-
-                data-src="https://kinescope.io/embed/8oArn482YqLHTXEQSkJf7t?autoplay=1&muted=1&loop=1&controls=0&ui=0"
-
-                src="about:blank"
-
+                src="https://kinescope.io/embed/8oArn482YqLHTXEQSkJf7t?autoplay=1&muted=1&loop=1&controls=0&ui=0"
                 allow="autoplay; fullscreen; picture-in-picture; encrypted-media;"
-
                 allowfullscreen
-
-                loading="lazy"
-
                 title="Traffic Dispatch HQ">
-
               </iframe>
 
             </div>
@@ -11142,30 +11132,15 @@
 
   // 1. Интеллектуальный запуск Kinescope без задержки первого экрана
 
-  (function initKinescopeLazy() {
-
+    (function initKinescopeLazy() {
     function loadKinescope() {
-
       var iframe = document.getElementById('hero-kinescope-player');
-
-      if (iframe && iframe.dataset && iframe.dataset.src && (!iframe.src || iframe.src === 'about:blank' || iframe.src.indexOf('kinescope.io') === -1)) {
-
-        iframe.src = iframe.dataset.src;
-
+      if (iframe && (!iframe.src || iframe.src === 'about:blank' || iframe.src.indexOf('kinescope.io') === -1)) {
+        iframe.src = "https://kinescope.io/embed/8oArn482YqLHTXEQSkJf7t?autoplay=1&muted=1&loop=1&controls=0&ui=0";
       }
-
     }
-
-    if (window.requestIdleCallback) {
-
-      window.requestIdleCallback(loadKinescope, { timeout: 1200 });
-
-    } else {
-
-      setTimeout(loadKinescope, 750);
-
-    }
-
+    loadKinescope();
+    setTimeout(loadKinescope, 300);
   })();
 
 
