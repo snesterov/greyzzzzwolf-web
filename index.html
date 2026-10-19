@@ -1904,18 +1904,27 @@
     }
 
     /* Правила скрытия/отображения языков */
+    /* Языковые правила (100% надежность) */
     .gzw-t-en { display: none !important; }
-    .gzw-t-ru { display: inline; }
-    div.gzw-t-ru, p.gzw-t-ru, h1.gzw-t-ru, h2.gzw-t-ru, h3.gzw-t-ru, section.gzw-t-ru { display: block; }
-    div.gzw-t-ru.gzw-flex { display: flex; }
-    div.gzw-t-ru.gzw-grid { display: grid; }
-
-    /* Когда активен английский (.gzw-lang-en) */
-    .gzw-lang-en .gzw-t-ru { display: none !important; }
-    .gzw-lang-en .gzw-t-en { display: inline !important; }
-    .gzw-lang-en div.gzw-t-en, .gzw-lang-en p.gzw-t-en, .gzw-lang-en h1.gzw-t-en, .gzw-lang-en h2.gzw-t-en, .gzw-lang-en h3.gzw-t-en, .gzw-lang-en section.gzw-t-en { display: block !important; }
-    .gzw-lang-en div.gzw-t-en.gzw-flex { display: flex !important; }
-    .gzw-lang-en div.gzw-t-en.gzw-grid { display: grid !important; }
+    .gzw-lang-en .gzw-t-ru,
+    body.gzw-lang-en .gzw-t-ru,
+    html.gzw-lang-en .gzw-t-ru,
+    #greywolf-app.gzw-lang-en .gzw-t-ru {
+      display: none !important;
+    }
+    .gzw-lang-en .gzw-t-en,
+    body.gzw-lang-en .gzw-t-en,
+    html.gzw-lang-en .gzw-t-en,
+    #greywolf-app.gzw-lang-en .gzw-t-en {
+      display: inline !important;
+    }
+    .gzw-lang-en div.gzw-t-en, body.gzw-lang-en div.gzw-t-en, html.gzw-lang-en div.gzw-t-en, #greywolf-app.gzw-lang-en div.gzw-t-en,
+    .gzw-lang-en p.gzw-t-en, body.gzw-lang-en p.gzw-t-en, html.gzw-lang-en p.gzw-t-en, #greywolf-app.gzw-lang-en p.gzw-t-en,
+    .gzw-lang-en h1.gzw-t-en, body.gzw-lang-en h1.gzw-t-en, html.gzw-lang-en h1.gzw-t-en, #greywolf-app.gzw-lang-en h1.gzw-t-en,
+    .gzw-lang-en h2.gzw-t-en, body.gzw-lang-en h2.gzw-t-en, html.gzw-lang-en h2.gzw-t-en, #greywolf-app.gzw-lang-en h2.gzw-t-en,
+    .gzw-lang-en h3.gzw-t-en, body.gzw-lang-en h3.gzw-t-en, html.gzw-lang-en h3.gzw-t-en, #greywolf-app.gzw-lang-en h3.gzw-t-en {
+      display: block !important;
+    }
 
     @media (max-width: 860px) {
       .gzw-header {
@@ -5644,12 +5653,18 @@
     if (isEn) {
       if (app) app.classList.add('gzw-lang-en');
       document.body.classList.add('gzw-lang-en');
-      document.documentElement.lang = 'en';
+      if (document.documentElement) {
+        document.documentElement.classList.add('gzw-lang-en');
+        document.documentElement.lang = 'en';
+      }
       document.title = 'GREYzzzzWOLF — High-Performance Marketing & AI Growth';
     } else {
       if (app) app.classList.remove('gzw-lang-en');
       document.body.classList.remove('gzw-lang-en');
-      document.documentElement.lang = 'ru';
+      if (document.documentElement) {
+        document.documentElement.classList.remove('gzw-lang-en');
+        document.documentElement.lang = 'ru';
+      }
       document.title = 'GREYzzzzWOLF — Комплексный маркетинг и реклама';
     }
 
@@ -5669,6 +5684,11 @@
       }
     }
 
+    var chatInput = document.getElementById('ssp-chat-input');
+    if (chatInput) {
+      chatInput.placeholder = isEn ? 'Enter your business niche (e.g., dental, real estate, AI)...' : 'Введите сферу (напр: стоматология, реклама, AI)...';
+    }
+
     if (manual) {
       try {
         localStorage.setItem('gzw_user_lang', lang);
@@ -5676,13 +5696,7 @@
       if (typeof playUiSound === 'function') playUiSound('click');
     }
   }
-  
-    var chatInput = document.getElementById('ssp-chat-input');
-    if (chatInput) {
-      chatInput.placeholder = isEn ? 'Enter your business niche (e.g., dental, real estate, AI)...' : 'Введите сферу (напр: стоматология, реклама, AI)...';
-    }
-
-    window.setSiteLanguage = setSiteLanguage;
+  window.setSiteLanguage = setSiteLanguage;
 
   // Автоматический запуск проверки языка
   (function initLanguageDetection() {
@@ -5691,11 +5705,17 @@
       saved = localStorage.getItem('gzw_user_lang');
     } catch(e) {}
 
-    // 1. Проверяем URL: если путь содержит /eng или /en или ?lang=en или #en
-    var path = window.location.pathname.toLowerCase();
-    var search = window.location.search.toLowerCase();
-    var hash = window.location.hash.toLowerCase();
-    var isEngPath = (path.indexOf('/eng') !== -1 || path.indexOf('/en') !== -1 || search.indexOf('lang=en') !== -1 || hash === '#en');
+    // 1. Проверяем URL: если путь содержит /eng или /en или english или ?lang=en или #en
+    var path = (window.location.pathname || '').toLowerCase();
+    var search = (window.location.search || '').toLowerCase();
+    var hash = (window.location.hash || '').toLowerCase();
+    var isEngPath = (
+      path.indexOf('/eng') !== -1 ||
+      path.indexOf('/en') !== -1 ||
+      path.indexOf('english') !== -1 ||
+      search.indexOf('lang=en') !== -1 ||
+      hash.indexOf('en') !== -1
+    );
 
     if (isEngPath) {
       setSiteLanguage('en', false);
