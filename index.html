@@ -713,7 +713,8 @@
       margin-bottom: 8px;
     }
 
-    .gzw-cases-tag span {
+    .gzw-cases-tag > span:first-child:empty,
+    .gzw-cases-tag .gzw-tag-rhombus {
       width: 8px;
       height: 8px;
       background: var(--gold);
@@ -840,7 +841,7 @@
       background: rgba(0, 0, 0, 0.4);
     }
 
-    .gzw-case-badge span {
+    .gzw-case-badge > span:first-child:empty, .gzw-case-badge .badge-dot {
       width: 6px;
       height: 6px;
       border-radius: 50%;
@@ -1341,7 +1342,15 @@
       min-height: 480px;
     }
     .gzw-ai-slide {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.35s ease;
       width: 100% !important;
+    }
+    .gzw-ai-slide.active {
+      display: block !important;
+      opacity: 1 !important;
+      animation: caseFadeIn 0.35s ease;
     }
     .gzw-ai-carousel-wrapper .gzw-ai-case-card {
       border: none !important;
@@ -1379,6 +1388,18 @@
       color: #0a0e14;
       transform: translateY(-50%) scale(1.1);
       box-shadow: 0 6px 25px rgba(16, 185, 129, 0.65);
+    }
+    .gzw-ai-cdot {
+      width: 28px;
+      height: 4px;
+      background: #2a3444;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .gzw-ai-cdot:hover {
+      background: #475569;
     }
     .gzw-ai-dots-bar .gzw-ai-cdot.active {
       background: #10b981;
@@ -2312,7 +2333,7 @@
     padding: 5px 12px;
     border-radius: 999px;
   }
-  .gzw-tg-badge span {
+  .gzw-tg-badge > span:first-child:empty, .gzw-tg-badge .gzw-tg-dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
@@ -3319,7 +3340,7 @@
     <section id="gzw-cases-section" class="gzw-cases-section">
       <div class="gzw-cases-header">
         <div>
-          <div class="gzw-cases-tag"><span></span> <span class="gzw-t-ru">РЕКЛАМНЫЙ ТРАФИК И ЦИФРЫ С 2012 ГОДА</span><span class="gzw-t-en">PAID TRAFFIC & METRICS SINCE 2012</span></div>
+          <div class="gzw-cases-tag"><span class="gzw-tag-rhombus"></span> <span class="gzw-t-ru">РЕКЛАМНЫЙ ТРАФИК И ЦИФРЫ С 2012 ГОДА</span><span class="gzw-t-en">PAID TRAFFIC & METRICS SINCE 2012</span></div>
           <h2 class="gzw-cases-title">Результаты и <span>рекламные кейсы</span></h2>
           <p class="gzw-cases-sub"><span class="gzw-t-ru">Чистая статистика рекламных кампаний в Яндекс Директ, Google Ads, Meta и TikTok на миллионных бюджетах</span><span class="gzw-t-en">Transparent ad performance across Google Ads, Meta, TikTok, and search networks on multi-million budgets.</span></p>
         </div>
@@ -3391,12 +3412,12 @@
           
           <div class="gzw-case-action-row">
             <button class="btn-action" onclick="openLeadModal(\'Discuss Project\')"><span class="gzw-t-ru">Обсудить ваш проект</span><span class="gzw-t-en">Discuss Your Project</span></button>
-            <button class="gzw-case-zoom-btn" onclick="openCaseLightbox('https://static.tildacdn.com/tild3064-6637-4761-b332-643235656463/169.svg', '<span class="gzw-t-ru">ПРОДАЖА, СКУПКА, НАРАЩИВАНИЕ ВОЛОС</span><span class="gzw-t-en">HAIR EXTENSIONS & SALON SOURCING</span>')">🔍 Развернуть карточку</button>
+            <button class="gzw-case-zoom-btn" onclick="openCaseLightbox(0)">🔍 Развернуть карточку</button>
           </div>
         </div>
         
         <!-- Правая колонка: оригинальный слайд -->
-        <div class="gzw-case-visual-pane" onclick="openCaseLightbox('https://static.tildacdn.com/tild3064-6637-4761-b332-643235656463/169.svg', '<span class="gzw-t-ru">ПРОДАЖА, СКУПКА, НАРАЩИВАНИЕ ВОЛОС</span><span class="gzw-t-en">HAIR EXTENSIONS & SALON SOURCING</span>')">
+        <div class="gzw-case-visual-pane" onclick="openCaseLightbox(0)">
           <div class="gzw-case-img-frame">
             <img src="https://static.tildacdn.com/tild3064-6637-4761-b332-643235656463/169.svg" alt="<span class="gzw-t-ru">ПРОДАЖА, СКУПКА, НАРАЩИВАНИЕ ВОЛОС</span><span class="gzw-t-en">HAIR EXTENSIONS & SALON SOURCING</span>" class="gzw-case-img" loading="lazy" />
             <div class="gzw-case-expand-pill">
@@ -3443,12 +3464,12 @@
           
           <div class="gzw-case-action-row">
             <button class="btn-action" onclick="openLeadModal(\'Discuss Project\')"><span class="gzw-t-ru">Обсудить ваш проект</span><span class="gzw-t-en">Discuss Your Project</span></button>
-            <button class="gzw-case-zoom-btn" onclick="openCaseLightbox('https://static.tildacdn.com/tild6533-3732-4335-b330-353334383035/3.svg', '<span class="gzw-t-ru">МАРКЕТИНГ ДЛЯ САЛОНОВ И СТУДИЙ КРАСОТЫ</span><span class="gzw-t-en">MARKETING FOR BEAUTY SALONS & STUDIOS</span>')">🔍 Развернуть карточку</button>
+            <button class="gzw-case-zoom-btn" onclick="openCaseLightbox(1)">🔍 Развернуть карточку</button>
           </div>
         </div>
         
         <!-- Правая колонка: оригинальный слайд -->
-        <div class="gzw-case-visual-pane" onclick="openCaseLightbox('https://static.tildacdn.com/tild6533-3732-4335-b330-353334383035/3.svg', '<span class="gzw-t-ru">МАРКЕТИНГ ДЛЯ САЛОНОВ И СТУДИЙ КРАСОТЫ</span><span class="gzw-t-en">MARKETING FOR BEAUTY SALONS & STUDIOS</span>')">
+        <div class="gzw-case-visual-pane" onclick="openCaseLightbox(1)">
           <div class="gzw-case-img-frame">
             <img src="https://static.tildacdn.com/tild6533-3732-4335-b330-353334383035/3.svg" alt="<span class="gzw-t-ru">МАРКЕТИНГ ДЛЯ САЛОНОВ И СТУДИЙ КРАСОТЫ</span><span class="gzw-t-en">MARKETING FOR BEAUTY SALONS & STUDIOS</span>" class="gzw-case-img" loading="lazy" />
             <div class="gzw-case-expand-pill">
@@ -3495,12 +3516,12 @@
           
           <div class="gzw-case-action-row">
             <button class="btn-action" onclick="openLeadModal(\'Discuss Project\')"><span class="gzw-t-ru">Обсудить ваш проект</span><span class="gzw-t-en">Discuss Your Project</span></button>
-            <button class="gzw-case-zoom-btn" onclick="openCaseLightbox('https://static.tildacdn.com/tild3363-3034-4534-b230-316533333662/169.svg', '<span class="gzw-t-ru">ПРОДАЖА НЕДВИЖИМОСТИ НА МАЙОРКЕ</span><span class="gzw-t-en">LUXURY REAL ESTATE IN MALLORCA</span>')">🔍 Развернуть карточку</button>
+            <button class="gzw-case-zoom-btn" onclick="openCaseLightbox(2)">🔍 Развернуть карточку</button>
           </div>
         </div>
         
         <!-- Правая колонка: оригинальный слайд -->
-        <div class="gzw-case-visual-pane" onclick="openCaseLightbox('https://static.tildacdn.com/tild3363-3034-4534-b230-316533333662/169.svg', '<span class="gzw-t-ru">ПРОДАЖА НЕДВИЖИМОСТИ НА МАЙОРКЕ</span><span class="gzw-t-en">LUXURY REAL ESTATE IN MALLORCA</span>')">
+        <div class="gzw-case-visual-pane" onclick="openCaseLightbox(2)">
           <div class="gzw-case-img-frame">
             <img src="https://static.tildacdn.com/tild3363-3034-4534-b230-316533333662/169.svg" alt="<span class="gzw-t-ru">ПРОДАЖА НЕДВИЖИМОСТИ НА МАЙОРКЕ</span><span class="gzw-t-en">LUXURY REAL ESTATE IN MALLORCA</span>" class="gzw-case-img" loading="lazy" />
             <div class="gzw-case-expand-pill">
@@ -3547,12 +3568,12 @@
           
           <div class="gzw-case-action-row">
             <button class="btn-action" onclick="openLeadModal(\'Discuss Project\')"><span class="gzw-t-ru">Обсудить ваш проект</span><span class="gzw-t-en">Discuss Your Project</span></button>
-            <button class="gzw-case-zoom-btn" onclick="openCaseLightbox('https://static.tildacdn.com/tild6635-3461-4463-b737-653265323734/169.svg', '<span class="gzw-t-ru">ПРОДАЖА УСЛУГ ЭКСКЛЮЗИВНОГО ДИЗАЙНА</span><span class="gzw-t-en">EXCLUSIVE INTERIOR DESIGN SERVICES</span>')">🔍 Развернуть карточку</button>
+            <button class="gzw-case-zoom-btn" onclick="openCaseLightbox(3)">🔍 Развернуть карточку</button>
           </div>
         </div>
         
         <!-- Правая колонка: оригинальный слайд -->
-        <div class="gzw-case-visual-pane" onclick="openCaseLightbox('https://static.tildacdn.com/tild6635-3461-4463-b737-653265323734/169.svg', '<span class="gzw-t-ru">ПРОДАЖА УСЛУГ ЭКСКЛЮЗИВНОГО ДИЗАЙНА</span><span class="gzw-t-en">EXCLUSIVE INTERIOR DESIGN SERVICES</span>')">
+        <div class="gzw-case-visual-pane" onclick="openCaseLightbox(3)">
           <div class="gzw-case-img-frame">
             <img src="https://static.tildacdn.com/tild6635-3461-4463-b737-653265323734/169.svg" alt="<span class="gzw-t-ru">ПРОДАЖА УСЛУГ ЭКСКЛЮЗИВНОГО ДИЗАЙНА</span><span class="gzw-t-en">EXCLUSIVE INTERIOR DESIGN SERVICES</span>" class="gzw-case-img" loading="lazy" />
             <div class="gzw-case-expand-pill">
@@ -3599,12 +3620,12 @@
           
           <div class="gzw-case-action-row">
             <button class="btn-action" onclick="openLeadModal(\'Discuss Project\')"><span class="gzw-t-ru">Обсудить ваш проект</span><span class="gzw-t-en">Discuss Your Project</span></button>
-            <button class="gzw-case-zoom-btn" onclick="openCaseLightbox('https://static.tildacdn.com/tild3265-3639-4935-a633-306333343761/2.svg', '<span class="gzw-t-ru">РЕКЛАМА ОНЛАЙН-КУРСОВ ДЛЯ КОСМЕТОЛОГОВ</span><span class="gzw-t-en">ONLINE MASTERCLASSES FOR COSMETOLOGISTS</span>')">🔍 Развернуть карточку</button>
+            <button class="gzw-case-zoom-btn" onclick="openCaseLightbox(4)">🔍 Развернуть карточку</button>
           </div>
         </div>
         
         <!-- Правая колонка: оригинальный слайд -->
-        <div class="gzw-case-visual-pane" onclick="openCaseLightbox('https://static.tildacdn.com/tild3265-3639-4935-a633-306333343761/2.svg', '<span class="gzw-t-ru">РЕКЛАМА ОНЛАЙН-КУРСОВ ДЛЯ КОСМЕТОЛОГОВ</span><span class="gzw-t-en">ONLINE MASTERCLASSES FOR COSMETOLOGISTS</span>')">
+        <div class="gzw-case-visual-pane" onclick="openCaseLightbox(4)">
           <div class="gzw-case-img-frame">
             <img src="https://static.tildacdn.com/tild3265-3639-4935-a633-306333343761/2.svg" alt="<span class="gzw-t-ru">РЕКЛАМА ОНЛАЙН-КУРСОВ ДЛЯ КОСМЕТОЛОГОВ</span><span class="gzw-t-en">ONLINE MASTERCLASSES FOR COSMETOLOGISTS</span>" class="gzw-case-img" loading="lazy" />
             <div class="gzw-case-expand-pill">
@@ -3651,12 +3672,12 @@
           
           <div class="gzw-case-action-row">
             <button class="btn-action" onclick="openLeadModal(\'Discuss Project\')"><span class="gzw-t-ru">Обсудить ваш проект</span><span class="gzw-t-en">Discuss Your Project</span></button>
-            <button class="gzw-case-zoom-btn" onclick="openCaseLightbox('https://static.tildacdn.com/tild6530-6462-4639-a439-623634343265/1.svg', '<span class="gzw-t-ru">ПЕРЕСАДКА ВОЛОС | РЕКЛАМА В МАЙАМИ</span><span class="gzw-t-en">HAIR TRANSPLANT CLINIC | MIAMI ADS</span>')">🔍 Развернуть карточку</button>
+            <button class="gzw-case-zoom-btn" onclick="openCaseLightbox(5)">🔍 Развернуть карточку</button>
           </div>
         </div>
         
         <!-- Правая колонка: оригинальный слайд -->
-        <div class="gzw-case-visual-pane" onclick="openCaseLightbox('https://static.tildacdn.com/tild6530-6462-4639-a439-623634343265/1.svg', '<span class="gzw-t-ru">ПЕРЕСАДКА ВОЛОС | РЕКЛАМА В МАЙАМИ</span><span class="gzw-t-en">HAIR TRANSPLANT CLINIC | MIAMI ADS</span>')">
+        <div class="gzw-case-visual-pane" onclick="openCaseLightbox(5)">
           <div class="gzw-case-img-frame">
             <img src="https://static.tildacdn.com/tild6530-6462-4639-a439-623634343265/1.svg" alt="<span class="gzw-t-ru">ПЕРЕСАДКА ВОЛОС | РЕКЛАМА В МАЙАМИ</span><span class="gzw-t-en">HAIR TRANSPLANT CLINIC | MIAMI ADS</span>" class="gzw-case-img" loading="lazy" />
             <div class="gzw-case-expand-pill">
@@ -3707,7 +3728,7 @@
     <section id="gzw-ai-cases-section" class="gzw-ai-cases-section">
       <div class="gzw-cases-header">
         <div>
-          <div class="gzw-cases-tag"><span></span> <span class="gzw-t-ru">ИНЖЕНЕРИЯ, СИНХРОНИЗАЦИЯ И AI-АВТОМАТИЗАЦИЯ</span><span class="gzw-t-en">AI AGENTS, BOTS & 24/7 AUTOMATION</span></div>
+          <div class="gzw-cases-tag"><span class="gzw-tag-rhombus"></span> <span class="gzw-t-ru">ИНЖЕНЕРИЯ, СИНХРОНИЗАЦИЯ И AI-АВТОМАТИЗАЦИЯ</span><span class="gzw-t-en">AI AGENTS, BOTS & 24/7 AUTOMATION</span></div>
           <h2 class="gzw-cases-title">Реальные внедрения и <span>AI-кейсы</span></h2>
           <p class="gzw-cases-sub"><span class="gzw-t-ru">Бессерверные связки мессенджеров с сайтами, умные витрины и автоматизация продаж без абонентской платы</span><span class="gzw-t-en">Serverless messenger-to-web pipelines, smart showcases, and sales automation with zero subscription fees.</span></p>
         </div>
@@ -3742,7 +3763,7 @@
         </button>
 
         <div class="gzw-cases-slides-box gzw-ai-slides-box" id="gzw-ai-slides-box">
-          <div class="gzw-case-slide gzw-ai-slide active" data-index="0">
+          <div class="gzw-ai-slide active" data-index="0">
             <div class="gzw-ai-case-card">
         <div class="gzw-case-card-grid">
           <div class="gzw-case-info-pane">
@@ -3827,7 +3848,7 @@
           <!-- Слайд 2: Кейс Брадобрей -->
 
           <!-- Слайд 2: Кейс WolfHunt Pro 24/7 -->
-        <div class="gzw-case-slide gzw-ai-slide" data-index="1">
+        <div class="gzw-ai-slide" data-index="1">
 <div class="gzw-ai-case-card">
             <div class="gzw-case-card-grid">
               <div class="gzw-case-info-pane">
@@ -3910,7 +3931,7 @@
           </div>
         </div>
 
-          <div class="gzw-case-slide gzw-ai-slide" data-index="2">
+          <div class="gzw-ai-slide" data-index="2">
             <div class="gzw-ai-case-card">
         <div class="gzw-case-card-grid">
           <div class="gzw-case-info-pane">
@@ -3995,9 +4016,9 @@
 
         <div class="gzw-cases-dots-bar gzw-ai-dots-bar">
           <button type="button" class="gzw-case-dot-nav" onclick="moveAiCaseSlide(-1)" title="Предыдущий кейс" aria-label="Предыдущий кейс">❮</button>
-          <button class="gzw-cdot gzw-ai-cdot active" onclick="goToAiCaseSlide(0)" aria-label="Кейс 1: Blondhunter"></button>
-          <button class="gzw-cdot gzw-ai-cdot" onclick="goToAiCaseSlide(1)" aria-label="Кейс 2: WolfHunt Pro 24/7"></button>
-          <button class="gzw-cdot gzw-ai-cdot" onclick="goToAiCaseSlide(2)" aria-label="Кейс 3: Брадобрей"></button>
+          <button class="gzw-ai-cdot active" onclick="goToAiCaseSlide(0)" aria-label="Кейс 1: Blondhunter"></button>
+          <button class="gzw-ai-cdot" onclick="goToAiCaseSlide(1)" aria-label="Кейс 2: WolfHunt Pro 24/7"></button>
+          <button class="gzw-ai-cdot" onclick="goToAiCaseSlide(2)" aria-label="Кейс 3: Брадобрей"></button>
           <button type="button" class="gzw-case-dot-nav" onclick="moveAiCaseSlide(1)" title="Следующий кейс" aria-label="Следующий кейс">❯</button>
         </div>
       </div>
@@ -4033,8 +4054,8 @@
   var aiCaseAutoTimer = null;
 
   function showAiCaseSlide(index) {
-    var slides = document.querySelectorAll('.gzw-ai-slide');
-    var dots = document.querySelectorAll('.gzw-ai-cdot');
+    var slides = document.querySelectorAll('#gzw-ai-cases-carousel .gzw-ai-slide');
+    var dots = document.querySelectorAll('#gzw-ai-cases-carousel .gzw-ai-cdot');
     if (!slides.length) return;
 
     if (index >= slides.length) index = 0;
@@ -4112,27 +4133,27 @@
   // ========================================================================
   var GZW_CASES_DATA = [
     {
-      title: "<span class="gzw-t-ru">ПРОДАЖА, СКУПКА, НАРАЩИВАНИЕ ВОЛОС</span><span class="gzw-t-en">HAIR EXTENSIONS & SALON SOURCING</span>",
+      title: '<span class="gzw-t-ru">ПРОДАЖА, СКУПКА, НАРАЩИВАНИЕ ВОЛОС</span><span class="gzw-t-en">HAIR EXTENSIONS & SALON SOURCING</span>',
       img: "https://static.tildacdn.com/tild3064-6637-4761-b332-643235656463/169.svg"
     },
     {
-      title: "<span class="gzw-t-ru">МАРКЕТИНГ ДЛЯ САЛОНОВ И СТУДИЙ КРАСОТЫ</span><span class="gzw-t-en">MARKETING FOR BEAUTY SALONS & STUDIOS</span>",
+      title: '<span class="gzw-t-ru">МАРКЕТИНГ ДЛЯ САЛОНОВ И СТУДИЙ КРАСОТЫ</span><span class="gzw-t-en">MARKETING FOR BEAUTY SALONS & STUDIOS</span>',
       img: "https://static.tildacdn.com/tild6533-3732-4335-b330-353334383035/3.svg"
     },
     {
-      title: "<span class="gzw-t-ru">ПРОДАЖА НЕДВИЖИМОСТИ НА МАЙОРКЕ</span><span class="gzw-t-en">LUXURY REAL ESTATE IN MALLORCA</span>",
+      title: '<span class="gzw-t-ru">ПРОДАЖА НЕДВИЖИМОСТИ НА МАЙОРКЕ</span><span class="gzw-t-en">LUXURY REAL ESTATE IN MALLORCA</span>',
       img: "https://static.tildacdn.com/tild3363-3034-4534-b230-316533333662/169.svg"
     },
     {
-      title: "<span class="gzw-t-ru">ПРОДАЖА УСЛУГ ЭКСКЛЮЗИВНОГО ДИЗАЙНА</span><span class="gzw-t-en">EXCLUSIVE INTERIOR DESIGN SERVICES</span>",
+      title: '<span class="gzw-t-ru">ПРОДАЖА УСЛУГ ЭКСКЛЮЗИВНОГО ДИЗАЙНА</span><span class="gzw-t-en">EXCLUSIVE INTERIOR DESIGN SERVICES</span>',
       img: "https://static.tildacdn.com/tild6635-3461-4463-b737-653265323734/169.svg"
     },
     {
-      title: "<span class="gzw-t-ru">РЕКЛАМА ОНЛАЙН-КУРСОВ ДЛЯ КОСМЕТОЛОГОВ</span><span class="gzw-t-en">ONLINE MASTERCLASSES FOR COSMETOLOGISTS</span>",
+      title: '<span class="gzw-t-ru">РЕКЛАМА ОНЛАЙН-КУРСОВ ДЛЯ КОСМЕТОЛОГОВ</span><span class="gzw-t-en">ONLINE MASTERCLASSES FOR COSMETOLOGISTS</span>',
       img: "https://static.tildacdn.com/tild3265-3639-4935-a633-306333343761/2.svg"
     },
     {
-      title: "<span class="gzw-t-ru">ПЕРЕСАДКА ВОЛОС | РЕКЛАМА В МАЙАМИ</span><span class="gzw-t-en">HAIR TRANSPLANT CLINIC | MIAMI ADS</span>",
+      title: '<span class="gzw-t-ru">ПЕРЕСАДКА ВОЛОС | РЕКЛАМА В МАЙАМИ</span><span class="gzw-t-en">HAIR TRANSPLANT CLINIC | MIAMI ADS</span>',
       img: "https://static.tildacdn.com/tild6530-6462-4639-a439-623634343265/1.svg"
     }
   ];
@@ -4142,8 +4163,8 @@
   var caseAutoTimer = null;
 
   function showCaseSlide(index) {
-    var slides = document.querySelectorAll('.gzw-case-slide');
-    var dots = document.querySelectorAll('.gzw-cdot');
+    var slides = document.querySelectorAll('#gzw-cases-carousel .gzw-case-slide');
+    var dots = document.querySelectorAll('#gzw-cases-carousel .gzw-cdot');
     if (!slides.length) return;
 
     if (index >= slides.length) index = 0;
