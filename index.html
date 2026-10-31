@@ -16905,54 +16905,19 @@
 
 
 
-    <div class="gzw-modal" onclick="event.stopPropagation()">
-
-
-
-
-
-
-
-      <div style="font-size: 32px; margin-bottom: 6px;">🐺</div>
-
-
-
-
-
-
-
+        <div class="gzw-modal" onclick="event.stopPropagation()">
+      <div style="display: flex; justify-content: center; margin-bottom: 12px;">
+        <div class="gzw-crest" style="width: 52px; height: 52px; box-shadow: 0 0 18px rgba(0, 240, 255, 0.5);">
+          <img src="https://cdn.jsdelivr.net/gh/snesterov/greyzzzzwolf-web@main/greyzzzzwolf_logo_256.jpg" alt="GREYzzzzWOLF">
+        </div>
+      </div>
       <h3 class="modal-title" id="lead-modal-title"><span class="gzw-t-ru">Обсудить ваш проект</span><span class="gzw-t-en">Discuss Your Project</span></h3>
-
-
-
-
-
-
-
+      <div style="font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 1.5px; color: var(--gold); text-align: center; margin-top: 4px; margin-bottom: 10px; text-transform: uppercase;">
+        <span class="gzw-t-ru">GREYzzzzWOLF • Агентство Сергея Нестерова</span><span class="gzw-t-en">GREYzzzzWOLF • Sergey Nesterov Agency</span>
+      </div>
       <p class="modal-sub">
-
-
-
-
-
-
-
         <span id="modal-service-wrap" style="display: none;"><span class="gzw-t-ru">Направление: </span><span class="gzw-t-en">Category: </span><strong id="modal-service-name" style="color: var(--gold);"><span class="gzw-t-ru">Реклама по России</span><span class="gzw-t-en">Targeted Advertising</span></strong>.<br></span>
-
-
-
-
-
-
-
-        <span id="lead-modal-sub-text"><span class="gzw-t-ru">Напишите в GREYzzzzWOLF напрямую для согласования условий и запуска вашего проекта:</span><span class="gzw-t-en">Reach out directly to GREYzzzzWOLF to align on strategy and launch your project:</span></span>
-
-
-
-
-
-
-
+        <span id="lead-modal-sub-text"><span class="gzw-t-ru">Напишите напрямую основателю агентства <b>Сергею Нестерову</b> для согласования условий и запуска:</span><span class="gzw-t-en">Message agency founder <b>Sergey Nesterov</b> directly to align on terms and launch:</span></span>
       </p>
 
 
@@ -16985,7 +16950,7 @@
 
 
 
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;"><path fill-rule="evenodd" clip-rule="evenodd" d="M22.95 3.125a1.2 1.2 0 00-1.22-.16L1.87 11.23a1.2 1.2 0 00.08 2.24l5.3 1.94 2.1 6.5a1.2 1.2 0 001.99.46l3.1-2.9 5.2 3.8a1.2 1.2 0 001.9-.7l3.2-18a1.2 1.2 0 00-.79-1.445zM8.05 13.7l10.3-6.5-8.2 8.4-.3 3.6-1.8-5.5z" fill="#ffffff"/></svg> <span class="gzw-t-ru">Telegram Личка</span><span class="gzw-t-en">Direct Telegram</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;"><path fill-rule="evenodd" clip-rule="evenodd" d="M22.95 3.125a1.2 1.2 0 00-1.22-.16L1.87 11.23a1.2 1.2 0 00.08 2.24l5.3 1.94 2.1 6.5a1.2 1.2 0 001.99.46l3.1-2.9 5.2 3.8a1.2 1.2 0 001.9-.7l3.2-18a1.2 1.2 0 00-.79-1.445zM8.05 13.7l10.3-6.5-8.2 8.4-.3 3.6-1.8-5.5z" fill="#ffffff"/></svg> <span class="gzw-t-ru">Написать Сергею</span><span class="gzw-t-en">Message Sergey</span>
 
 
 
@@ -17081,7 +17046,7 @@
 
 
 
-    <div>© 2012–2026 GREYzzzzWOLF • <span class="gzw-t-ru">Комплексный маркетинг и AI-решения</span><span class="gzw-t-en">Performance Marketing & AI Systems</span> • greyzzzzwolf.ru • ssp-agency.ru</div>
+    <div>© 2012–2026 GREYzzzzWOLF • <span class="gzw-t-ru">Агентство Сергея Нестерова</span><span class="gzw-t-en">Sergey Nesterov Agency</span> • <span class="gzw-t-ru">Комплексный маркетинг и AI-решения</span><span class="gzw-t-en">Performance Marketing & AI Systems</span> • greyzzzzwolf.ru • ssp-agency.ru</div>
 
 
 
@@ -19026,173 +18991,41 @@
 
 
   function openLeadModal(serviceName) {
-
-
-
-
-
-
-
     var isEn = (document.documentElement.lang === 'en' || document.body.classList.contains('gzw-lang-en'));
-
-
-
-
-
-
-
     sendWolfHuntNotify(serviceName);
-
-
-
-
-
-
-
     if (typeof playUiSound === 'function') playUiSound('click');
-
-
-
-
-
-
-
     var modal = document.getElementById('lead-modal');
-
-
-
-
-
-
-
     var title = document.getElementById('lead-modal-title');
-
-
-
-
-
-
-
     var serviceWrap = document.getElementById('modal-service-wrap');
-
-
-
-
-
-
-
     var serviceNameElem = document.getElementById('modal-service-name');
-
-
-
-
-
-
-
     var subText = document.getElementById('lead-modal-sub-text');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    var serviceDict = {
+      'Комплексный маркетинг': { ru: 'Комплексный маркетинг', en: 'Performance Marketing & Growth' },
+      'Реклама по России': { ru: 'Реклама по России (от 35 000 ₽/мес)', en: 'Russia Ad Traffic & Yandex Direct (from $400/mo)' },
+      'Реклама по России (от 35 000 ₽/мес)': { ru: 'Реклама по России (от 35 000 ₽/мес)', en: 'Russia Ad Traffic & Yandex Direct (from $400/mo)' },
+      'Реклама на мир': { ru: 'Реклама на мир (от 50 000 ₽/мес)', en: 'Global Advertising & Tier-1 Traffic (from $550/mo)' },
+      'Реклама на мир (от 50 000 ₽/мес)': { ru: 'Реклама на мир (от 50 000 ₽/мес)', en: 'Global Advertising & Tier-1 Traffic (from $550/mo)' },
+      'Инвайтинг от 2 000 человек (Telegram / MAX)': { ru: 'Инвайтинг от 2 000 человек (Telegram / MAX)', en: 'Targeted Outreach 2,000+ (Telegram & MAX)' },
+      'Разработка сайтов, умных AI-сервисов и ботов': { ru: 'Разработка сайтов, умных AI-сервисов и ботов', en: 'Websites, Smart AI Systems & Bots' },
+      'Индивидуальное обучение на вашей РК (от 150 000 ₽)': { ru: 'Индивидуальное обучение на вашей РК (от 150 000 ₽)', en: 'Executive 1-on-1 Mentorship (from $1,650)' }
+    };
 
     if (!serviceName || serviceName === 'Discuss Project') {
-
-
-
-
-
-
-
       if (title) title.innerHTML = '<span class="gzw-t-ru">Обсудить ваш проект</span><span class="gzw-t-en">Discuss Your Project</span>';
-
-
-
-
-
-
-
       if (serviceWrap) serviceWrap.style.display = 'none';
-
-
-
-
-
-
-
-      if (subText) subText.innerHTML = isEn ? 'Contact GREYzzzzWOLF directly to align on terms and launch your project:' : 'Напишите в GREYzzzzWOLF напрямую для согласования условий и запуска вашего проекта:';
-
-
-
-
-
-
-
     } else {
-
-
-
-
-
-
-
       if (title) title.innerHTML = '<span class="gzw-t-ru">Оставить заявку</span><span class="gzw-t-en">Submit Request</span>';
-
-
-
-
-
-
-
       if (serviceWrap) serviceWrap.style.display = 'inline';
-
-
-
-
-
-
-
-      if (serviceNameElem) serviceNameElem.innerText = serviceName;
-
-
-
-
-
-
-
-      if (subText) subText.innerHTML = isEn ? 'Contact GREYzzzzWOLF directly to align on terms and launch:' : 'Напишите в GREYzzzzWOLF напрямую для согласования условий и запуска:';
-
-
-
-
-
-
-
+      if (serviceNameElem) {
+        var item = serviceDict[serviceName] || { ru: serviceName, en: serviceName };
+        serviceNameElem.innerHTML = '<span class="gzw-t-ru">' + item.ru + '</span><span class="gzw-t-en">' + item.en + '</span>';
+      }
     }
-
-
-
-
-
-
-
+    if (subText) {
+      subText.innerHTML = '<span class="gzw-t-ru">Напишите напрямую основателю агентства <b>Сергею Нестерову</b> для согласования условий и запуска:</span><span class="gzw-t-en">Message agency founder <b>Sergey Nesterov</b> directly to align on terms and launch:</span>';
+    }
     if (modal) modal.classList.add('open');
-
-
-
-
-
-
-
   }
 
 
