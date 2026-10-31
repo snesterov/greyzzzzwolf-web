@@ -1654,6 +1654,36 @@
 
 
 
+    
+    .gzw-brand-wrap {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .gzw-brand-sub {
+      font-family: 'Cinzel', serif;
+      font-size: 8.5px;
+      letter-spacing: 1.2px;
+      color: var(--gold);
+      text-transform: uppercase;
+      font-weight: 600;
+      line-height: 1.1;
+      margin-top: 1px;
+    }
+    .hero-founder-title {
+      font-family: 'Cinzel', serif;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 2.2px;
+      color: var(--gold);
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 2px;
+      text-shadow: 0 0 14px rgba(226, 177, 91, 0.4);
+    }
+
     .hero-tag {
 
 
@@ -10649,6 +10679,16 @@
 
   @media (max-width: 768px) {
 
+      .hero-founder-title {
+        font-size: 12px !important;
+        letter-spacing: 1.2px !important;
+      }
+      .gzw-brand-sub {
+        font-size: 7.5px !important;
+        letter-spacing: 0.8px !important;
+      }
+
+
 
 
 
@@ -14823,7 +14863,10 @@
 
 
 
-        <div class="gzw-brand">GREY<span>WOLF</span></div>
+        <div class="gzw-brand-wrap">
+          <div class="gzw-brand">GREY<span>WOLF</span></div>
+          <div class="gzw-brand-sub"><span class="gzw-t-ru">Агентство Сергея Нестерова</span><span class="gzw-t-en">Sergey Nesterov Agency</span></div>
+        </div>
 
 
 
@@ -15535,15 +15578,11 @@
 
 
 
-        <div class="hero-banner-col-text">
-
-
-
-
-
-
-
-          <div class="hero-tag"><span class="gzw-t-ru">Комплексный маркетинг и AI-решения • GREYzzzzWOLF</span><span class="gzw-t-en">Performance Marketing & AI Systems • GREYzzzzWOLF</span></div>
+                <div class="hero-banner-col-text">
+          <div class="hero-founder-title">
+            <span class="gzw-t-ru">GREYzzzzWOLF • АГЕНТСТВО СЕРГЕЯ НЕСТЕРОВА</span><span class="gzw-t-en">GREYzzzzWOLF • SERGEY NESTEROV AGENCY</span>
+          </div>
+          <div class="hero-tag"><span class="gzw-t-ru">◆ Комплексный маркетинг и AI-решения</span><span class="gzw-t-en">◆ Performance Marketing & AI Systems</span></div>
 
 
 
@@ -21299,6 +21338,16 @@
 
 
   @media (max-width: 768px) {
+
+      .hero-founder-title {
+        font-size: 12px !important;
+        letter-spacing: 1.2px !important;
+      }
+      .gzw-brand-sub {
+        font-size: 7.5px !important;
+        letter-spacing: 0.8px !important;
+      }
+
 
 
 
