@@ -27577,301 +27577,37 @@
 
 
   (function initLanguageDetection() {
-
-
-
-
-
-
-
     var saved = null;
-
-
-
-
-
-
-
     try {
-
-
-
-
-
-
-
       saved = localStorage.getItem('gzw_user_lang');
-
-
-
-
-
-
-
     } catch(e) {}
 
+    if (saved === 'en') {
+      setSiteLanguage('en', false);
+      return;
+    }
+    if (saved === 'ru') {
+      setSiteLanguage('ru', false);
+      return;
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // 1. Проверяем URL: если путь содержит /eng или /en или english или ?lang=en или #en
-
-
-
-
-
-
-
-    var path = (window.location.pathname || '').toLowerCase();
-
-
-
-
-
-
-
+    // Проверяем явный параметр в URL (?lang=en, /en/, #en)
     var search = (window.location.search || '').toLowerCase();
-
-
-
-
-
-
-
+    var path = (window.location.pathname || '').toLowerCase();
     var hash = (window.location.hash || '').toLowerCase();
-
-
-
-
-
-
-
-    var isEngPath = (
-
-
-
-
-
-
-
-      path.indexOf('/eng') !== -1 ||
-
-
-
-
-
-
-
-      path.indexOf('/en') !== -1 ||
-
-
-
-
-
-
-
-      path.indexOf('english') !== -1 ||
-
-
-
-
-
-
-
-      search.indexOf('lang=en') !== -1 ||
-
-
-
-
-
-
-
-      hash.indexOf('en') !== -1
-
-
-
-
-
-
-
+    var isEng = (
+      /[?&]lang=en(?:&|$)/.test(search) ||
+      /^/(?:en|eng)(?:/|$)/.test(path) ||
+      hash === '#en' ||
+      hash === '#lang=en'
     );
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    if (isEngPath) {
-
-
-
-
-
-
-
+    if (isEng) {
       setSiteLanguage('en', false);
-
-
-
-
-
-
-
-      return;
-
-
-
-
-
-
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // 2. Если сохранен ручной выбор пользователя
-
-
-
-
-
-
-
-    if (saved === 'en' || saved === 'ru') {
-
-
-
-
-
-
-
-      setSiteLanguage(saved, false);
-
-
-
-
-
-
-
-      return;
-
-
-
-
-
-
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // 3. Автоопределение по браузеру (если не СНГ — включаем EN)
-
-
-
-
-
-
-
-    var navLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
-
-
-
-
-
-
-
-    var isRuZone = navLang.indexOf('ru') === 0 || navLang.indexOf('be') === 0 || navLang.indexOf('kk') === 0 || navLang.indexOf('uk') === 0;
-
-
-
-
-
-
-
-    if (!isRuZone && navLang !== '') {
-
-
-
-
-
-
-
-      setSiteLanguage('en', false);
-
-
-
-
-
-
-
     } else {
-
-
-
-
-
-
-
+      // Для .ru домена и рекламы из Директа дефолт СТРОГО русский!
       setSiteLanguage('ru', false);
-
-
-
-
-
-
-
     }
-
-
-
-
-
-
-
   })();
 
 
