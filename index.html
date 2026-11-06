@@ -29669,6 +29669,117 @@
       text-shadow: 0 0 12px rgba(226, 177, 91, 0.6);
     }
 
+  
+    /* --- V1.6.2 ULTRA ENHANCEMENTS: AURORA, 3D TILT, MAGNETIC BUTTONS, RADAR HUD --- */
+
+    /* Living Ambient Aurora */
+    .gzw-ambient-aurora {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+      opacity: 0.7;
+    }
+    .aurora-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(95px);
+      will-change: transform, opacity;
+      pointer-events: none;
+    }
+    .aurora-gold {
+      width: 580px;
+      height: 580px;
+      background: radial-gradient(circle, rgba(226, 177, 91, 0.16) 0%, rgba(226, 177, 91, 0) 70%);
+      top: -120px;
+      left: 15%;
+      animation: gzwAuroraDrift1 22s infinite alternate ease-in-out;
+    }
+    .aurora-cyan {
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle, rgba(0, 240, 255, 0.13) 0%, rgba(0, 240, 255, 0) 70%);
+      top: 38%;
+      right: 5%;
+      animation: gzwAuroraDrift2 26s infinite alternate ease-in-out;
+    }
+    .aurora-ruby {
+      width: 480px;
+      height: 480px;
+      background: radial-gradient(circle, rgba(192, 57, 43, 0.12) 0%, rgba(192, 57, 43, 0) 70%);
+      bottom: -100px;
+      left: 10%;
+      animation: gzwAuroraDrift3 28s infinite alternate ease-in-out;
+    }
+    @keyframes gzwAuroraDrift1 {
+      0% { transform: translate3d(0, 0, 0) scale(1); }
+      50% { transform: translate3d(70px, 50px, 0) scale(1.15); }
+      100% { transform: translate3d(-50px, 110px, 0) scale(0.95); }
+    }
+    @keyframes gzwAuroraDrift2 {
+      0% { transform: translate3d(0, 0, 0) scale(1); }
+      50% { transform: translate3d(-90px, -70px, 0) scale(1.18); }
+      100% { transform: translate3d(40px, -30px, 0) scale(0.92); }
+    }
+    @keyframes gzwAuroraDrift3 {
+      0% { transform: translate3d(0, 0, 0) scale(1); }
+      50% { transform: translate3d(90px, -40px, 0) scale(1.1); }
+      100% { transform: translate3d(-30px, -80px, 0) scale(1.05); }
+    }
+
+    /* Live Radar Badge in Header */
+    .gzw-badge-radar {
+      border-color: rgba(16, 185, 129, 0.45) !important;
+      background: rgba(16, 185, 129, 0.08) !important;
+      color: #6ee7b7 !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 7px !important;
+      letter-spacing: 0.5px !important;
+      font-weight: 600 !important;
+    }
+    .gzw-radar-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10b981;
+      display: inline-block;
+      box-shadow: 0 0 8px #10b981;
+      position: relative;
+    }
+    .gzw-radar-dot::after {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      border: 1.5px solid #10b981;
+      opacity: 0.8;
+      animation: gzwRadarPulse 1.8s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+    }
+    @keyframes gzwRadarPulse {
+      0% { transform: scale(0.6); opacity: 1; }
+      100% { transform: scale(2.4); opacity: 0; }
+    }
+
+    /* 3D Perspective Containers */
+    .gzw-cards-container, .hero-section {
+      perspective: 1200px;
+    }
+    .gzw-card, .hero-stat-card, .hero-video-box {
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+
+    /* Magnetic Buttons base */
+    .btn-primary, .hero-cta-btn, .card-order-btn, .gzw-lang-toggle, #gzw-sound-btn, .gzw-menu-btn, .gzw-badge {
+      will-change: transform;
+      transform-style: preserve-3d;
+    }
+
   </style>
 
 
@@ -30172,6 +30283,9 @@
 
 
       <div class="gzw-badges">
+        <div class="gzw-badge gzw-badge-radar" onclick="playUiSound('click')" title="Контроль связок и ставок 24/7">
+          <span class="gzw-radar-dot"></span> <span class="gzw-t-ru">МОНИТОРИНГ КАМПАНИЙ 24/7</span><span class="gzw-t-en">24/7 CAMPAIGN CONTROL</span>
+        </div>
 
 
 
@@ -30428,6 +30542,15 @@
 
 
   </header>
+
+  <!-- LIVING CYBER AMBIENT AURORA (GPU-ACCELERATED) -->
+  <div class="gzw-ambient-aurora" aria-hidden="true">
+    <div class="aurora-orb aurora-gold"></div>
+    <div class="aurora-orb aurora-cyan"></div>
+    <div class="aurora-orb aurora-ruby"></div>
+  </div>
+
+
 
 
 
@@ -57632,24 +57755,66 @@
 
 
 
-  // Vercel-Style Spotlight Glow (Cursor Tracking & Laser Edge)
+  // Vercel-Style Spotlight Glow + 3D Kinetic Tilt (Cursor Tracking & Laser Edge)
   function initSpotlight() {
+    var isCoarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
     var targets = document.querySelectorAll('.gzw-card, .hero-stat-card, .hero-video-box');
+    
     targets.forEach(function(el) {
       el.addEventListener('mousemove', function(e) {
         var rect = el.getBoundingClientRect();
         var x = e.clientX - rect.left;
         var y = e.clientY - rect.top;
+        
         el.style.setProperty('--mouse-x', x + 'px');
         el.style.setProperty('--mouse-y', y + 'px');
+
+        // 3D Kinetic Tilt (desktop only)
+        if (!isCoarse) {
+          var centerX = rect.width / 2;
+          var centerY = rect.height / 2;
+          var tiltX = ((y - centerY) / centerY) * -4.5; // -4.5 to +4.5 deg
+          var tiltY = ((x - centerX) / centerX) * 4.5;
+          el.style.transition = 'transform 0.08s ease-out';
+          el.style.transform = 'perspective(1200px) rotateX(' + tiltX.toFixed(2) + 'deg) rotateY(' + tiltY.toFixed(2) + 'deg) translateZ(4px)';
+        }
       });
+
       el.addEventListener('mouseleave', function() {
         el.style.setProperty('--mouse-x', '-999px');
         el.style.setProperty('--mouse-y', '-999px');
+        if (!isCoarse) {
+          el.style.transition = 'transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1)';
+          el.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg) translateZ(0)';
+        }
       });
     });
   }
   window.initSpotlight = initSpotlight;
+
+  // Stripe-Style Magnetic Buttons (Tactile Micro-Spring)
+  function initMagneticButtons() {
+    if (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) return;
+    var buttons = document.querySelectorAll('.btn-primary, .hero-cta-btn, .card-order-btn, .gzw-lang-toggle, #gzw-sound-btn');
+    
+    buttons.forEach(function(btn) {
+      btn.addEventListener('mousemove', function(e) {
+        var rect = btn.getBoundingClientRect();
+        var x = e.clientX - rect.left - (rect.width / 2);
+        var y = e.clientY - rect.top - (rect.height / 2);
+        var pullX = x * 0.24; // max 6-8px pull
+        var pullY = y * 0.24;
+        btn.style.transition = 'transform 0.05s ease-out';
+        btn.style.transform = 'translate3d(' + pullX.toFixed(1) + 'px, ' + pullY.toFixed(1) + 'px, 0)';
+      });
+
+      btn.addEventListener('mouseleave', function() {
+        btn.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+        btn.style.transform = 'translate3d(0, 0, 0)';
+      });
+    });
+  }
+  window.initMagneticButtons = initMagneticButtons;
 
   // Live Count-Up Animation (Cinematic Easing 1.2s)
   function initCountUp() {
@@ -57724,10 +57889,12 @@
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function() {
       initSpotlight();
+      initMagneticButtons();
       initCountUp();
     });
   } else {
     initSpotlight();
+    initMagneticButtons();
     initCountUp();
   }
 </script>
