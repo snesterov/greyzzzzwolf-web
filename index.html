@@ -29608,7 +29608,129 @@
 
 
 
-  </style>
+  
+    /* ========================================================================
+       PACKAGE 1: SPOTLIGHT GLOW, ANIMATIONS & MOBILE CYBER-DOCK
+       ======================================================================== */
+
+    /* Spotlight Glow (Vercel Style) */
+    .gzw-card, .hero-stat-card, .hero-banner, .hero-video-box {
+      position: relative !important;
+      overflow: hidden !important;
+    }
+
+    .gzw-card::before, .hero-stat-card::before, .hero-banner::before {
+      content: '' !important;
+      position: absolute !important;
+      top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important;
+      background: radial-gradient(
+        550px circle at var(--mouse-x, -999px) var(--mouse-y, -999px),
+        rgba(226, 177, 91, 0.14),
+        transparent 50%
+      ) !important;
+      opacity: 0 !important;
+      transition: opacity 0.35s ease !important;
+      pointer-events: none !important;
+      z-index: 1 !important;
+    }
+
+    .gzw-card:hover::before, .hero-stat-card:hover::before, .hero-banner:hover::before {
+      opacity: 1 !important;
+    }
+
+    .gzw-card > *, .hero-stat-card > *, .hero-banner > * {
+      position: relative !important;
+      z-index: 2 !important;
+    }
+
+    /* Mobile Cyber-Dock */
+    .gzw-cyber-dock {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .gzw-cyber-dock {
+        display: flex !important;
+        position: fixed !important;
+        bottom: 18px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        z-index: 9999 !important;
+        background: rgba(11, 15, 23, 0.9) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        border: 1.5px solid rgba(226, 177, 91, 0.45) !important;
+        border-radius: 40px !important;
+        padding: 6px 12px !important;
+        align-items: center !important;
+        gap: 8px !important;
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.85), 0 0 20px rgba(226, 177, 91, 0.25) !important;
+        max-width: calc(100vw - 24px) !important;
+        box-sizing: border-box !important;
+        animation: dockSlideUp 0.4s ease-out !important;
+      }
+
+      @keyframes dockSlideUp {
+        from { transform: translate(-50%, 40px); opacity: 0; }
+        to { transform: translate(-50%, 0); opacity: 1; }
+      }
+
+      .gzw-dock-btn {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        padding: 8px 12px !important;
+        border-radius: 20px !important;
+        font-family: 'Rajdhani', sans-serif !important;
+        font-weight: 700 !important;
+        font-size: 13px !important;
+        letter-spacing: 0.5px !important;
+        text-decoration: none !important;
+        border: none !important;
+        cursor: pointer !important;
+        white-space: nowrap !important;
+        transition: transform 0.2s, background 0.2s !important;
+      }
+
+      .gzw-dock-btn-main {
+        background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
+        color: #ffffff !important;
+        box-shadow: 0 2px 10px rgba(2, 132, 199, 0.4) !important;
+      }
+
+      .gzw-dock-btn-calc {
+        background: rgba(226, 177, 91, 0.15) !important;
+        border: 1px solid rgba(226, 177, 91, 0.5) !important;
+        color: #e2b15b !important;
+      }
+
+      .gzw-dock-lang {
+        display: inline-flex !important;
+        align-items: center !important;
+        background: #090d14 !important;
+        border: 1px solid rgba(226, 177, 91, 0.3) !important;
+        border-radius: 16px !important;
+        padding: 2px !important;
+      }
+
+      .gzw-dock-l-btn {
+        background: transparent !important;
+        border: none !important;
+        color: #94a3b8 !important;
+        font-size: 11px !important;
+        font-weight: 800 !important;
+        padding: 4px 8px !important;
+        border-radius: 12px !important;
+        cursor: pointer !important;
+        transition: all 0.2s ease !important;
+      }
+
+      .gzw-dock-l-btn.active {
+        background: var(--gold) !important;
+        color: #0b0e14 !important;
+      }
+    }
+</style>
 
 
 
@@ -31720,7 +31842,7 @@
 
 
 
-            <div class="hero-stat-chan"><span class="gzw-t-ru"><span class="gzw-t-ru">Яндекс.Директ</span><span class="gzw-t-en">Yandex Direct</span></span><span class="gzw-t-en">Yandex Direct</span></div>
+            <div class="hero-stat-chan"><span class="gzw-t-ru">Яндекс.Директ</span><span class="gzw-t-en">Yandex Direct</span></div>
 
 
 
@@ -31736,7 +31858,7 @@
 
 
 
-            <div class="hero-stat-val"><span class="gzw-t-ru">200+ клиентов</span><span class="gzw-t-en">200+ clients</span></div>
+            <div class="hero-stat-val"><span class="gzw-t-ru" data-counter="true" data-target="200" data-suffix="+ клиентов">200+ клиентов</span><span class="gzw-t-en" data-counter="true" data-target="200" data-suffix="+ clients">200+ clients</span></div>
 
 
 
@@ -31752,7 +31874,7 @@
 
 
 
-            <div class="hero-stat-sum"><span class="gzw-t-ru">₽300M+</span><span class="gzw-t-en">$3.5M+</span></div>
+            <div class="hero-stat-sum"><span class="gzw-t-ru" data-counter="true" data-prefix="₽" data-target="300" data-suffix="M+">₽300M+</span><span class="gzw-t-en" data-counter="true" data-prefix="$" data-target="3.5" data-suffix="M+">$3.5M+</span></div>
 
 
 
@@ -31816,7 +31938,7 @@
 
 
 
-            <div class="hero-stat-val"><span class="gzw-t-ru">200+ клиентов</span><span class="gzw-t-en">200+ clients</span></div>
+            <div class="hero-stat-val"><span class="gzw-t-ru" data-counter="true" data-target="200" data-suffix="+ клиентов">200+ клиентов</span><span class="gzw-t-en" data-counter="true" data-target="200" data-suffix="+ clients">200+ clients</span></div>
 
 
 
@@ -31832,7 +31954,7 @@
 
 
 
-            <div class="hero-stat-sum"><span class="gzw-t-ru">$3,5M+</span><span class="gzw-t-en">$3.5M+</span></div>
+            <div class="hero-stat-sum"><span class="gzw-t-ru" data-counter="true" data-prefix="$" data-target="3.5" data-suffix="M+">$3,5M+</span><span class="gzw-t-en" data-counter="true" data-prefix="$" data-target="3.5" data-suffix="M+">$3.5M+</span></div>
 
 
 
@@ -31896,7 +32018,7 @@
 
 
 
-            <div class="hero-stat-val"><span class="gzw-t-ru">43 клиента</span><span class="gzw-t-en">43 clients</span></div>
+            <div class="hero-stat-val"><span class="gzw-t-ru" data-counter="true" data-target="43" data-suffix=" клиента">43 клиента</span><span class="gzw-t-en" data-counter="true" data-target="43" data-suffix=" clients">43 clients</span></div>
 
 
 
@@ -31912,7 +32034,7 @@
 
 
 
-            <div class="hero-stat-sum"><span class="gzw-t-ru">$1,3M+</span><span class="gzw-t-en">$1.3M+</span></div>
+            <div class="hero-stat-sum"><span class="gzw-t-ru" data-counter="true" data-prefix="$" data-target="1.3" data-suffix="M+">$1,3M+</span><span class="gzw-t-en" data-counter="true" data-prefix="$" data-target="1.3" data-suffix="M+">$1.3M+</span></div>
 
 
 
@@ -31976,7 +32098,7 @@
 
 
 
-            <div class="hero-stat-val"><span class="gzw-t-ru">21 клиент</span><span class="gzw-t-en">21 clients</span></div>
+            <div class="hero-stat-val"><span class="gzw-t-ru" data-counter="true" data-target="21" data-suffix=" клиент">21 клиент</span><span class="gzw-t-en" data-counter="true" data-target="21" data-suffix=" clients">21 clients</span></div>
 
 
 
@@ -31992,7 +32114,7 @@
 
 
 
-            <div class="hero-stat-sum"><span class="gzw-t-ru">$0,3M+</span><span class="gzw-t-en">$0.3M+</span></div>
+            <div class="hero-stat-sum"><span class="gzw-t-ru" data-counter="true" data-prefix="$" data-target="0.3" data-suffix="M+">$0,3M+</span><span class="gzw-t-en" data-counter="true" data-prefix="$" data-target="0.3" data-suffix="M+">$0.3M+</span></div>
 
 
 
@@ -54659,6 +54781,13 @@
 
 
     // Синхронизация кнопок тумблера
+    var dockRu = document.getElementById('gzw-dock-ru');
+    var dockEn = document.getElementById('gzw-dock-en');
+    if (dockRu && dockEn) {
+      if (isEn) { dockRu.classList.remove('active'); dockEn.classList.add('active'); }
+      else { dockRu.classList.add('active'); dockEn.classList.remove('active'); }
+    }
+
 
 
 
@@ -57570,6 +57699,75 @@
 
 
 
+
+  // Spotlight Glow (Vercel Cursor Tracking)
+  function initSpotlight() {
+    var cards = document.querySelectorAll('.gzw-card, .hero-stat-card, .hero-banner, .hero-video-box');
+    cards.forEach(function(card) {
+      card.addEventListener('mousemove', function(e) {
+        var rect = card.getBoundingClientRect();
+        var x = e.clientX - rect.left;
+        var y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', x + 'px');
+        card.style.setProperty('--mouse-y', y + 'px');
+      });
+    });
+  }
+
+  // Live Count-Up Animation
+  function initCountUp() {
+    var statsBox = document.querySelector('.hero-stats-box') || document.querySelector('.hero-stats-grid');
+    if (!statsBox) return;
+
+    var animated = false;
+    var observer = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting && !animated) {
+        animated = true;
+        runCounters();
+      }
+    }, { threshold: 0.25 });
+
+    observer.observe(statsBox);
+
+    function runCounters() {
+      var elements = document.querySelectorAll('[data-counter="true"]');
+      elements.forEach(function(el) {
+        var target = parseFloat(el.getAttribute('data-target'));
+        var prefix = el.getAttribute('data-prefix') || '';
+        var suffix = el.getAttribute('data-suffix') || '';
+        var isDecimal = (target % 1 !== 0);
+        var duration = 1400;
+        var startTime = null;
+
+        function step(timestamp) {
+          if (!startTime) startTime = timestamp;
+          var progress = Math.min((timestamp - startTime) / duration, 1);
+          var ease = 1 - Math.pow(1 - progress, 4); // easeOutQuart
+          var current = target * ease;
+          var displayVal = isDecimal ? current.toFixed(1).replace('.', ',') : Math.round(current);
+          el.textContent = prefix + displayVal + suffix;
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          } else {
+            var finalVal = isDecimal ? target.toFixed(1).replace('.', ',') : target;
+            el.textContent = prefix + finalVal + suffix;
+          }
+        }
+        requestAnimationFrame(step);
+      });
+    }
+  }
+
+  // Initialize enhancements on ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      initSpotlight();
+      initCountUp();
+    });
+  } else {
+    initSpotlight();
+    initCountUp();
+  }
 </script>
 
 
@@ -57602,6 +57800,28 @@
 
 
 
+
+  <!-- Mobile Cyber-Dock Floating Bar -->
+  <nav class="gzw-cyber-dock" id="gzw-cyber-dock" aria-label="Mobile Navigation">
+    <a href="https://t.me/GREYzzzzWOLF" target="_blank" rel="noopener" class="gzw-dock-btn gzw-dock-btn-main">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+      </svg>
+      <span class="gzw-t-ru">Telegram</span><span class="gzw-t-en">Telegram</span>
+    </a>
+
+    <button type="button" class="gzw-dock-btn gzw-dock-btn-calc" onclick="openLeadModal('Заявка из Cyber-Dock')">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+      </svg>
+      <span class="gzw-t-ru">Тарифы</span><span class="gzw-t-en">Pricing</span>
+    </button>
+
+    <div class="gzw-dock-lang">
+      <button type="button" class="gzw-dock-l-btn active" id="gzw-dock-ru" onclick="setSiteLanguage('ru', true)">RU</button>
+      <button type="button" class="gzw-dock-l-btn" id="gzw-dock-en" onclick="setSiteLanguage('en', true)">EN</button>
+    </div>
+  </nav>
 </body>
 
 
