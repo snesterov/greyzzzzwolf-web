@@ -29730,6 +29730,245 @@
         color: #0b0e14 !important;
       }
     }
+
+    /* ========================================================================
+       AI NEURAL SCANNER TERMINAL (HERO)
+       ======================================================================== */
+    .gzw-terminal-box {
+      background: #080c14 !important;
+      border: 1.5px solid rgba(226, 177, 91, 0.5) !important;
+      border-radius: 8px !important;
+      box-shadow: 0 0 25px rgba(226, 177, 91, 0.2), inset 0 0 20px rgba(0, 0, 0, 0.8) !important;
+      margin-top: 14px !important;
+      overflow: hidden !important;
+      transition: border-color 0.3s, box-shadow 0.3s !important;
+    }
+    .gzw-terminal-box:focus-within {
+      border-color: #00f0ff !important;
+      box-shadow: 0 0 30px rgba(0, 240, 255, 0.35), inset 0 0 20px rgba(0, 0, 0, 0.8) !important;
+    }
+    .gzw-terminal-header {
+      background: rgba(14, 20, 30, 0.95) !important;
+      padding: 8px 14px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      border-bottom: 1px solid rgba(226, 177, 91, 0.25) !important;
+    }
+    .gzw-term-dots {
+      display: flex !important;
+      gap: 6px !important;
+    }
+    .gzw-term-dot {
+      width: 10px !important;
+      height: 10px !important;
+      border-radius: 50% !important;
+      display: inline-block !important;
+    }
+    .gzw-term-dot.red { background: #ef4444 !important; }
+    .gzw-term-dot.yellow { background: #f59e0b !important; }
+    .gzw-term-dot.green { background: #10b981 !important; box-shadow: 0 0 8px #10b981 !important; }
+
+    .gzw-term-status {
+      font-size: 11px !important;
+      font-weight: 700 !important;
+      letter-spacing: 1.5px !important;
+      color: #00f0ff !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+    }
+    .gzw-live-pulse {
+      width: 6px !important;
+      height: 6px !important;
+      background: #00f0ff !important;
+      border-radius: 50% !important;
+      box-shadow: 0 0 8px #00f0ff !important;
+      animation: gzwTgPulse 1.5s infinite !important;
+    }
+    .gzw-terminal-body {
+      padding: 14px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 10px !important;
+    }
+    .gzw-term-input-row {
+      display: flex !important;
+      gap: 10px !important;
+    }
+    .gzw-term-input {
+      flex: 1 !important;
+      background: rgba(18, 26, 38, 0.8) !important;
+      border: 1px solid #2d3848 !important;
+      border-radius: 4px !important;
+      color: #ffffff !important;
+      padding: 10px 14px !important;
+      font-size: 14px !important;
+      outline: none !important;
+      transition: border-color 0.2s !important;
+    }
+    .gzw-term-input:focus {
+      border-color: #00f0ff !important;
+    }
+    .gzw-term-btn {
+      background: linear-gradient(135deg, #e2b15b 0%, #ca8a04 100%) !important;
+      color: #080c14 !important;
+      border: none !important;
+      padding: 10px 20px !important;
+      font-weight: 800 !important;
+      font-size: 12px !important;
+      letter-spacing: 1.5px !important;
+      border-radius: 4px !important;
+      cursor: pointer !important;
+      transition: all 0.2s !important;
+      white-space: nowrap !important;
+      box-shadow: 0 0 14px rgba(226, 177, 91, 0.4) !important;
+    }
+    .gzw-term-btn:hover {
+      filter: brightness(1.15) !important;
+      transform: translateY(-1px) !important;
+      box-shadow: 0 0 20px rgba(226, 177, 91, 0.7) !important;
+    }
+    .gzw-term-output {
+      background: rgba(4, 7, 12, 0.9) !important;
+      border: 1px solid #1a2332 !important;
+      border-radius: 4px !important;
+      padding: 12px !important;
+      min-height: 70px !important;
+      font-size: 13px !important;
+      line-height: 1.6 !important;
+      color: #94a3b8 !important;
+    }
+    .gzw-term-line {
+      margin-bottom: 4px !important;
+    }
+    .gzw-term-line.dim { color: #64748b !important; }
+    .gzw-term-line.highlight { color: #00f0ff !important; font-weight: 700 !important; }
+    .gzw-term-line.warn { color: #f87171 !important; }
+    .gzw-term-line.success { color: #34d399 !important; font-weight: 700 !important; }
+    .gzw-term-cta-btn {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      margin-top: 8px !important;
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+      color: #ffffff !important;
+      padding: 8px 16px !important;
+      border-radius: 4px !important;
+      font-weight: 800 !important;
+      font-size: 12px !important;
+      letter-spacing: 1px !important;
+      text-decoration: none !important;
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.5) !important;
+      transition: transform 0.2s !important;
+    }
+    .gzw-term-cta-btn:hover {
+      transform: translateY(-2px) !important;
+    }
+
+    /* ========================================================================
+       INTERACTIVE ROI / BUDGET CALCULATOR
+       ======================================================================== */
+    .gzw-calc-section {
+      margin-bottom: 35px !important;
+    }
+    .gzw-calc-card {
+      background: linear-gradient(180deg, rgba(16, 22, 33, 0.98) 0%, rgba(9, 13, 20, 0.98) 100%) !important;
+      border: 1.5px solid var(--gold) !important;
+      border-radius: 8px !important;
+      padding: 28px !important;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.8), 0 0 25px rgba(226, 177, 91, 0.15) !important;
+    }
+    .gzw-calc-grid {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 28px !important;
+      margin-top: 20px !important;
+    }
+    @media (max-width: 860px) {
+      .gzw-calc-grid { grid-template-columns: 1fr !important; }
+    }
+    .gzw-calc-controls {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 20px !important;
+      justify-content: center !important;
+    }
+    .gzw-slider-group {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 8px !important;
+    }
+    .gzw-slider-label {
+      display: flex !important;
+      justify-content: space-between !important;
+      font-size: 14px !important;
+      font-weight: 600 !important;
+      color: #cbd5e1 !important;
+    }
+    .gzw-slider-val {
+      font-size: 18px !important;
+      font-weight: 700 !important;
+      color: var(--gold) !important;
+    }
+    input[type=range] {
+      -webkit-appearance: none !important;
+      appearance: none !important;
+      width: 100% !important;
+      height: 8px !important;
+      background: #1e293b !important;
+      border-radius: 4px !important;
+      outline: none !important;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none !important;
+      appearance: none !important;
+      width: 22px !important;
+      height: 22px !important;
+      border-radius: 50% !important;
+      background: var(--gold) !important;
+      cursor: pointer !important;
+      box-shadow: 0 0 12px rgba(226, 177, 91, 0.8) !important;
+      border: 2px solid #ffffff !important;
+    }
+    .gzw-calc-result-box {
+      background: rgba(6, 9, 14, 0.92) !important;
+      border: 1px solid #2d3848 !important;
+      border-radius: 6px !important;
+      padding: 20px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+    }
+    .gzw-calc-metrics {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 12px !important;
+    }
+    .gzw-calc-metric-item {
+      padding: 10px 14px !important;
+      border-radius: 4px !important;
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+    }
+    .gzw-calc-metric-item.danger {
+      background: rgba(239, 68, 68, 0.12) !important;
+      border-left: 3px solid #ef4444 !important;
+    }
+    .gzw-calc-metric-item.danger .metric-val { color: #f87171 !important; }
+    .gzw-calc-metric-item.success {
+      background: rgba(16, 185, 129, 0.12) !important;
+      border-left: 3px solid #10b981 !important;
+    }
+    .gzw-calc-metric-item.success .metric-val { color: #34d399 !important; }
+    .gzw-calc-metric-item.gold {
+      background: rgba(226, 177, 91, 0.12) !important;
+      border-left: 3px solid var(--gold) !important;
+    }
+    .gzw-calc-metric-item.gold .metric-val { color: var(--gold) !important; }
+    .metric-label { font-size: 13px !important; font-weight: 600 !important; color: #cbd5e1 !important; }
+    .metric-val { font-size: 18px !important; font-weight: 800 !important; }
 </style>
 
 
@@ -31379,6 +31618,34 @@
 
 
           </p>
+            <!-- Interactive AI Neural Terminal -->
+            <div class="gzw-terminal-box" id="gzw-terminal-box">
+              <div class="gzw-terminal-header">
+                <div class="gzw-term-dots">
+                  <span class="gzw-term-dot red"></span>
+                  <span class="gzw-term-dot yellow"></span>
+                  <span class="gzw-term-dot green"></span>
+                </div>
+                <div class="gzw-term-status font-hud">
+                  <span class="gzw-live-pulse"></span>
+                  <span class="gzw-t-ru">AI NEURAL SCANNER v4.8 • СВЯЗКА ДИРЕКТ + TG</span>
+                  <span class="gzw-t-en">AI NEURAL SCANNER v4.8 • DIRECT + TG ENGINE</span>
+                </div>
+              </div>
+              <div class="gzw-terminal-body">
+                <div class="gzw-term-input-row">
+                  <input type="text" id="gzw-term-input" class="gzw-term-input font-hud" placeholder="Введите нишу или сайт (напр: Недвижимость, Мебель, Юрист)..." />
+                  <button type="button" class="gzw-term-btn font-title" onclick="runTerminalScan()">
+                    <span class="gzw-t-ru">⚡ АНАЛИЗ СВЯЗКИ</span>
+                    <span class="gzw-t-en">⚡ RUN AUDIT</span>
+                  </button>
+                </div>
+                <div class="gzw-term-output font-hud" id="gzw-term-output">
+                  <div class="gzw-term-line dim">> Система активна. Введите нишу для экспресс-анализа переплаты в рекламе и потенциала...</div>
+                </div>
+              </div>
+            </div>
+
 
 
 
@@ -32226,7 +32493,70 @@
 
 
 
-    <div class="blocks-container">
+    
+    <!-- ========================================================================
+         INTERACTIVE ROI / BUDGET CALCULATOR
+         ======================================================================== -->
+    <div class="gzw-calc-section" id="calc">
+      <div class="gzw-calc-card">
+        <div class="gzw-calc-header">
+          <div class="card-num-tag font-hud">
+            <span class="gzw-t-ru">ИНТЕРАКТИВНЫЙ РАСЧЕТ ОКУПАЕМОСТИ И МАСШТАБА</span>
+            <span class="gzw-t-en">INTERACTIVE ROI & SCALE CALCULATOR</span>
+          </div>
+          <h2 class="card-title font-title">
+            <span class="gzw-t-ru">Калькулятор связки: Сколько вы заработаете</span>
+            <span class="gzw-t-en">Campaign Profit & Revenue Calculator</span>
+          </h2>
+        </div>
+
+        <div class="gzw-calc-grid">
+          <!-- Слайдеры слева -->
+          <div class="gzw-calc-controls">
+            <div class="gzw-slider-group">
+              <div class="gzw-slider-label">
+                <span class="gzw-t-ru">Рекламный бюджет в месяц:</span>
+                <span class="gzw-t-en">Monthly Ad Budget:</span>
+                <span class="gzw-slider-val font-hud" id="calc-val-budget">150 000 ₽</span>
+              </div>
+              <input type="range" min="50000" max="1500000" step="25000" value="150000" id="calc-range-budget" oninput="updateCalculator()" />
+            </div>
+
+            <div class="gzw-slider-group">
+              <div class="gzw-slider-label">
+                <span class="gzw-t-ru">Средний чек вашей продажи:</span>
+                <span class="gzw-t-en">Average Deal Check:</span>
+                <span class="gzw-slider-val font-hud" id="calc-val-check">45 000 ₽</span>
+              </div>
+              <input type="range" min="5000" max="300000" step="5000" value="45000" id="calc-range-check" oninput="updateCalculator()" />
+            </div>
+          </div>
+
+          <!-- Результаты справа -->
+          <div class="gzw-calc-result-box">
+            <div class="gzw-calc-metrics">
+              <div class="gzw-calc-metric-item danger">
+                <div class="metric-label font-hud">Слив на автотаргетинге Яндекса (без нас):</div>
+                <div class="metric-val font-hud" id="calc-loss">~54 000 ₽</div>
+              </div>
+              <div class="gzw-calc-metric-item success">
+                <div class="metric-label font-hud">Прогноз чистых заявок (Метод Нестерова):</div>
+                <div class="metric-val font-hud" id="calc-leads">120 – 160 лидов</div>
+              </div>
+              <div class="gzw-calc-metric-item gold">
+                <div class="metric-label font-hud">Прогнозная выручка со связки:</div>
+                <div class="metric-val font-hud" id="calc-revenue">~1 350 000 ₽</div>
+              </div>
+            </div>
+            <button type="button" class="btn-action font-title" style="width: 100%; margin-top: 14px;" onclick="openLeadModal('Калькулятор окупаемости')">
+              <span class="gzw-t-ru">Зафиксировать расчет в Telegram</span>
+              <span class="gzw-t-en">Lock Strategy in Telegram</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+<div class="blocks-container">
 
 
 
@@ -57768,6 +58098,70 @@
     initSpotlight();
     initCountUp();
   }
+
+  // Terminal Scanner Engine
+  function runTerminalScan() {
+    var input = document.getElementById('gzw-term-input');
+    var output = document.getElementById('gzw-term-output');
+    if (!input || !output) return;
+
+    var query = input.value.trim() || 'Ваша ниша';
+    if (typeof playUiSound === 'function') playUiSound('msg');
+
+    output.innerHTML = '<div class="gzw-term-line highlight">> [SCANNING GEO AUCTION]... Сканирование аукциона для ниши: ' + query + '</div>';
+
+    setTimeout(function() {
+      output.innerHTML += '<div class="gzw-term-line warn">> [WARN] 38-52% бюджета в нише переплачивается за мусорный автотаргетинг и накрутку ботов.</div>';
+    }, 500);
+
+    setTimeout(function() {
+      output.innerHTML += '<div class="gzw-term-line highlight">> [ZERO-GEO-COLLISION] Применение Метода Нестерова снижает CPL в 2.4 раза. Доступно 14 000+ ЛПР в Telegram.</div>';
+    }, 1100);
+
+    setTimeout(function() {
+      output.innerHTML += '<div class="gzw-term-line success">> [СВЯЗКА СОБРАНА] Прогнозный ROMI: x3.2. Готова пошаговая карта запуска.</div>' +
+        '<a href="https://t.me/GREYzzzzWOLF" target="_blank" rel="noopener" class="gzw-term-cta-btn font-hud">' +
+        '💬 Забрать стратегию у Сергея в Telegram' +
+        '</a>';
+      if (typeof playUiSound === 'function') playUiSound('success');
+    }, 1700);
+  }
+  window.runTerminalScan = runTerminalScan;
+
+  // Calculator Engine
+  function updateCalculator() {
+    var bRange = document.getElementById('calc-range-budget');
+    var cRange = document.getElementById('calc-range-check');
+    var bVal = document.getElementById('calc-val-budget');
+    var cVal = document.getElementById('calc-val-check');
+
+    var lossEl = document.getElementById('calc-loss');
+    var leadsEl = document.getElementById('calc-leads');
+    var revEl = document.getElementById('calc-revenue');
+
+    if (!bRange || !cRange) return;
+
+    var budget = parseInt(bRange.value, 10);
+    var check = parseInt(cRange.value, 10);
+
+    if (bVal) bVal.innerText = budget.toLocaleString('ru-RU') + ' ₽';
+    if (cVal) cVal.innerText = check.toLocaleString('ru-RU') + ' ₽';
+
+    // Loss is typically 35% of budget wasted on auto-targeting
+    var loss = Math.round(budget * 0.36);
+    if (lossEl) lossEl.innerText = '~' + loss.toLocaleString('ru-RU') + ' ₽';
+
+    // Leads calculation: effective CPA ~ 1100-1400 rub
+    var leadsMin = Math.round(budget / 1350);
+    var leadsMax = Math.round(budget / 950);
+    if (leadsEl) leadsEl.innerText = leadsMin + ' – ' + leadsMax + ' лидов';
+
+    // Revenue calculation: 18% closing rate * check
+    var deals = Math.round(((leadsMin + leadsMax) / 2) * 0.18);
+    var revenue = deals * check;
+    if (revEl) revEl.innerText = '~' + revenue.toLocaleString('ru-RU') + ' ₽';
+  }
+  window.updateCalculator = updateCalculator;
 </script>
 
 
